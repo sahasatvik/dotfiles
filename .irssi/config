@@ -309,7 +309,6 @@ statusbar = {
     empty_bottom = {
       placement = "bottom";
       position = "2";
-      visible = "always";
       disabled = "no";
     };
 
