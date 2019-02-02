@@ -1,0 +1,33 @@
+#!/usr/bin/ruby
+
+color = ARGV[0]
+if color == ""
+	color = "#FFAABB"
+end
+
+red = color[1..2].to_i(16) * 257
+green = color[3..4].to_i(16) * 257
+blue = color[5..6].to_i(16) * 257
+
+red = red.to_s
+green = green.to_s
+blue = blue.to_s
+
+out = IO.popen [
+ 'osascript',
+ '-e', 'property my_color : {' + red + ',' + green + ',' + blue + '}',
+ '-e', 'set theApp to ((path to frontmost application) as text)',
+ '-e', 'tell application theApp',
+ '-e', '  activate',
+ '-e',%|  set Applescript's text item delimiters to {"\n"}|,
+ '-e', '  try',
+ '-e', '    set col to (choose color default color my_color) as text',
+ '-e', '  on error number -128 --',
+ '-e', '    set col to my_color as text',
+ '-e', '  end try',
+ '-e', 'end tell',
+]
+
+print ?#, *out.read.lines.map { |color| '%02x' % (color.to_i / 256) }
+
+# Credit: http://www.reddit.com/r/vim/comments/2crzey/finallly_we_have_a_color_picker_in_vim/cjiiga2

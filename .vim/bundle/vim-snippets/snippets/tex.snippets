@@ -1,0 +1,457 @@
+#version 1
+#PREAMBLE
+
+snippet article basic template
+	\documentclass[a4paper, 11pt, reqno]{article}
+	
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
+	\usepackage{geometry}
+	\usepackage{amsmath, amssymb, amsthm}
+
+	\geometry{letterpaper}
+
+	\title{${1}}
+	\author{Satvik Saha}
+	\date{${2}}
+
+	\begin{document}
+		\maketitle
+		${3}
+	\end{document}
+#newcommand
+snippet nc \newcommand
+	\newcommand{\${1:cmd}}[${2:opt}]{${3:realcmd}} ${4}
+#usepackage
+snippet up \usepackage
+	\usepackage[${1:options}]{${2:package}} ${3}
+#newunicodechar
+snippet nuc \newunicodechar
+	\newunicodechar{${1}}{${2:\ensuremath}${3:tex-substitute}}} ${4}
+#DeclareMathOperator
+snippet dmo \DeclareMathOperator
+	\DeclareMathOperator{${1}}{${2}} ${3}
+#newtheorem
+snippet nth \newtheorem
+	\newtheorem{${1:env}}{${2:Theorem}} ${3}
+#problem-solution setup
+snippet probsol
+	\newcounter{prob}
+	\def\problem{\stepcounter{prob}\paragraph{Problem \arabic{prob}}}
+	\def\solution{\paragraph{Solution}}
+
+#DOCUMENT
+# \begin{}...\end{}
+snippet beg \begin{} ... \end{} block
+	\begin{${1:env}}
+		${2}
+	\end{$1}
+snippet beg[] \begin{}[] ... \end{}
+	\begin{${1:env}}[${2}]
+		${3}
+	\end{$1}
+snippet margin "margin note" A
+	\marginpar{$1}
+	$0
+# Tabular
+snippet tab tabular (or arbitrary) environment
+	\begin{${1:tabular}}{${2:c}}
+		${3}
+	\end{$1}
+snippet table "Table environment" b
+	\begin{table}[${1:htpb}]
+		\centering
+		\caption{${2:caption}}
+		\label{tab:${3:label}}
+		\begin{tabular}{${5:c}}
+		${6}${5/((?<=.)c|l|r)|./(?1: & )/g}
+		\end{tabular}
+	\end{table}
+snippet thm thm (or arbitrary) environment with optional argument
+	\begin[${1:author}]{${2:thm}}
+		${0}
+	\end{$2}
+snippet center center environment
+	\begin{center}
+		${1}
+	\end{center}
+# Align(ed)
+snippet ali align(ed) environment
+	\begin{align${1:ed}}
+		${2}
+	\end{align$1}
+# Gather(ed)
+snippet gat gather(ed) environment
+	\begin{gather${1:ed}}
+		${2}
+	\end{gather$1}
+# Equation
+snippet eq equation environment
+	\begin{equation}
+		${1}
+	\end{equation}
+# Equation
+snippet eql Labeled equation environment
+	\begin{equation}
+		\label{eq:${1}}
+	${2}
+	\end{equation}
+# Equation
+snippet eq* unnumbered equation environment
+	\begin{equation*}
+		${1}
+	\end{equation*}
+# Unnumbered Equation
+snippet \[ unnumbered equation: \[ ... \]
+	\[
+		${1}
+	\]
+# Equation array
+snippet eqnarray eqnarray environment
+	\begin{eqnarray}
+		${1}
+	\end{eqnarray}
+# Label
+snippet lab \label
+	\label{${1:eq:}${2:fig:}${3:tab:}${0}}
+#Tag
+snippet tag \Tag
+	\tag{${1}} ${2}
+#boxed
+snippet box \boxed
+	\boxed{${1}} ${2}
+# Enumerate
+snippet enum enumerate environment
+	\begin{enumerate}
+		\item ${1}
+	\end{enumerate}
+snippet enuma enumerate environment
+	\begin{enumerate}[(a)]
+		\item ${1}
+	\end{enumerate}
+snippet enumi enumerate environment
+	\begin{enumerate}[(i)]
+		\item ${1}
+	\end{enumerate}
+# Itemize
+snippet item itemize environment
+	\begin{itemize}
+		\item ${1}
+	\end{itemize}
+snippet it \item
+	\item ${1}
+# Description
+snippet desc description environment
+	\begin{description}
+		\item[${1}] ${2}
+	\end{description}
+# Endless new item
+snippet ]i \item (recursive)
+	\item ${1}
+		${2:]i}
+# Matrix
+snippet mat smart matrix environment
+	\begin{${1:p/b/v/V/B/small}matrix}
+		${2}
+	\end{$1matrix}
+# Cases
+snippet cas cases environment
+	\begin{cases}
+		${1:equation}, &\text{ if }${2:case}\
+		${3}
+	\end{cases}
+# Split
+snippet spl split environment
+	\begin{split}
+		${1}
+	\end{split}
+# Part
+snippet part document \part
+	\part{${1:part name}} % (fold)
+	\label{prt:${2:$1}}
+	${0}
+	% part $2 (end)
+# Chapter
+snippet cha \chapter
+	\chapter{${1:chapter name}}
+	\label{cha:${2:$1}}
+	${0}
+# Section
+snippet sec \section
+	\section{${1:section name}}
+	${0}
+# Section without number
+snippet sec* \section*
+	\section*{${1:section name}}
+	${0}
+# Sub Section
+snippet sub \subsection
+	\subsection{${1:subsection name}}
+	${0}
+# Sub Section without number
+snippet sub* \subsection*
+	\subsection*{${1:subsection name}}
+	${0}
+# Sub Sub Section
+snippet ssub \subsubsection
+	\subsubsection{${1:subsubsection name}}
+	${0}
+# Sub Sub Section without number
+snippet ssub* \subsubsection*
+	\subsubsection*{${1:subsubsection name}}
+	${0}
+# Paragraph
+snippet par \paragraph
+	\paragraph{${1:paragraph name}}
+	${0}
+# Sub Paragraph
+snippet subp \subparagraph
+	\subparagraph{${1:subparagraph name}}
+	${0}
+snippet ni \noindent
+	\noindent
+	${0}
+#References
+snippet itd description \item
+	\item[${1:description}] ${2:item}
+snippet figure reference to a figure
+	${1:Figure}~\ref{${2:fig:}}
+snippet table reference to a table
+	${1:Table}~\ref{${2:tab:}}
+snippet listing reference to a listing
+	${1:Listing}~\ref{${2:list}}
+snippet section reference to a section
+	${1:Section}~\ref{sec:${2}} ${0}
+snippet page reference to a page
+	${1:page}~\pageref{${2}} ${0}
+snippet index \index
+	\index{${1:index}} ${0}
+#Citations
+snippet citen \citen
+	\citen{${1}} ${2}
+# natbib citations
+snippet citep \citep
+	\citep{${1}} ${2}
+snippet citet \citet
+	\citet{${1}} ${2}
+snippet cite \cite[]{}
+	\cite[${1}]{${2}} ${3}
+snippet citea \citeauthor
+	\citeauthor{${1}} ${2}
+snippet citey \citeyear
+	\citeyear{${1}} ${2}
+snippet fcite \footcite[]{}
+	\footcite[${1}]{${2}}${3}
+#Formating text: italic, bold, underline, small capital, emphase ..
+snippet ita italic text
+	\textit{${1}} ${2}
+snippet bf bold face text
+	\textbf{${1}} ${2}
+snippet under underline text
+	\underline{${1}} ${2}
+snippet emp emphasize text
+	\emph{${1}} ${2}
+snippet sc small caps text
+	\textsc{${1}} ${2}
+#Choosing font
+snippet sf sans serife text
+	\textsf{${1}} ${2}
+snippet rm roman font text
+	\textrm{${1}} ${2}
+snippet tt typewriter (monospace) text
+	\texttt{${1}} ${2}
+#Math font
+snippet mf mathfrak
+	\mathfrak{${1}} ${2}
+snippet mc mathcal
+	\mathcal{${1}} ${2}
+snippet ms mathscr
+	\mathscr{${1}} ${2}
+snippet mr mathrm
+	\mathrm{${1}} ${2}
+snippet mb mathbb
+	\mathbb{${1}} ${2}
+#misc
+snippet ft \footnote
+	\footnote{${1}} ${2}
+snippet fig figure environment (includegraphics)
+	\begin{figure}
+	\begin{center}
+		\includegraphics[scale=${1}]{Figures/${2}}
+	\end{center}
+	\caption{${3}}
+	\label{fig:${4}}
+	\end{figure}
+	${0}
+snippet tikz figure environment (tikzpicture)
+	\begin{figure}[htpb]
+	\begin{center}
+	\begin{tikzpicture}[scale=${1:1}, transform shape]
+		${2}
+	\end{tikzpicture}
+	\end{center}
+	\caption{${3}}
+	\label{fig:${4}}
+	\end{figure}
+	${0}
+snippet subfig subfigure environment
+	\begin{subfigure}[${1}]{${2:\textwidth}}
+	\begin{center}
+		${3}
+	\end{center}
+	\caption{${4}}
+	\label{fig:${5}}
+	\end{subfigure}
+	${0}
+snippet tikzcd tikzcd environment in equation
+	\begin{equation}
+	\begin{tikzcd}
+		${1}
+	\end{tikzcd}
+	\end{equation}
+	${0}
+snippet tikzcd* tikzcd environment in equation*
+	\begin{equation*}
+	\begin{tikzcd}
+		${1}
+	\end{tikzcd}
+	\end{equation*}
+	${0}
+#math
+snippet arr array
+	\begin{array*}{${1:rl}}
+		${2:} &= $3\\\\
+	\end{array*}
+
+snippet pmat pmat
+	\begin{pmatrix}
+		$1
+	\end{pmatrix}
+	$0
+snippet bmat bmat
+	\begin{bmatrix}
+		$1
+	\end{bmatrix}
+	$0
+
+snippet eqv equivalence
+	\; \equiv \; ${1}
+snippet sr square root
+	\sqrt{${1}}${2}
+snippet sq square
+	^2
+snippet cb cube
+	^3
+
+snippet sin sine
+	\sin
+snippet cos cosine
+	\cos
+snippet tan tangent
+	\tan
+snippet asin arcsine / inverse sine
+	\sin^{-1}
+snippet acos arccos / inverse cosine
+	\cos^{-1}
+snippet atan arctan / inverse tangent
+	\tan^{-1}
+
+snippet exp exponential
+	\exp
+snippet ln natural logarithm
+	\ln
+snippet log logarithm
+	\log_{${1}}${2}
+
+snippet ceil ceiling
+	\left\lceil ${1} \right\rceil ${2}
+snippet floor floor
+	\left\lfloor ${1} \right\rfloor ${2}
+snippet stackrel \stackrel{}{}
+	\stackrel{${1:above}}{${2:below}} ${3}
+snippet frac \frac{}{}
+	\frac{${1:num}}{${2:denom}} ${3}
+snippet // \frac{}{}
+	\frac{${1:num}}{${2:denom}} ${3}
+snippet fun "function" iA
+	${1:f} : \mathbb{${2:R}} \to \mathbb{${3:R}} ${4}
+snippet derv derivative
+	\frac{\mathrm{d} ${1}}{\mathrm{d}${2:x}} ${3}
+snippet pderv partial derivative
+	\frac{\partial ${1}}{\partial ${2:x}} ${3}
+snippet dint integral
+	\int_{${1:-\infty}}^{${2:\infty}} ${3}\: \mathrm{d}${4:x} ${5}
+snippet int integral
+	\int ${1:x}\: \mathrm{d}${2:x} ${3}
+snippet sum sum
+	\sum_{${1:k}=${2:1}}^{${3:\infty}} ${4} ${5}
+snippet taylor taylor
+	\sum_{${1:k}=${2:0}}^{${3:\infty}} ${4:c_$1} (x-a)^$1 ${5}
+snippet lim limit
+	\lim_{${1:n} \to ${2:\infty}} ${3} 
+snippet prod product
+	\prod_{${1:n=${2:1}}}^{${3:\infty}} ${4}
+snippet bol bol
+	\left(${1:x} - ${2:\delta}, $1 + $2 \right) ${3}
+#blocks
+snippet slide slide
+	\begin{slide}{$1}
+		$2
+	\end{slide}
+snippet frame frame environment
+	\begin{frame}[${1:t}]{${2:title}}
+		${3}
+	\end{frame}
+snippet block block environment
+	\begin{block}{${1:title}}
+		${2}
+	\end{block}
+snippet alert alertblock environment
+	\begin{alertblock}{${1:title}}
+		${2}
+	\end{alertblock}
+snippet example exampleblock environment
+	\begin{exampleblock}{${1:title}}
+		${2}
+	\end{exampleblock}
+snippet col2 two-column environment
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			${1}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			${2}
+		\end{column}
+	\end{columns}
+#delimiter
+snippet lr left right
+	\left${1:|} ${2} \right$1
+snippet lr( left( right
+	\left( ${1} \right
+snippet lr| left| right|
+	\left| ${1} \right|
+snippet lr{ left\{ right\
+	\left\{ ${1} \right\
+snippet lr[ left[ right
+	\left[ ${1} \right
+snippet lr< langle rangle
+	\langle ${1} \rangle
+snippet lra langle rangle
+	\langle ${1} \rangle
+# Code listings
+snippet lst
+	\begin{listing}[language=${1:language}]
+		${2}
+	\end{listing}
+snippet lsi
+	\lstinline|${1}| ${0}
+# Hyperlinks
+snippet url
+	\url{${1}} ${0}
+snippet href
+	\href{${1}}{${2}} ${0}
+# URL from Clipboard.
+snippet urlc
+	\url{`@+`} ${0}
+snippet hrefc
+	\href{`@+`}{${1}} ${0}

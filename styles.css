@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+body {
+    background-color: #272727;
+    margin: 0px;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#clock {
+    font-family: sans-serif;
+    font-size: 3.5rem;
+    font-weight: 500;
+    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
+    color: #ffffff;
+    margin-bottom: 50px;
+}
+
+#search {
+    width: 100%;
+    height: 100vh;
+    background-color: #272727;
+    display: none;
+    position: absolute;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-field {
+    width: 90%;
+    padding: .75em 1em;
+    box-sizing: border-box;
+    background-color: #272727;
+    border: solid 0px #272727;
+    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
+    font-size: 4rem;
+    color: #f2f2f2;
+    outline: none;
+    border-radius: 3px;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.card {
+    background-color: #272727;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #9f9f9f;
+}
+
+.card:hover {
+    background-color: #242424;
+    border-color: #ffffff;
+}
+
+.greeting-container {
+    width: 30%;
+    padding: 1em;
+    font-weight: 400;
+    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
+    color: #ffffff;
+    text-align: center;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.bookmark-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 60%;
+    height: 11.6em;
+    margin: 1em 0em;
+}
+
+.bookmark-set {
+    padding: 1em;
+    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
+    font-size: .85rem;
+    width: 25%;
+    height: auto;
+    margin: 0em .5em;
+}
+
+.bookmark-inner-container {
+    font-size: 0.8rem;
+    font-weight: 200;
+    overflow-y: scroll;
+    height: 80%;
+    vertical-align: top;
+}
+
+.bookmark-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0em 0em .35em 0em;
+}
+
+.bookmark {
+    text-decoration: none;
+    color: #afafaf;
+    display:block;
+    margin: .5em 0em;
+}
+
+.bookmark:hover {
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 960px) {
+    .container {
+        height: auto;
+    }
+    #clock {
+        margin-top: 1em;
+    }
+    .container > .bookmark-container {
+        flex-direction: column;
+        width: 60%;
+    }
+    .bookmark-container > .bookmark-set {
+        width: auto;
+        margin: 1em 0em;
+    }
+}
+
