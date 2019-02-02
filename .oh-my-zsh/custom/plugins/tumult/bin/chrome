@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Force opening a URL in Chrome
+
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+exec open -a "Google Chrome" "$@"
