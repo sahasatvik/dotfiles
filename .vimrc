@@ -12,7 +12,7 @@ execute pathogen#infect()
 
 " The basic settings
 set nocp
-set ls=2
+set laststatus=2
 set ruler
 set number
 set relativenumber
@@ -24,6 +24,7 @@ set hidden
 set backspace=indent,eol,start
 set incsearch
 set spell spelllang=en_gb
+set wildmode
 
 set listchars=tab:⎸\ 
 set list
