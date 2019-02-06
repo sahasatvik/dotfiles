@@ -43,20 +43,27 @@ body {
 
 #search-field {
     width: 90%;
-    padding: .75em 1em;
-    box-sizing: border-box;
-    background-color: #272727;
-    border: solid 0px #272727;
+    height: auto;
     font-size: 4rem;
     font-weight: 200;
     color: #f2f2f2;
+    background-color: #272727;
+    border: solid 0px #272727;
     outline: none;
-    border-radius: 3px;
-    margin-bottom: 1em;
+    box-sizing: border-box;
     text-align: center;
 }
 
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 60%;
+    height: auto;
+}
+
 .card {
+    flex: 1 1;
     background-color: #272727;
     border-style: solid;
     border-width: 1px;
@@ -64,6 +71,10 @@ body {
     border-color: #9f9f9f;
     padding: 1em;
     margin: .5em .5em;
+}
+
+.card-row {
+    flex: 0 1 100%;
 }
 
 .card:hover {
@@ -85,35 +96,16 @@ body {
     vertical-align: top;
 }
 
-.greeting-container {
-    width: 30%;
-    padding: 1em;
+#greeting-card {
     font-weight: 400;
     color: #ffffff;
     text-align: center;
 }
 
-.inline {
-    display: inline-block;
-}
-
-.bookmark-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 60%;
-    height: auto;
-}
-
-.bookmark-set {
-    width: 25%;
-    height: auto;
-}
-
 .bookmark {
     text-decoration: none;
     color: #afafaf;
-    display:block;
+    display: block;
     margin: .5em 0em;
 }
 
@@ -121,22 +113,17 @@ body {
     color: #ffffff;
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 600px) {
     .global-container {
         width: auto;
         height: auto;
     }
     #clock {
+        font-size: 3rem;
         margin-top: 1em;
     }
-    .global-container > .greeting-container {
-        width: auto;
-    }
-    .global-container > .bookmark-container {
-        flex: 0 0;
-        flex-flow: row wrap;
-        align-content: flex-start;
-        width: auto;
+    .card-container {
+        width: 80%;
     }
 }
 
