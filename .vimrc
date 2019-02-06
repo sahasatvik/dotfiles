@@ -25,6 +25,7 @@ set backspace=indent,eol,start
 set incsearch
 set spell spelllang=en_gb
 set wildmode=full
+set wildmenu
 
 set listchars=tab:⎸\ 
 set list
