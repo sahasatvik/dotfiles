@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
-body {
-    background-color: #272727;
+* {
+    padding: 0px;
     margin: 0px;
+    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
 }
 
-.container {
+body {
+    background-color: #272727;
+}
+
+.global-container {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -15,11 +20,13 @@ body {
 }
 
 #clock {
-    font-size: 3.5rem;
-    font-weight: 500;
-    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
+    font-size: 4rem;
+    font-weight: 400;
     color: #ffffff;
-    margin-bottom: 50px;
+}
+
+#clock-padding {
+    height: 40px;
 }
 
 #search {
@@ -42,7 +49,6 @@ body {
     border: solid 0px #272727;
     font-size: 4rem;
     font-weight: 200;
-    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
     color: #f2f2f2;
     outline: none;
     border-radius: 3px;
@@ -56,6 +62,8 @@ body {
     border-width: 1px;
     border-radius: 5px;
     border-color: #9f9f9f;
+    padding: 1em;
+    margin: .5em .5em;
 }
 
 .card:hover {
@@ -63,11 +71,24 @@ body {
     border-color: #ffffff;
 }
 
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0em 0em .35em 0em;
+}
+
+.card-inner-container {
+    font-size: 0.8rem;
+    font-weight: 200;
+    overflow-y: scroll;
+    vertical-align: top;
+}
+
 .greeting-container {
     width: 30%;
     padding: 1em;
     font-weight: 400;
-    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
     color: #ffffff;
     text-align: center;
 }
@@ -81,31 +102,12 @@ body {
     flex-direction: row;
     justify-content: center;
     width: 60%;
-    height: 11.8em;
-    margin: 1em 0em;
+    height: auto;
 }
 
 .bookmark-set {
-    padding: 1em;
     width: 25%;
     height: auto;
-    margin: 0em .5em;
-}
-
-.bookmark-title {
-    font-size: 1.1rem;
-    font-weight: 500;
-    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
-    color: #ffffff;
-    margin: 0em 0em .35em 0em;
-}
-
-.bookmark-inner-container {
-    font-size: 0.8rem;
-    font-weight: 200;
-    font-family: "RobotoMono Nerd Font", "Roboto Mono", monospace;
-    overflow-y: scroll;
-    vertical-align: top;
 }
 
 .bookmark {
@@ -120,19 +122,21 @@ body {
 }
 
 @media only screen and (max-width: 960px) {
-    .container {
+    .global-container {
+        width: auto;
         height: auto;
     }
     #clock {
         margin-top: 1em;
     }
-    .container > .bookmark-container {
-        flex-direction: column;
-        width: 60%;
-    }
-    .bookmark-container > .bookmark-set {
+    .global-container > .greeting-container {
         width: auto;
-        margin: 1em 0em;
+    }
+    .global-container > .bookmark-container {
+        flex: 0 0;
+        flex-flow: row wrap;
+        align-content: flex-start;
+        width: auto;
     }
 }
 
