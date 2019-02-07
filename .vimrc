@@ -100,7 +100,7 @@ endf
 " Filetype
 filetype plugin on
 
-autocmd Filetype css,html,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype css,html,javascript,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType make setlocal noexpandtab
 
