@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500');
 
 * {
     padding: 0px;
@@ -8,6 +8,17 @@
 
 body {
     background-color: #272727;
+}
+
+a {
+    text-decoration: none;
+    color: #afafaf;
+    display: block;
+    margin: .5em 0em;
+}
+
+a:hover {
+    color: #ffffff;
 }
 
 .global-container {
@@ -91,7 +102,7 @@ body {
 
 .card-inner-container {
     font-size: 0.8rem;
-    font-weight: 200;
+    font-weight: 400;
     overflow-y: scroll;
     vertical-align: top;
 }
@@ -100,17 +111,6 @@ body {
     font-weight: 400;
     color: #ffffff;
     text-align: center;
-}
-
-.bookmark {
-    text-decoration: none;
-    color: #afafaf;
-    display: block;
-    margin: .5em 0em;
-}
-
-.bookmark:hover {
-    color: #ffffff;
 }
 
 @media only screen and (max-width: 600px) {
