@@ -6,8 +6,10 @@
     height: auto;
 }
 
+/* Light cards */
+
 .card {
-    flex: 1 1;
+    flex: 1 1 auto;
     background-color: #ffffff;
     border-style: solid;
     border-width: 1px;
@@ -17,21 +19,17 @@
     margin: .5em .5em;
 }
 
-.card.card-dark {
-    background-color: #272727;
-    border-color: #7f7f7f;
-}
-
 .card-row {
     flex: 0 1 100%;
+    text-align: center;
 }
 
 .card:hover {
     border-color: #000000;
 }
 
-.card.card-dark:hover {
-    border-color: #ffffff;
+.card.pressable:active {
+    border-color: #afafaf;
 }
 
 .card > .card-title {
@@ -41,39 +39,47 @@
     margin: 0em 0em .35em 0em;
 }
 
-.card.card-dark > .card-title {
-    color: #ffffff;
-}
-
 .card > .card-inner-container {
-    font-size: 0.8rem;
-    font-weight: 400;
     overflow-y: scroll;
     vertical-align: top;
 }
 
-.card > * {
-    color: #7f7f7f;
-}
-
-.card.card-dark > * {
-    color: #afafaf;
-}
-
-.card > .card-inner-container > a {
+.card > .card-inner-container > * {
+    font-size: .8rem;
+    font-weight: 400;
     color: #7f7f7f;
     display: block;
     margin: .5em 0em;
-}
-
-.card.card-dark > .card-inner-container > a {
-    color: #afafaf;
 }
 
 .card > .card-inner-container > a:hover {
     color: #000000;
 }
 
+/* Dark variants of cards */
+
+.card.card-dark {
+    background-color: #272727;
+    border-color: #7f7f7f;
+}
+
+.card.card-dark:hover {
+    border-color: #ffffff;
+}
+
+.card.card-dark.pressable:active {
+    border-color: #7f7f7f;
+}
+
+.card.card-dark > .card-title {
+    color: #ffffff;
+}
+
+.card.card-dark > .card-inner-container > * {
+    color: #afafaf;
+}
+
 .card.card-dark > .card-inner-container > a:hover {
     color: #ffffff;
 }
+

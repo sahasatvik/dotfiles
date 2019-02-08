@@ -63,9 +63,8 @@ a {
     height: auto;
 }
 
-#greeting-card {
-    font-weight: 400;
-    text-align: center;
+#greeting-description {
+    font-size: 1rem;
 }
 
 @media only screen and (max-width: 600px) {
