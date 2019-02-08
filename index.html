@@ -6,6 +6,7 @@
     
     <title>Home</title>
     
+    <link rel="stylesheet" href="cards.css">
     <link rel="stylesheet" href="styles.css">
     <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
 </head>
@@ -13,14 +14,14 @@
     <div id="search">
         <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
     </div>
-    <div class="global-container">
+    <div id="global-container">
         <div id="clock"></div>
         <div id="clock-padding"></div>
-        <div class="card-container">
-            <div id="greeting-card" class="card card-row">
+        <div id="bookmark-card-container" class="card-container">
+            <div id="greeting-card" class="card card-dark card-row">
                 <div id="greeting-description">Hello Satvik</div>
             </div>
-            <div id="games-set" class="card">
+            <div id="games-set" class="card card-dark">
                 <div class="card-title">Games</div>
                 <div class="card-inner-container">
                     <a href="https://chess.com/home" target="_blank">chess.com</a>
@@ -29,7 +30,7 @@
                     <a href="https://www.keyhero.com/free-typing-test/" target="_blank">typing test</a>
                 </div>
             </div>
-            <div id="media-set" class="card">
+            <div id="media-set" class="card card-dark">
                 <div class="card-title">Media</div>
                 <div class="card-inner-container">
                     <a href="https://music.google.com" target="_blank">gplay music</a>
@@ -39,7 +40,7 @@
                     <a href="https://youtube.com" target="_blank">youtube</a>
                 </div>
             </div>
-            <div id="social-set" class="card">
+            <div id="social-set" class="card card-dark">
                 <div class="card-title">Social</div>
                 <div class="card-inner-container">
                     <a href="https://news.ycombinator.com" target="_blank">hackernews</a>
@@ -48,7 +49,7 @@
                     <a href="https://reddit.com" target="_blank">reddit</a>
                 </div>
             </div>
-            <div id="work-set" class="card">
+            <div id="work-set" class="card card-dark">
                 <div class="card-title">Work</div>
                 <div class="card-inner-container">
                     <a href="https://drive.google.com" target="_blank">drive</a>

@@ -1,0 +1,79 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+}
+
+.card {
+    flex: 1 1;
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #afafaf;
+    padding: 1em;
+    margin: .5em .5em;
+}
+
+.card.card-dark {
+    background-color: #272727;
+    border-color: #7f7f7f;
+}
+
+.card-row {
+    flex: 0 1 100%;
+}
+
+.card:hover {
+    border-color: #000000;
+}
+
+.card.card-dark:hover {
+    border-color: #ffffff;
+}
+
+.card > .card-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #000000;
+    margin: 0em 0em .35em 0em;
+}
+
+.card.card-dark > .card-title {
+    color: #ffffff;
+}
+
+.card > .card-inner-container {
+    font-size: 0.8rem;
+    font-weight: 400;
+    overflow-y: scroll;
+    vertical-align: top;
+}
+
+.card > * {
+    color: #7f7f7f;
+}
+
+.card.card-dark > * {
+    color: #afafaf;
+}
+
+.card > .card-inner-container > a {
+    color: #7f7f7f;
+    display: block;
+    margin: .5em 0em;
+}
+
+.card.card-dark > .card-inner-container > a {
+    color: #afafaf;
+}
+
+.card > .card-inner-container > a:hover {
+    color: #000000;
+}
+
+.card.card-dark > .card-inner-container > a:hover {
+    color: #ffffff;
+}
