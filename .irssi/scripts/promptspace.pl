@@ -28,7 +28,7 @@ sub promptspace {
   }
   
   my $nick = Irssi::active_server()->{nick};
-  my $format = sprintf(" %%X7E%16s %%K:%%n ", $nick);
+  my $format = sprintf(" %%X7H%16s %%K:%%n ", $nick);
   
   $item->{min_size} = $item->{max_size} = length($format);
   $item->default_handler($get_size_only, $format, undef, 1);

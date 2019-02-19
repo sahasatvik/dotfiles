@@ -68,7 +68,7 @@ abstracts = {
   line_start = "";
 
   # timestamp styling, nothing by default
-  timestamp = " %X7E$*%n ";
+  timestamp = " %X7H$*%n ";
 
   # any kind of text that needs hilighting, default is to bold
   hilight = "%_$*%_";
@@ -277,7 +277,7 @@ abstracts = {
 
   prompt = "";
 
-  sb = "%X7E$*%n";
+  sb = "%X7H$*%n";
   sbmode = "(%K+%n$*)";
   sbaway = "%W%1 $* %n";
   sbservertag = "$0%K";
@@ -288,7 +288,7 @@ abstracts = {
   # ',' separator
   sb_act_sep = "%w$*%n";
   # normal text
-  sb_act_text = "%X7E$*";
+  sb_act_text = "%X7H$*";
   # public message
   sb_act_msg = "%K$*";
   # hilight
@@ -296,7 +296,7 @@ abstracts = {
   # hilight with specified color, $0 = color, $1 = text
   sb_act_hilight_color = "$0$1-%n";
 
-  sb_usercount = "%X7E $1- %n%W$0%n ";
+  sb_usercount = "%X7H $1- %n%W$0%n ";
   sb_uc_ircops = "%_*%_$*";
   sb_uc_ops = "%_@%_$*";
   sb_uc_halfops = "%_%%%_$*";
@@ -337,8 +337,8 @@ formats = {
     url = "Home page for {channelhilight $0}: %_$1%_";
   };
   "Irssi::Script::adv_windowlist" = {
-    awl_display_key = "%X7E $H$C$S %N";
-    awl_display_nokey = "%X7E $H$C$S %N";
+    awl_display_key = "%X7H $H$C$S %N";
+    awl_display_nokey = "%X7H $H$C$S %N";
     awl_display_key_active = "%W $H$C$S %N";
     awl_display_nokey_active = "%W $H$C$S %N";
     awl_display_key_visible = "%W $H$C$S %N";
