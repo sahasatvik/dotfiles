@@ -22,10 +22,11 @@ set nobackup
 set wrap
 set hidden
 set backspace=indent,eol,start
+set spelllang=en_gb
 set incsearch
-set spell spelllang=en_gb
 set wildmode=full
 set wildmenu
+set termguicolors
 
 set listchars=tab:⎸\ 
 set list
@@ -162,18 +163,24 @@ let g:miniBufExplMapWindowNavArrows = 1
 
 " You can change colors easily in vim. 
 " Just type <ESC>:colorscheme and then TAB complete through the options 
-set t_Co=256
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_visibility="low"
-let g:solarized_termtrans = 1
-colorscheme solarized
+" set t_Co=256
+" set background=dark
+" let g:solarized_termcolors=256
+" let g:solarized_visibility="low"
+" let g:solarized_termtrans = 1
+let base16colorspace=256
+colorscheme base16-chalk
 
 " Set the color for the popup menu
 highlight Pmenu ctermbg=blue ctermfg=white
 highlight PmenuSel ctermbg=blue ctermfg=red
 highlight PmenuSbar ctermbg=cyan ctermfg=green
 highlight PmenuThumb ctermbg=white ctermfg=red
+
+" Set the color for spellchecking
+hi clear SpellBad
+hi SpellBad cterm=underline
+
 
 " DICTIONARY
 " The dictionary can pop up a lot of words when you have Auto popup enabled. 
@@ -238,7 +245,7 @@ imap <F4> <Plug>(JavaComplete-Imports-AddMissing)
 
 " Lightline
 let g:lightline = {
-\ 'colorscheme'      :    'solarized',
+\ 'colorscheme'      :    'base16',
 \}
 let g:lightline.tabline            = {'left': [['buffers']], 'right': [[]]}
 let g:lightline.component_expand   = {'buffers': 'lightline#bufferline#buffers'}
