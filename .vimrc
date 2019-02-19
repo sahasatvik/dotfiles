@@ -183,7 +183,7 @@ imap <F4> <Plug>(JavaComplete-Imports-AddMissing)
 
 " Lightline
 let g:lightline = {
-\ 'colorscheme'      :    'base16',
+\ 'colorscheme'      :    'Tomorrow_Night',
 \}
 let g:lightline.tabline            = {'left': [['buffers']], 'right': [[]]}
 let g:lightline.component_expand   = {'buffers': 'lightline#bufferline#buffers'}
