@@ -93,6 +93,7 @@ alias h="htop"
 alias p="pwd"
 alias tb="nc termbin.com 9999"
 alias dirsize="du -hs * | sort -h"
+alias lfm="lfm.pl tracks -r -l 10"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
