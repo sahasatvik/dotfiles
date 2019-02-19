@@ -360,11 +360,11 @@ settings = {
     awl_mouse_offset = "0";
     awl_shared_sbar = "1<24";
     trackbar_string = "─";
-    trackbar_style = "%X7H";
+    trackbar_style = "%X7E";
+    trackbar_print_timestamp = "yes";
     hilightwin_show_network = "no";
     usercount_show_halfops = "yes";
     url_color = "1";
-    trackbar_print_timestamp = "yes";
   };
   "irc/core" = { alternate_nick = "sahasatvik_"; };
   "fe-common/core" = {
