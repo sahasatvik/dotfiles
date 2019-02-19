@@ -19,7 +19,7 @@ set wildmenu
 set completeopt=longest,menuone
 set termguicolors
 
-set listchars=tab:⎸\ 
+set listchars=tab:▏\ 
 set list
 
 " Indentation
