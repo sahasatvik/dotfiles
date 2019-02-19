@@ -126,7 +126,7 @@ let g:miniBufExplMapWindowNavArrows = 1
 
 " Colorscheme
 let base16colorspace=256
-colorscheme base16-chalk
+colorscheme base16-tomorrow-night
 
 " Spellchecking colors
 highlight clear SpellBad
