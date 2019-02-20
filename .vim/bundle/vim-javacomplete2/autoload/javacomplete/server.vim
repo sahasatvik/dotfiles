@@ -87,7 +87,9 @@ endfunction
 
 function! javacomplete#server#Start()
   if s:Poll() == 0 && s:serverStartBlocked == 0
-    call s:ControlServerAppVersion()
+    if get(g:, 'JavaComplete_CheckServerVersionAtStartup', 1)
+      call s:ControlServerAppVersion()
+    endif
 
     JavacompletePy import vim
     let file = g:JavaComplete_Home. g:FILE_SEP. "autoload". g:FILE_SEP. "javavibridge.py"
@@ -190,7 +192,7 @@ function! javacomplete#server#Compile()
 
   let s:compilationIsRunning = 1
   if executable('mvn')
-    let command = ['mvn', '-f', '"'. javaviDir. g:FILE_SEP. 'pom.xml"', 'compile']
+    let command = ['mvn', '-B', '-f', javaviDir. g:FILE_SEP. 'pom.xml', 'compile']
   else
     call mkdir(javaviDir. join(['target', 'classes'], g:FILE_SEP), "p")
     let deps = s:GetJavaviDeps()
@@ -225,7 +227,7 @@ function! javacomplete#server#Communicate(option, args, log)
 
   if s:Poll()
     if !empty(a:args)
-      let args = ' '. substitute(a:args, '"', '\\"', 'g')
+      let args = ' "'. substitute(a:args, '"', '\\"', 'g'). '"'
     else
       let args = ''
     endif
@@ -233,7 +235,7 @@ function! javacomplete#server#Communicate(option, args, log)
     call s:Log("communicate: ". cmd. " [". a:log. "]")
     let result = ""
 JavacompletePy << EOPC
-vim.command('let result = "%s"' % bridgeState.send(vim.eval("cmd")))
+vim.command('let result = "%s"' % bridgeState.send(vim.eval("cmd")).replace('"', '\\"'))
 EOPC
 
     call s:Log(result)

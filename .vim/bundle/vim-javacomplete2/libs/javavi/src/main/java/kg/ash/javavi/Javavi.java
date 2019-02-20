@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class Javavi {
 
-    public static final String VERSION = "2.3.8";
+    public static final String VERSION = "2.4.0";
 
     public static String NEWLINE = "";
 
@@ -55,6 +55,7 @@ public class Javavi {
 
     public static String makeResponse(String[] args) {
 
+        long ms = System.currentTimeMillis();
         Action action = null;
         boolean asyncRun = false;
         for (int i = 0; i < args.length; i++) {
@@ -108,6 +109,7 @@ public class Javavi {
                 result = action.perform(args);
             }
         }
+        logger.debug("action time: {}ms", (System.currentTimeMillis() - ms));
         return result;
     }
 }

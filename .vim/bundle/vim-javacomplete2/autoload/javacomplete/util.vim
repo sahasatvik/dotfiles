@@ -3,6 +3,11 @@
 "
 " Utility functions
 
+function! s:Log(log)
+  let log = type(a:log) == type("") ? a:log : string(a:log)
+  call javacomplete#logger#Log("[util] ". log)
+endfunction
+
 " TODO: search pair used in string, like
 " 	'create(ao.fox("("), new String).foo().'
 function! javacomplete#util#GetMatchedIndexEx(str, idx, one, another)
@@ -258,6 +263,7 @@ function! s:NewJob(id, handler)
 endfunction
 
 function! javacomplete#util#RunSystem(command, shellName, handler)
+  call s:Log("running command: ". string(a:command))
   if has('nvim')
     if exists('*jobstart')
       let callbacks = {
@@ -425,6 +431,14 @@ function! javacomplete#util#GenMethodParamsDeclaration(method)
     endif
   endif
   return a:method.d
+endfunction
+
+function! javacomplete#util#GetClassPackage(class)
+  let lastDot = strridx(a:class, '.')
+  if lastDot > 0
+    return a:class[0:lastDot - 1]
+  endif
+  return a:class
 endfunction
 
 " vim:set fdm=marker sw=2 nowrap:

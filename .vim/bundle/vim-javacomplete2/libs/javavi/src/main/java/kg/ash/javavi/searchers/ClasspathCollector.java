@@ -17,7 +17,8 @@ public class ClasspathCollector {
     public static final Logger logger = LogManager.getLogger();
 
     private ByExtensionVisitor finder = new ByExtensionVisitor(
-        Arrays.asList("*.jar", "*.JAR", "*.zip", "*.ZIP", "*.class", "*.jmod"));
+        Arrays.asList("*.jar", "*.JAR", "*.zip", "*.ZIP", "*.class", 
+            "*.jmod", "classlist"));
 
     private String pSep = File.pathSeparator;
 
@@ -34,13 +35,18 @@ public class ClasspathCollector {
         result.addAll(addPathFromDir(System.getProperty("java.home")));
 
         String classPath = System.getProperty("java.class.path");
-        Stream.of(classPath.split(pSep)).filter(p -> p.length() >= 4).forEach(path -> {
-            String ext = path.substring(path.length() - 4).toLowerCase();
-            if (ext.endsWith(".jar") || ext.endsWith(".zip")) {
-                result.add(path);
-            } else {
-                result.addAll(addPathFromDir(path));
-            }
+        Stream.of(classPath.split(pSep))
+            .filter(p -> p.length() >= 4).forEach(path -> {
+                if (path.contains("vim-javacomplete2/libs/")) {
+                    return;
+                }
+                String ext = path.substring(path.length() - 4)
+                    .toLowerCase();
+                if (ext.endsWith(".jar") || ext.endsWith(".zip")) {
+                    result.add(path);
+                } else {
+                    result.addAll(addPathFromDir(path));
+                }
         });
 
         return result;

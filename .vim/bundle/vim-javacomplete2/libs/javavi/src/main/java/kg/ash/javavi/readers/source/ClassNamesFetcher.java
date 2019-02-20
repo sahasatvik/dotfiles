@@ -31,6 +31,7 @@ public class ClassNamesFetcher {
 
     private final CompilationUnit compilationUnit;
     private final Set<String> resultList = new HashSet<>();
+    private final Set<String> declarationList = new HashSet<>();
     private List<String> staticImportsList = new ArrayList<>();
 
     public static PrettyPrinterConfiguration withoutComments() {
@@ -44,7 +45,9 @@ public class ClassNamesFetcher {
         for (ImportDeclaration id : compilationUnit.getImports()) {
             if (id.isStatic()) {
                 String name = id.getName().toString();
-                staticImportsList.add(name.substring(name.lastIndexOf(".") + 1, name.length()));
+                staticImportsList.add(
+                        name.substring(
+                            name.lastIndexOf(".") + 1, name.length()));
             }
         }
     }
@@ -60,10 +63,18 @@ public class ClassNamesFetcher {
         return resultList;
     }
 
+    public Set<String> getDeclarationList() {
+        if (resultList.isEmpty()) {
+            getNames();
+        }
+        return declarationList;
+    }
+
     private class ClassTypeVisitor extends VoidVisitorAdapter<Object> {
 
         @Override
         public void visit(ClassOrInterfaceDeclaration type, Object arg) {
+            new DeepVisitor(this, arg).visitBreadthFirst(type);
             if (type.getAnnotations() != null) {
                 for (AnnotationExpr expr : type.getAnnotations()) {
                     resultList.add(expr.getNameAsString());
@@ -78,7 +89,8 @@ public class ClassNamesFetcher {
 
     private class AnnotationsVisitor extends VoidVisitorAdapter<Object> {
 
-        private void addAnnotations(List<AnnotationExpr> annotations, Object arg) {
+        private void addAnnotations(
+                List<AnnotationExpr> annotations, Object arg) {
             if (annotations != null) {
                 for (AnnotationExpr expr : annotations) {
                     resultList.add(expr.getNameAsString());
@@ -135,8 +147,10 @@ public class ClassNamesFetcher {
         }
 
         private void addStatic(Expression type) {
-            if (type.getChildNodes() != null && type.getChildNodes().size() > 0) {
-                String name = type.getChildNodes().get(0).toString(withoutComments());
+            if (type.getChildNodes() != null && 
+                    type.getChildNodes().size() > 0) {
+                String name = type.getChildNodes().
+                    get(0).toString(withoutComments());
                 if (!name.contains(".")) {
                     resultList.add(name);
                 }
@@ -149,7 +163,8 @@ public class ClassNamesFetcher {
             String fullName = type.toString(withoutComments());
             if (!fullName.startsWith(name)) {
                 if (!type.getChildNodes().isEmpty()) {
-                    name = type.getChildNodes().get(0).toString(withoutComments());
+                    name = type.getChildNodes().
+                        get(0).toString(withoutComments());
                 }
             }
             if (name.contains(".")) {
@@ -170,10 +185,10 @@ public class ClassNamesFetcher {
 
     private class DeepVisitor extends TreeVisitor {
 
-        private VoidVisitorAdapter adapter;
+        private VoidVisitorAdapter<Object> adapter;
         private Object arg;
 
-        public DeepVisitor(VoidVisitorAdapter adapter, Object arg) {
+        public DeepVisitor(VoidVisitorAdapter<Object> adapter, Object arg) {
             this.adapter = adapter;
             this.arg = arg;
         }
@@ -183,7 +198,9 @@ public class ClassNamesFetcher {
                 adapter.visit((ClassOrInterfaceType) node, arg);
             } else if (node instanceof UnionType) {
                 ((UnionType) node).getElements()
-                    .forEach(t -> resultList.add(t.toString(withoutComments())));
+                    .forEach(
+                            t -> resultList.add(
+                                t.toString(withoutComments())));
             } else if (node instanceof MethodCallExpr) {
                 MethodCallExpr methodCall = ((MethodCallExpr) node);
                 String name = methodCall.getNameAsString();
@@ -200,11 +217,14 @@ public class ClassNamesFetcher {
                 NameExpr nameExpr = (NameExpr) node;
                 String parent = "";
                 if (nameExpr.getParentNode().isPresent()) {
-                    parent = nameExpr.getParentNode().get().toString(withoutComments());
+                    parent = nameExpr.getParentNode().
+                        get().toString(withoutComments());
                 }
                 String name = nameExpr.getNameAsString();
                 if (name != null) {
-                    if (!parent.startsWith("@") && !parent.equals(name) && parent.endsWith(name)) {
+                    if (!parent.startsWith("@") && 
+                            !parent.equals(name) && 
+                            parent.endsWith(name)) {
                         return;
                     }
 
@@ -218,6 +238,12 @@ public class ClassNamesFetcher {
                 if (name.matches("^[A-Z][A-Za-z0-9_]*")) {
                     resultList.add(name);
                 }
+            } else if (node instanceof ClassOrInterfaceDeclaration) {
+                ClassOrInterfaceDeclaration declaration = 
+                    (ClassOrInterfaceDeclaration) node;
+                declarationList.add(
+                        declaration.getName().toString(
+                            withoutComments()));
             }
         }
     }

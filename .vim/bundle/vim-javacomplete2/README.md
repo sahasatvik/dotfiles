@@ -160,6 +160,12 @@ Default mappings:
   nmap <silent> <buffer> <leader>jN <Plug>(JavaComplete-Generate-ClassInFile)
 ```
 
+The default mappings could be disabled with following setting:
+
+```vim
+let g:JavaComplete_EnableDefaultMappings = 0
+```
+
 ### Optional
 
 `g:JavaComplete_LibsPath` - path to additional jar files. This path appends with your libraries specified in `pom.xml`. Here you can add, for example, your glassfish libs directory or your project libs. It will be automatically append your JRE home path.
@@ -174,9 +180,9 @@ Default mappings:
 
 `let g:JavaComplete_ClosingBrace = 1` - add close brace automatically, when complete method declaration. Disable if it conflicts with another plugins.
 
-`let g:JavaComplete_JavaviLogfileDirectory = ''` - directory, where to write server logs.
+`let g:JavaComplete_JavaviLogDirectory = ''` - directory, where to write server logs.
 
-`let g:JavaComplete_JavaviDebug = 1` - enables server side logging.
+`let g:JavaComplete_JavaviLogLevel = 'debug'` - enables server side logging (log4j logging levels).
 
 `let g:JavaComplete_BaseDir = '~/.your_cache_dir'` - set the base cache directory of javacomplete2. By default it is `~/.cache`.
 
@@ -194,9 +200,13 @@ Default mappings:
 
 `let g:JavaComplete_CustomTemplateDirectory = '~/jc_templates'` - set directory that contains custom templates, for class creation. By default this options is null.
 
-`let g:JaveComplete_AutoStartServer = 0` - Disable automatic startup of server
+`let g:JavaComplete_AutoStartServer = 0` - Disable automatic startup of server.
 
 `let g:JavaComplete_CompletionResultSort = 1` - Sort completion results alphabetically.
+
+`let g:JavaComplete_IgnoreErrorMsg = 1` - When it is greater than 0, the error message will be ignored. By default it is 0.
+
+`let g:JavaComplete_CheckServerVersionAtStartup = 0` - Check server version on startup. Can be disabled on slow start, or infinite recompilation. By default it is 1.
 
 ## Commands
 
