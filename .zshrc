@@ -3,7 +3,15 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/satvik/.oh-my-zsh
+
+# Java home
 export JAVA_HOME="$(/usr/libexec/java_home)"
+
+# GoLang home
+export GOPATH=$HOME
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -93,7 +101,6 @@ alias h="htop"
 alias p="pwd"
 alias tb="nc termbin.com 9999"
 alias dirsize="du -hs * | sort -h"
-alias lfm="lfm.pl tracks -r -l 10"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
