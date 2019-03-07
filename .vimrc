@@ -5,7 +5,6 @@ set nocp
 set laststatus=2
 set ruler
 set number
-set relativenumber
 set ignorecase
 set modeline
 set nobackup
@@ -31,10 +30,13 @@ set autoindent
 
 " IndentLine
 let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#373b41'
 let g:indentLine_color_tty_light = 7
 let g:indentLine_color_dark = 1
 let g:indentLine_char = '▏'
 let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_concealcursor = ''
+let g:indentLine_conceallevel = 2
 
 set noshowmode
 set showtabline=2
@@ -94,6 +96,8 @@ autocmd Filetype css,html,javascript,python,scala setlocal tabstop=4 softtabstop
 autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType make setlocal noexpandtab
 
+autocmd FileType markdown setlocal nolist
+
 " OmniCompletion - <CTRL>X <CTRL>O
 set ofu=syntaxcomplete#Complete
 
@@ -132,21 +136,18 @@ colorscheme base16-tomorrow-night
 highlight clear SpellBad
 highlight SpellBad cterm=underline
 
-" Popup menu colors
-highlight Pmenu ctermbg=blue ctermfg=white
-highlight PmenuSel ctermbg=blue ctermfg=red
-highlight PmenuSbar ctermbg=cyan ctermfg=green
-highlight PmenuThumb ctermbg=white ctermfg=red
-
 " Enter to finish completion
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " NERDTree
 nnoremap <C-Up> :NERDTreeToggle<CR>
+autocmd FileType nerdtree set norelativenumber
 
 " Taglist
-let Tlist_Use_Right_Window = 1
-let Tlist_WinWidth = 50
+let Tlist_Use_Right_Window=1
+let Tlist_Enable_Fold_Column=0
+nnoremap <C-Down> :TlistToggle<CR>:highlight TagListFileName guibg=NONE<CR>
+autocmd FileType taglist set norelativenumber
 
 " Splits
 nnoremap <C-J> <C-W><C-J>
@@ -157,11 +158,7 @@ nnoremap <C-H> <C-W><C-H>
 " Buffers
 nnoremap <C-Left> :bp<CR>
 nnoremap <C-Right> :bn<CR>
-nnoremap <C-Down> :bd<CR>
-
-" Ctags
-map <F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q <Return><Return>
-set tags=./tags;
+" nnoremap <C-Down> :bd<CR>
 
 if has("gui_running")
         if (&ft == 'html')
