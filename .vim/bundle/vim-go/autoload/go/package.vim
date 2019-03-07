@@ -5,6 +5,10 @@
 " This file provides a utility function that performs auto-completion of
 " package names, for use by other commands.
 
+" don't spam the user when Vim is started in Vi compatibility mode
+let s:cpo_save = &cpo
+set cpo&vim
+
 let s:goos = $GOOS
 let s:goarch = $GOARCH
 
@@ -33,7 +37,7 @@ function! go#package#Paths() abort
 
   if !exists("s:goroot")
     if executable('go')
-      let s:goroot = go#util#goroot()
+      let s:goroot = go#util#env("goroot")
       if go#util#ShellError() != 0
         echomsg '''go env GOROOT'' failed'
       endif
@@ -46,7 +50,7 @@ function! go#package#Paths() abort
     let dirs += [s:goroot]
   endif
 
-  let workspaces = split(go#path#Detect(), go#util#PathListSep())
+  let workspaces = split(go#path#Default(), go#util#PathListSep())
   if workspaces != []
     let dirs += workspaces
   endif
@@ -54,56 +58,67 @@ function! go#package#Paths() abort
   return dirs
 endfunction
 
-function! go#package#ImportPath(arg) abort
-  let path = fnamemodify(resolve(a:arg), ':p')
-  let dirs = go#package#Paths()
+let s:import_paths = {}
+" ImportPath returns the import path of the package for current buffer.
+function! go#package#ImportPath() abort
+  let dir = expand("%:p:h")
+  if has_key(s:import_paths, dir)
+    return s:import_paths[dir]
+  endif
 
-  for dir in dirs
-    if len(dir) && matchstr(escape(path, '\/'), escape(dir, '\/')) == 0
-      let workspace = dir
-    endif
-  endfor
-
-  if !exists('workspace')
+  let [l:out, l:err] = go#util#ExecInDir(['go', 'list'])
+  if l:err != 0
     return -1
   endif
 
-  if go#util#IsWin()
-    let srcdir = substitute(workspace . '\src\', '//', '/', '')
-    return path[len(srcdir):]
-  else
-    let srcdir = substitute(workspace . '/src/', '//', '/', '')
-    return substitute(path, srcdir, '', '')
+  let l:importpath = split(out, '\n')[0]
+
+  " go list returns '_CURRENTDIRECTORY' if the directory is not inside GOPATH.
+  " Check it and retun an error if that is the case
+  if l:importpath[0] ==# '_'
+    return -1
   endif
+
+  let s:import_paths[dir] = l:importpath
+
+  return l:importpath
 endfunction
 
+
+" FromPath returns the import path of arg.
 function! go#package#FromPath(arg) abort
-  let path = fnamemodify(resolve(a:arg), ':p')
-  let dirs = go#package#Paths()
+  let l:cd = exists('*haslocaldir') && haslocaldir() ? 'lcd' : 'cd'
+  let l:dir = getcwd()
 
-  for dir in dirs
-    if len(dir) && match(path, dir) == 0
-      let workspace = dir
-    endif
-  endfor
+  let l:path = a:arg
+  if !isdirectory(l:path)
+    let l:path = fnamemodify(l:path, ':h')
+  endif
 
-  if !exists('workspace')
+  execute l:cd fnameescape(l:path)
+  let [l:out, l:err] = go#util#Exec(['go', 'list'])
+  execute l:cd fnameescape(l:dir)
+  if l:err != 0
     return -1
   endif
 
-  if isdirectory(path)
-    return substitute(path, workspace . 'src/', '', '')
-  else
-    return substitute(substitute(path, workspace . 'src/', '', ''),
-          \ '/' . fnamemodify(path, ':t'), '', '')
+  let l:importpath = split(l:out, '\n')[0]
+
+  " go list returns '_CURRENTDIRECTORY' if the directory is not inside GOPATH.
+  " Check it and retun an error if that is the case
+  if l:importpath[0] ==# '_'
+    return -1
   endif
+
+  return l:importpath
 endfunction
 
 function! go#package#CompleteMembers(package, member) abort
-  silent! let content = go#util#System('godoc ' . a:package)
-  if go#util#ShellError() || !len(content)
+  let [l:content, l:err] = go#util#Exec(['go', 'doc', a:package])
+  if l:err || !len(content)
     return []
   endif
+
   let lines = filter(split(content, "\n"),"v:val !~ '^\\s\\+$'")
   try
     let mx1 = '^\s\+\(\S+\)\s\+=\s\+.*'
@@ -129,37 +144,41 @@ function! go#package#Complete(ArgLead, CmdLine, CursorPos) abort
     return go#package#CompleteMembers(words[1], words[2])
   endif
 
-    let dirs = go#package#Paths()
+  let dirs = go#package#Paths()
 
-    if len(dirs) == 0
-        " should not happen
-        return []
-    endif
+  if len(dirs) == 0
+    " should not happen
+    return []
+  endif
 
-    let ret = {}
-    for dir in dirs
-        " this may expand to multiple lines
-        let root = split(expand(dir . '/pkg/' . s:goos . '_' . s:goarch), "\n")
-        call add(root, expand(dir . '/src'))
-        for r in root
-            for i in split(globpath(r, a:ArgLead.'*'), "\n")
-                if isdirectory(i)
-                    let i .= '/'
-                elseif i !~ '\.a$'
-                    continue
-                endif
-                let i = substitute(substitute(i[len(r)+1:], '[\\]', '/', 'g'),
-                                  \ '\.a$', '', 'g')
+  let ret = {}
+  for dir in dirs
+    " this may expand to multiple lines
+    let root = split(expand(dir . '/pkg/' . s:goos . '_' . s:goarch), "\n")
+    call add(root, expand(dir . '/src'))
+    for r in root
+      for i in split(globpath(r, a:ArgLead.'*'), "\n")
+        if isdirectory(i)
+          let i .= '/'
+        elseif i !~ '\.a$'
+          continue
+        endif
+        let i = substitute(substitute(i[len(r)+1:], '[\\]', '/', 'g'),
+                          \ '\.a$', '', 'g')
 
-                " without this the result can have duplicates in form of
-                " 'encoding/json' and '/encoding/json/'
-                let i = go#util#StripPathSep(i)
+        " without this the result can have duplicates in form of
+        " 'encoding/json' and '/encoding/json/'
+        let i = go#util#StripPathSep(i)
 
-                let ret[i] = i
-            endfor
-        endfor
+        let ret[i] = i
+      endfor
     endfor
-    return sort(keys(ret))
+  endfor
+  return sort(keys(ret))
 endfunction
+
+" restore Vi compatibility settings
+let &cpo = s:cpo_save
+unlet s:cpo_save
 
 " vim: sw=2 ts=2 et
