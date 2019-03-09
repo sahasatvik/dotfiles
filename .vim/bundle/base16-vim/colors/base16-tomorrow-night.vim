@@ -343,16 +343,21 @@ call <sid>hi("mailURL",      s:gui0D, "", s:cterm0D, "", "", "")
 call <sid>hi("mailEmail",    s:gui0D, "", s:cterm0D, "", "", "")
 
 " Markdown highlighting
-call <sid>hi("markdownBold",              s:gui0A, "", s:cterm0A, "", "bold", "")
-call <sid>hi("markdownItalic",            s:gui0E, "", s:cterm0E, "", "italic", "")
-call <sid>hi("markdownBoldItalic",        s:gui09, "", s:cterm09, "", "bold,italic", "")
-call <sid>hi("markdownCode",              s:gui0B, "", s:cterm0B, "", "", "")
+call <sid>hi("markdownBold",              s:gui07, "", s:cterm07, "", "bold", "")
+call <sid>hi("markdownItalic",            s:gui07, "", s:cterm07, "", "italic", "")
+call <sid>hi("markdownBoldItalic",        s:gui07, "", s:cterm07, "", "bold,italic", "")
 call <sid>hi("markdownError",             s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
-call <sid>hi("markdownCodeBlock",         s:gui0B, "", s:cterm0B, "", "", "")
+call <sid>hi("markdownCode",              s:gui03, "", s:cterm03, "", "", "")
+call <sid>hi("markdownCodeBlock",         s:gui03, "", s:cterm03, "", "", "")
+call <sid>hi("markdownCodeDelimiter",     s:gui03, "", s:cterm03, "", "", "")
 call <sid>hi("markdownHeadingDelimiter",  s:gui0D, "", s:cterm0D, "", "", "")
-call <sid>hi("markdownH1",                s:gui0D, "", s:cterm0D, "", "bold", "")
-call <sid>hi("markdownUrl",               s:gui0C, "", s:cterm0C, "", "", "")
-call <sid>hi("markdownAutomaticLink",     s:gui0C, "", s:cterm0C, "", "", "")
+call <sid>hi("markdownRule",              s:gui0D, "", s:cterm0D, "", "", "")
+call <sid>hi("markdownLinkText",          s:gui07, "", s:cterm07, "", "underline,italic", "")
+call <sid>hi("markdownUrl",               s:gui03, "", s:cterm03, "", "", "")
+call <sid>hi("markdownMath",              s:gui0E, "", s:cterm0E, "", "", "")
+
+" LaTex highlighting
+call <sid>hi("texError",                  s:gui05, s:gui00, s:cterm05, s:cterm00, "", "")
 
 " NERDTree highlighting
 call <sid>hi("NERDTreeDirSlash",  s:gui0D, "", s:cterm0D, "", "", "")
