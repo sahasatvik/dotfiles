@@ -35,7 +35,7 @@ let g:indentLine_color_tty_light = 7
 let g:indentLine_color_dark = 1
 let g:indentLine_char = '▏'
 let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_concealcursor = ''
+let g:indentLine_concealcursor = 'nc'
 let g:indentLine_conceallevel = 2
 
 set noshowmode
@@ -92,11 +92,13 @@ endf
 filetype plugin on
 
 autocmd Filetype plaintex setlocal ft=tex
-autocmd Filetype css,html,javascript,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype css,html,javascript,markdown,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType make setlocal noexpandtab
 
 autocmd FileType markdown setlocal nolist
+autocmd FileType markdown syntax region markdownMath start=/\$\$/ end=/\$\$/
+autocmd FileType markdown syntax match markdownMath '\$[^$].\{-}\$'
 
 " OmniCompletion - <CTRL>X <CTRL>O
 set ofu=syntaxcomplete#Complete
