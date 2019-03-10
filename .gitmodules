@@ -55,3 +55,6 @@
 [submodule "vim/pack/command/start/surround"]
 	path = vim/pack/command/start/surround
 	url = git@github.com:tpope/vim-surround
+[submodule "oh-my-zsh/custom/plugins/tumult"]
+	path = oh-my-zsh/custom/plugins/tumult
+	url = git@github.com:unixorn/tumult.plugin.zsh
