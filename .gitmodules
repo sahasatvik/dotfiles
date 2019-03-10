@@ -21,13 +21,13 @@
 	url = git@github.com:itchyny/lightline.vim
 [submodule "vim/pack/interface/start/nerdtree"]
 	path = vim/pack/interface/start/nerdtree
-	url = git://github.com/scrooloose/nerdtree
+	url = git@github.com:scrooloose/nerdtree
 [submodule "vim/pack/command/start/tabular"]
 	path = vim/pack/command/start/tabular
-	url = git://github.com/godlygeek/tabular
+	url = git@github.com:godlygeek/tabular
 [submodule "vim/pack/util/start/tlib"]
 	path = vim/pack/util/start/tlib
-	url = git://github.com/tomtom/tlib_vim
+	url = git@github.com:tomtom/tlib_vim
 [submodule "vim/pack/complete/start/ultisnips"]
 	path = vim/pack/complete/start/ultisnips
 	url = git@github.com:SirVer/ultisnips
@@ -36,7 +36,7 @@
 	url = git@github.com:KabbAmine/vCoolor.vim
 [submodule "vim/pack/util/start/addon-mw-utils"]
 	path = vim/pack/util/start/addon-mw-utils
-	url = git://github.com/MarcWeber/vim-addon-mw-utils
+	url = git@github.com:MarcWeber/vim-addon-mw-utils
 [submodule "vim/pack/command/start/commentary"]
 	path = vim/pack/command/start/commentary
 	url = git@github.com:tpope/vim-commentary
