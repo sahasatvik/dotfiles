@@ -55,3 +55,6 @@
 [submodule "vim/pack/command/start/surround"]
 	path = vim/pack/command/start/surround
 	url = git@github.com:tpope/vim-surround
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = git@github.com:robbyrussell/oh-my-zsh
