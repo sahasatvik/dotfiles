@@ -1,60 +1,60 @@
 [submodule "vim/pack/complete/start/autocomplete-popup"]
 	path = vim/pack/complete/start/autocomplete-popup
-	url = git@github.com:vim-scripts/AutoComplPop
+	url = https://github.com/vim-scripts/AutoComplPop
 [submodule "vim/pack/filetype/start/latex-box"]
 	path = vim/pack/filetype/start/latex-box
-	url = git@github.com:LaTeX-Box-Team/LaTeX-Box
+	url = https://github.com/LaTeX-Box-Team/LaTeX-Box
 [submodule "vim/pack/interface/start/colorizer"]
 	path = vim/pack/interface/start/colorizer
-	url = git@github.com:lilydjwg/colorizer
+	url = https://github.com/lilydjwg/colorizer
 [submodule "vim/pack/filetype/start/html5"]
 	path = vim/pack/filetype/start/html5
-	url = git@github.com:othree/html5.vim
+	url = https://github.com/othree/html5.vim
 [submodule "vim/pack/interface/start/indentline"]
 	path = vim/pack/interface/start/indentline
-	url = git@github.com:Yggdroot/indentLine
+	url = https://github.com/Yggdroot/indentLine
 [submodule "vim/pack/interface/start/lightline-bufferline"]
 	path = vim/pack/interface/start/lightline-bufferline
-	url = git@github.com:mengelbrecht/lightline-bufferline
+	url = https://github.com/mengelbrecht/lightline-bufferline
 [submodule "vim/pack/interface/start/lightline"]
 	path = vim/pack/interface/start/lightline
-	url = git@github.com:itchyny/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
 [submodule "vim/pack/interface/start/nerdtree"]
 	path = vim/pack/interface/start/nerdtree
-	url = git@github.com:scrooloose/nerdtree
+	url = https://github.com/scrooloose/nerdtree
 [submodule "vim/pack/command/start/tabular"]
 	path = vim/pack/command/start/tabular
-	url = git@github.com:godlygeek/tabular
+	url = https://github.com/godlygeek/tabular
 [submodule "vim/pack/util/start/tlib"]
 	path = vim/pack/util/start/tlib
-	url = git@github.com:tomtom/tlib_vim
+	url = https://github.com/tomtom/tlib_vim
 [submodule "vim/pack/complete/start/ultisnips"]
 	path = vim/pack/complete/start/ultisnips
-	url = git@github.com:SirVer/ultisnips
+	url = https://github.com/SirVer/ultisnips
 [submodule "vim/pack/command/start/vcoolor"]
 	path = vim/pack/command/start/vcoolor
-	url = git@github.com:KabbAmine/vCoolor.vim
+	url = https://github.com/KabbAmine/vCoolor.vim
 [submodule "vim/pack/util/start/addon-mw-utils"]
 	path = vim/pack/util/start/addon-mw-utils
-	url = git@github.com:MarcWeber/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils
 [submodule "vim/pack/command/start/commentary"]
 	path = vim/pack/command/start/commentary
-	url = git@github.com:tpope/vim-commentary
+	url = https://github.com/tpope/vim-commentary
 [submodule "vim/pack/interface/start/devicons"]
 	path = vim/pack/interface/start/devicons
-	url = git@github.com:ryanoasis/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons
 [submodule "vim/pack/filetype/start/go"]
 	path = vim/pack/filetype/start/go
-	url = git@github.com:fatih/vim-go
+	url = https://github.com/fatih/vim-go
 [submodule "vim/pack/filetype/start/java"]
 	path = vim/pack/filetype/start/java
-	url = git@github.com:artur-shaik/vim-javacomplete2
+	url = https://github.com/artur-shaik/vim-javacomplete2
 [submodule "vim/pack/filetype/start/javascript"]
 	path = vim/pack/filetype/start/javascript
-	url = git@github.com:pangloss/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
 [submodule "vim/pack/command/start/surround"]
 	path = vim/pack/command/start/surround
-	url = git@github.com:tpope/vim-surround
+	url = https://github.com/tpope/vim-surround
 [submodule "oh-my-zsh/custom/plugins/tumult"]
 	path = oh-my-zsh/custom/plugins/tumult
-	url = git@github.com:unixorn/tumult.plugin.zsh
+	url = https://github.com/unixorn/tumult.plugin.zsh
