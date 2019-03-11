@@ -52,11 +52,11 @@ a {
     color: #b294bb;
 }
 
-#cmus, #irssi, #vim {
+#main-card-container .card {
     border: none;
 }
 
-#cmus-img, #irssi-img, #vim-img {
+#main-card-container .card img {
     display: block;
     margin: auto;
     width: 100%;
