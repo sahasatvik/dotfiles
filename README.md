@@ -3,10 +3,10 @@
 ## Screenshots
 
 ### Cmus
-![cmus](screenshots/cmus.png)
+![cmus](docs/screenshots/cmus.png)
 
 ### Irssi
-![irssi](screenshots/irssi.png)
+![irssi](docs/screenshots/irssi.png)
 
 ### Vim
-![vim](screenshots/vim.png)
+![vim](docs/screenshots/vim.png)
