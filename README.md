@@ -1,7 +1,12 @@
-# Satvik's dotfiles
+# Dotfiles
 
-## Irssi
+## Screenshots
+
+### Cmus
+![cmus](screenshots/cmus.png)
+
+### Irssi
 ![irssi](screenshots/irssi.png)
 
-## Vim
+### Vim
 ![vim](screenshots/vim.png)
