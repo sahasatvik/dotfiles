@@ -14,6 +14,10 @@ a {
     text-decoration: none;
 }
 
+.card {
+    transition: .2s ease background;
+}
+
 #global-container {
     width: 100%;
     height: auto;
@@ -33,13 +37,23 @@ a {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 5em 0em 2em 0em;
-}
-
-#dotfiles {
     font-size: 3rem;
     font-weight: 300;
-    color: #ffffff;
+    margin: 1.5em 0em .5em 0em;
+}
+
+#logo {
+    width: auto;
+    height: 6rem;
+    transition: .5s ease;
+}
+
+#logo.inverted, #logo:hover {
+    filter: invert(100%);
+}
+
+#logo.inverted:hover {
+    filter: invert(0%);
 }
 
 #github {
@@ -54,6 +68,7 @@ a {
 
 #main-card-container .card {
     border: none;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #main-card-container .card img {

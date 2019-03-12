@@ -18,6 +18,7 @@
 <body>
     <div id="global-container">
         <div id="logo-container">
+            <img id="logo" src="https://sahasatvik.github.io/logo_alpha.svg" alt="" onmouseup="toggleTheme()"/>
             <div id="dotfiles">Dotfiles</div>
             <a id="github" href="https://github.com/sahasatvik/dotfiles" target="_blank">View on GitHub</a>
         </div>
@@ -51,5 +52,46 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" charset="utf-8">
+        
+        var x = document.getElementsByClassName("card");
+        var light;
+        
+        try {
+            light = JSON.parse(localStorage.getItem("light"));
+            if (light == null) {light = false;}
+        } catch (err) {
+            light = false;
+        }
+        
+        function lightTheme() {
+            document.getElementById("logo").classList.add("inverted");
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.remove("card-dark");
+            }
+            document.body.style.backgroundColor = "#f2f2f2";
+            document.getElementById("dotfiles").style.color = "#1d1f21";
+        }
+        function darkTheme() {
+            document.getElementById("logo").classList.remove("inverted");
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.add("card-dark");
+            }
+            document.body.style.backgroundColor = "#1d1f21";
+            document.getElementById("dotfiles").style.color = "#ffffff";
+        }
+        function toggleTheme() {
+            light = !light;
+            refreshTheme();
+        }
+        function refreshTheme() {
+            theme = light? lightTheme : darkTheme;
+            theme();
+            try {
+                localStorage.setItem("light", JSON.stringify(light));
+            } catch (err) {}
+        }
+        refreshTheme();
+    </script>
 </body>
 </html>
