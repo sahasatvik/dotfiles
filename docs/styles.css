@@ -66,20 +66,29 @@ a {
     color: #b294bb;
 }
 
-#main-card-container .card {
+.card.card-borderless {
     border: none;
     background-color: rgba(0, 0, 0, 0);
 }
 
-#main-card-container .card img {
+.card.card-borderless img {
     display: block;
     margin: auto;
     width: 100%;
 }
 
+#wallpaper-link {
+    margin-bottom: 2em;
+}
+
+#wallpapers .card {
+    padding: 0;
+}
+
 #wallpapers img {
-    display: inline-block !important;
-    width: 30% !important;
+    display: inline-block;
+    width: 30%;
+    margin: .1em;
 }
 
 @media only screen and (max-width: 700px) {
@@ -89,5 +98,8 @@ a {
     #logo-container {
         font-size: 2rem;
         margin: 1em 0em .5em 0em;
+    }
+    #wallpapers img {
+        width: 90%;
     }
 }
