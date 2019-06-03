@@ -1,0 +1,38 @@
+:root {
+    --toolbarbutton-border-radius: 0px !important;
+    --tabs-border: transparent !important; /* Remove borders from active tab and below tabs */
+}
+
+
+.tabbrowser-tab::after, .tabbrowser-tab::before {
+    border-left: none !important; /* Remove borders from inactive tabs */
+}
+.titlebar-spacer[type="pre-tabs"] {
+    border-inline-end: none !important;
+    width: 10px !important;
+}
+
+:root:not([customizing]) #nav-bar toolbarbutton {
+    margin-left: -30px !important;
+    opacity: 0 !important;
+    transform: scale(.85, .85) !important;
+    pointer-events: none !important;
+    transition: all 100ms var(--animation-easing-function) !important;
+}
+
+:root:not([customizing]) .tabs-newtab-button,
+:root:not([customizing]) .tab-close-button {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: all 100ms var(--animation-easing-function) !important;
+}
+
+:root:not([customizing]) :hover > #nav-bar toolbarbutton,
+:root:not([customizing]) #navigator-toolbox:focus-within #nav-bar toolbarbutton,
+:root:not([customizing]) :hover > .tab-close-button, 
+:root:not([customizing]) :hover > #titlebar toolbarbutton {
+    transform: scale(1, 1) !important;
+    opacity:1 !important;
+    margin-left:0 !important;
+    pointer-events: auto !important;
+}

@@ -1,0 +1,6 @@
+@-moz-document url-prefix(about:blank) {*{background-color:#1d1f21;}}
+@-moz-document domain(chess.com) {
+    .live-app-withAds {
+        padding-right: 15px !important;
+    }
+}
