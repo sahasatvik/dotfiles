@@ -15,6 +15,7 @@ set wildmode=full
 set wildmenu
 set completeopt=longest,menuone
 set termguicolors
+set shortmess+=F
 
 set listchars=tab:▏\ 
 set list
