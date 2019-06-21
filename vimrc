@@ -176,10 +176,28 @@ imap <F4> <Plug>(JavaComplete-Imports-AddMissing)
 " Lightline
 source ~/.vim/colors/tomorrow-night-lightline.vim
 let g:lightline = {
-\ 'colorscheme'         : 'tomorrow_night_lightline',
-\ 'tabline'             : {'left': [['buffers']], 'right': [[]]},
-\ 'component_expand'    : {'buffers': 'lightline#bufferline#buffers'},
-\ 'component_type'      : {'buffers': 'tabsel'}
+\ 'colorscheme': 'tomorrow_night_lightline',
+\ 'tabline': {
+\       'left': [['buffers']],
+\       'right': [[]]
+\ },
+\ 'active': {
+\       'left': [
+\                       ['mode', 'paste'],
+\                       ['readonly', 'filename', 'modified']
+\               ],
+\       'right': [
+\                       ['lineinfo'],
+\                       ['percent'],
+\                       ['fileformat', 'fileencoding', 'filetype']
+\               ]
+\ },
+\ 'component_expand': {
+\       'buffers': 'lightline#bufferline#buffers'
+\ },
+\ 'component_type': {
+\       'buffers': 'tabsel'
+\ }
 \}
 
 " UltiSnips
