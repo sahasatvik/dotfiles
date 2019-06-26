@@ -102,6 +102,8 @@ alias p="pwd"
 alias tb="nc termbin.com 9999"
 alias dirsize="du -hs * | sort -h"
 
+export RTV_BROWSER=w3m
+
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
