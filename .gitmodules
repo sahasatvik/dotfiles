@@ -55,6 +55,9 @@
 [submodule "vim/pack/command/start/surround"]
 	path = vim/pack/command/start/surround
 	url = https://github.com/tpope/vim-surround
+[submodule "vim/pack/command/start/repeat"]
+	path = vim/pack/command/start/repeat
+	url = https://github.com/tpope/vim-repeat
 [submodule "oh-my-zsh/custom/plugins/tumult"]
 	path = oh-my-zsh/custom/plugins/tumult
 	url = https://github.com/unixorn/tumult.plugin.zsh
