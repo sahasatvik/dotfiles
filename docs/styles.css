@@ -18,6 +18,12 @@ a {
     transition: .2s ease background;
 }
 
+.card.borderless img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
 #global-container {
     width: 100%;
     height: auto;
@@ -64,17 +70,6 @@ a {
 
 #github:hover {
     color: #b294bb;
-}
-
-.card.card-borderless {
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-.card.card-borderless img {
-    display: block;
-    margin: auto;
-    width: 100%;
 }
 
 #wallpaper-link {
