@@ -1,0 +1,47 @@
+set color_cmdline_attr=default
+set color_cmdline_bg=default
+set color_cmdline_fg=default
+set color_cur_sel_attr=default
+set color_error=lightred
+set color_info=lightyellow
+set color_separator=green
+set color_statusline_attr=default
+set color_statusline_bg=black
+set color_statusline_fg=white
+set color_titleline_attr=default
+set color_titleline_bg=green
+set color_titleline_fg=black
+set color_trackwin_album_attr=bold
+set color_trackwin_album_bg=default
+set color_trackwin_album_fg=default
+set color_win_attr=default
+set color_win_bg=default
+set color_win_cur=green
+set color_win_cur_attr=bold
+set color_win_cur_sel_attr=default
+set color_win_cur_sel_bg=green
+set color_win_cur_sel_fg=white
+set color_win_dir=lightgreen
+set color_win_fg=default
+set color_win_inactive_cur_sel_attr=default
+set color_win_inactive_cur_sel_bg=238
+set color_win_inactive_cur_sel_fg=white
+set color_win_inactive_sel_attr=default
+set color_win_inactive_sel_bg=238
+set color_win_inactive_sel_fg=default
+set color_win_sel_attr=default
+set color_win_sel_bg=green
+set color_win_sel_fg=black
+set color_win_title_attr=default
+set color_win_title_bg=black
+set color_win_title_fg=white
+set format_current= %a - %l - %n. %t%=  %{composer} 
+set format_playlist= %-21%a %3n. %t%= %y %d %{?X!=0?%3X ?    }
+set format_playlist_va= %-21%A %3n. %t%= %y %d %{?X!=0?%3X ?    }
+set format_statusline= %{status} %{?show_playback_position?%{position} %{?duration?/ %{duration} }?%{?duration?%{duration} }}- %{total} %{?bpm>0?at %{bpm} BPM }%{?volume>=0?vol: %{?lvolume!=rvolume?%{lvolume},%{rvolume} ?%{volume} }}%{?stream?buf: %{buffer} }%{?show_current_bitrate & bitrate>=0? %{bitrate} kbps }%=%{?repeat_current?repeat current?%{?play_library?%{playlist_mode} from %{?play_sorted?sorted }library?playlist}} | %1{continue}%1{follow}%1{repeat}%1{shuffle} 
+set format_title=%a - %l - %t
+set format_trackwin=%3n. %t%= %d 
+set format_trackwin_album= %l %= %{albumduration} 
+set format_trackwin_va=%3n. %t %= %a %d 
+set format_treewin=  %l%= %y
+set format_treewin_artist=%a
