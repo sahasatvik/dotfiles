@@ -344,5 +344,6 @@ formats = {
     awl_display_key_visible = "%W $H$C$S %N";
     awl_display_nokey_visible = "%W $H$C$S %N";
     awl_display_header = "%B $C %N";
+    awl_title = "\\";
   };
 };
