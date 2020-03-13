@@ -36,6 +36,7 @@ a {
 #main-card-container {
     width: 70%;
     height: auto;
+    margin-bottom: 64px;
 }
 
 #logo-container {
