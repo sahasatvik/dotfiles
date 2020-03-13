@@ -76,13 +76,13 @@ a {
     margin-bottom: 2em;
 }
 
-#wallpapers .card {
-    padding: 0;
+.wallpaper-card {
+    grid-column: span 4;
 }
 
-#wallpapers img {
+.wallpaper-card > a > img {
     display: inline-block;
-    width: 30%;
+    width: 100%;;
     margin: .1em;
 }
 
@@ -94,7 +94,7 @@ a {
         font-size: 2rem;
         margin: 1em 0em .5em 0em;
     }
-    #wallpapers img {
-        width: 90%;
+    .wallpaper-card {
+        grid-column: 2/12;
     }
 }
