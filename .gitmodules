@@ -61,3 +61,6 @@
 [submodule "oh-my-zsh/custom/plugins/tumult"]
 	path = oh-my-zsh/custom/plugins/tumult
 	url = https://github.com/unixorn/tumult.plugin.zsh
+[submodule "vim/pack/complete/start/emmet"]
+	path = vim/pack/complete/start/emmet
+	url = https://github.com/mattn/emmet-vim.git

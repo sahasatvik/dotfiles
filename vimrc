@@ -173,6 +173,9 @@ imap <F3> <Plug>(JavaComplete-Imports-RemoveUnused)
 nmap <F4> <Plug>(JavaComplete-Imports-AddMissing)
 imap <F4> <Plug>(JavaComplete-Imports-AddMissing)
 
+" Emmet
+let g:user_emmet_leader_key=','
+
 " Lightline
 source ~/.vim/colors/tomorrow-night-lightline.vim
 let g:lightline = {
