@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400|Josefin+Sans:300');
 
 * {
     padding: 0px;
@@ -39,20 +39,27 @@ a {
     margin-bottom: 64px;
 }
 
+#dotfiles {
+    font-family: 'Josefin Sans', monospace;
+    font-weight: 300;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: #ffffff;
+}
+
 #logo-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-size: 3rem;
-    font-weight: 300;
-    margin: 1.5em 0em .5em 0em;
+    margin: 4em 0em .5em 0em;
 }
 
 #logo {
     width: auto;
     height: 6rem;
     transition: .5s ease;
+    margin-bottom: .5em;
 }
 
 #logo.inverted, #logo:hover {
@@ -91,11 +98,14 @@ a {
     #main-card-container {
         width: 100%;
     }
+    #dotfiles {
+        font-size: 3rem;
+    }
     #logo-container {
         font-size: 2rem;
         margin: 1em 0em .5em 0em;
     }
     .wallpaper-card {
-        grid-column: 2/12;
+        grid-column: 2/-2;
     }
 }
