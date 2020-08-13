@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Satvik Saha">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Satvik Saha's dotfiles">
     
     <title>Dotfiles</title>
 
@@ -15,7 +16,7 @@
     <link rel="stylesheet" href="https://sahasatvik.github.io/cards.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme">
     <div id="global-container">
         <div id="logo-container">
             <img id="logo" src="https://sahasatvik.github.io/logo_alpha.svg" alt="" onmouseup="toggleTheme()"/>
@@ -23,7 +24,7 @@
             <a id="github" href="https://github.com/sahasatvik/dotfiles" target="_blank">View on GitHub</a>
         </div>
         <div id="main-card-container" class="card-container">
-            <div id="cmus" class="card card-row borderless card-dark">
+            <div id="cmus" class="card card-row borderless">
                 <div class="card-title">
                     Cmus
                 </div> 
@@ -32,7 +33,7 @@
                     <img id="cmus-img" class="card-item" src="screenshots/cmus.png" alt="cmus">
                 </div>
             </div>
-            <div id="irssi" class="card card-row borderless card-dark">
+            <div id="irssi" class="card card-row borderless">
                 <div class="card-title">
                     Irssi
                 </div> 
@@ -41,7 +42,7 @@
                     <img id="irssi-img" class="card-item" src="screenshots/irssi.png" alt="irssi">
                 </div>
             </div>
-            <div id="vim" class="card card-row borderless card-dark">
+            <div id="vim" class="card card-row borderless">
                 <div class="card-title">
                     Vim
                 </div> 
@@ -50,7 +51,7 @@
                     <img id="vim-img" class="card-item" src="screenshots/vim.png" alt="vim">
                 </div>
             </div>
-            <div id="wallpapers" class="card card-row borderless card-dark">
+            <div id="wallpapers" class="card card-row borderless">
                 <div class="card-title">
                     Wallpapers
                 </div>
@@ -60,21 +61,21 @@
                     </a>
                 </div>
             </div>
-            <div id="bach-card" class="card card-dark wallpaper-card">
+            <div id="bach-card" class="card wallpaper-card">
                 <a href="https://raw.githubusercontent.com/sahasatvik/dotfiles/master/wallpapers/bach.png" target="_blank">
                     <img id="bach-img"
                         src="https://raw.githubusercontent.com/sahasatvik/dotfiles/master/wallpapers/bach.png"
                         alt="bach">
                 </a>
             </div>
-            <div id="chess-card" class="card card-dark wallpaper-card">
+            <div id="chess-card" class="card wallpaper-card">
                 <a href="https://raw.githubusercontent.com/sahasatvik/dotfiles/master/wallpapers/board.png" target="_blank">
                     <img id="chess-img"
                         src="https://raw.githubusercontent.com/sahasatvik/dotfiles/master/wallpapers/board.png"
                         alt="chessboard">
                 </a>
             </div>
-            <div id="ring-card" class="card card-dark wallpaper-card">
+            <div id="ring-card" class="card wallpaper-card">
                 <a href="https://raw.githubusercontent.com/sahasatvik/dotfiles/master/wallpapers/one_ring.png" target="_blank">
                     <img id="ring-img"
                         src="https://raw.githubusercontent.com/sahasatvik/dotfiles/master/wallpapers/one_ring.png"
@@ -84,8 +85,6 @@
         </div>
     </div>
     <script type="text/javascript" charset="utf-8">
-        
-        var x = document.getElementsByClassName("card");
         var light;
         
         try {
@@ -96,20 +95,12 @@
         }
         
         function lightTheme() {
-            document.getElementById("logo").classList.add("inverted");
-            for (var i = 0; i < x.length; i++) {
-                x[i].classList.remove("card-dark");
-            }
-            document.body.style.backgroundColor = "#f2f2f2";
-            document.getElementById("dotfiles").style.color = "#1d1f21";
+            document.body.classList.remove("dark-theme");
+            document.body.classList.add("light-theme");
         }
         function darkTheme() {
-            document.getElementById("logo").classList.remove("inverted");
-            for (var i = 0; i < x.length; i++) {
-                x[i].classList.add("card-dark");
-            }
-            document.body.style.backgroundColor = "#1d1f21";
-            document.getElementById("dotfiles").style.color = "#ffffff";
+            document.body.classList.remove("light-theme");
+            document.body.classList.add("dark-theme");
         }
         function toggleTheme() {
             light = !light;
@@ -122,6 +113,7 @@
                 localStorage.setItem("light", JSON.stringify(light));
             } catch (err) {}
         }
+        
         refreshTheme();
     </script>
 </body>
