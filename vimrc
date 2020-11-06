@@ -10,6 +10,7 @@ set wrap
 set hidden
 set backspace=indent,eol,start
 set spelllang=en_gb
+set spell
 set incsearch
 set wildmode=full
 set wildmenu
@@ -19,6 +20,8 @@ set shortmess+=F
 
 set listchars=tab:▏\ 
 set list
+
+let mapleader = ','
 
 " Indentation
 set tabstop=8
@@ -135,6 +138,7 @@ colorscheme base16-tomorrow-night
 " Spellchecking colors
 highlight clear SpellBad
 highlight SpellBad cterm=underline
+nnoremap <leader>s a<C-X><C-S>
 
 " Enter to finish completion
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
