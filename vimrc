@@ -118,7 +118,7 @@ autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete
 set makeprg=./%
 autocmd Filetype java setlocal makeprg=javac\ %
 autocmd Filetype cpp setlocal makeprg=c++\ %\ -o\ %:p:h/a.out
-autocmd Filetype python setlocal makeprg=python\ %
+autocmd Filetype python setlocal makeprg=python3\ %
 autocmd Filetype c setlocal makeprg=cc\ %\ -o\ %:p:h/a.out
 autocmd Filetype html setlocal makeprg=w3m\ %
 
