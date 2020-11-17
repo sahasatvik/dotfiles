@@ -64,3 +64,6 @@
 [submodule "vim/pack/complete/start/emmet"]
 	path = vim/pack/complete/start/emmet
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
