@@ -67,3 +67,6 @@
 [submodule "oh-my-zsh/custom/plugins/zsh-autosuggestions"]
 	path = oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "vim/pack/complete/start/auto-pairs"]
+	path = vim/pack/complete/start/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs
