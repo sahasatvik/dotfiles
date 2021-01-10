@@ -88,6 +88,8 @@ map ,. <Esc>:make<Return>
 
 autocmd Filetype tex noremap ,. <Esc>:w<Return>:Latexmk<Return>
 autocmd Filetype tex noremap <> <Esc>:LatexView<Return>
+autocmd Filetype tex noremap ,> :autocmd TextChanged,TextChangedI <buffer> silent write<Return>
+
 
 " MiniBufExplorer
 let g:miniBufExplMapWindowNavVim    = 1
@@ -177,3 +179,5 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Latex
 let g:tex_conceal = ""
 let g:LatexBox_viewer = "open -a Skim"
+let g:LatexBox_latexmk_preview_continuously=1
+let g:LatexBox_quickfix=2
