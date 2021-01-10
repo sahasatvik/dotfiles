@@ -174,4 +174,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" Latex
 let g:tex_conceal = ""
+let g:LatexBox_viewer = "open -a Skim"
