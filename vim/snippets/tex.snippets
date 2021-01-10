@@ -397,13 +397,13 @@ snippet frac \frac{}{}
 snippet // \frac{}{}
 	\frac{${1:num}}{${2:denom}} ${3}
 snippet fun "function" iA
-	${1:f} : \mathbb{${2:R}} \to \mathbb{${3:R}} ${4}
+	${1:f}\colon {${2:\R}} \to ${3:\R} ${4}
 snippet derv derivative
 	\frac{\mathrm{d} ${1}}{\mathrm{d}${2:x}} ${3}
 snippet pderv partial derivative
 	\frac{\partial ${1}}{\partial ${2:x}} ${3}
 snippet dint integral
-	\int_{${1:-\infty}}^{${2:\infty}} ${3}\: \mathrm{d}${4:x} ${5}
+	\int_{${1:-\infty}}^{${2:\infty}} ${3}\: ${4:dx} ${5}
 snippet int integral
 	\int ${1:x}\: \mathrm{d}${2:x} ${3}
 snippet sum sum
