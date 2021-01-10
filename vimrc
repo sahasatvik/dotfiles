@@ -38,7 +38,7 @@ let g:indentLine_color_dark = 1
 let g:indentLine_char = '▏'
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_concealcursor = 'nc'
-let g:indentLine_conceallevel = 2
+let g:indentLine_conceallevel = 1
 
 set noshowmode
 set showtabline=2
@@ -175,5 +175,3 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 let g:tex_conceal = ""
-
-set guifont="Terminus (TTF)"
