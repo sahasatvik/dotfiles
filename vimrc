@@ -86,10 +86,8 @@ autocmd Filetype html setlocal makeprg=w3m\ %
 
 map ,. <Esc>:make<Return>
 
-autocmd Filetype tex noremap ,. <Esc>:w<Return>:Latexmk<Return>
-autocmd Filetype tex noremap <> <Esc>:LatexView<Return>
-autocmd Filetype tex noremap ,> :autocmd TextChanged,TextChangedI <buffer> silent write<Return>
-
+autocmd Filetype tex noremap ,. <Esc>:LatexView<Return>
+autocmd Filetype tex noremap <> :autocmd TextChanged,TextChangedI <buffer> silent write<Return>
 
 " MiniBufExplorer
 let g:miniBufExplMapWindowNavVim    = 1

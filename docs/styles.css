@@ -17,6 +17,102 @@ a {
     text-decoration: none;
 }
 
+.noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+nav {
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    top: 0;
+    width: 100vw;
+    height: auto;
+    padding: 1.2em 1em 1em 1em;
+    z-index: 10;
+
+    transition: transform 0.15s ease-out;
+    transform: translateY(0);
+}
+nav.hidden {
+    transform: translateY(-120%);
+}
+.light-theme nav {
+    background: #f2f2f2;
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.dark-theme nav {
+    background: #1d1f21;
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+nav a {
+    position: relative;
+    font-size: 1rem;
+    color: #81a2be;
+    margin: 0em 1em;
+    cursor: pointer;
+}
+nav a:hover {
+    color: #b294bb;
+}
+
+#nav-name {
+    font-family: 'Josefin Sans', monospace;
+    font-weight: 300;
+    font-size: 2rem;
+    margin: 0 auto 0 0.5em;
+    transform: translateY(0.08em);
+    cursor: pointer;
+}
+#nav-name span {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
+    opacity: 0.6;
+}
+
+.theme-toggles {
+    position: relative;
+    display: block;
+    margin: 0em 1em;
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+}
+.theme-toggles * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    border-radius: 50%;
+    transition: transform 0.2s ease-out;
+    transform: rotate(0);
+}
+.light-theme #nav-theme-dark, .dark-theme #nav-theme-light {
+    opacity: 0;
+    pointer-events: none;
+    transform: rotate(90deg);
+}
+.light-theme #nav-theme-light {
+    color: #1d1f21;
+}
+.dark-theme #nav-theme-dark {
+    color: #ffffff;
+}
+
+.light-theme #nav-name {
+    color: #1d1f21;
+}
+.dark-theme #nav-name {
+    color: #ffffff;
+}
+
 .card {
     transition: .2s ease background;
 }
@@ -115,5 +211,10 @@ a {
     }
     .wallpaper-card {
         grid-column: 2/-2;
+    }
+}
+@media only screen and (max-width: 800px) {
+    nav {
+        display: none;
     }
 }

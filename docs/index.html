@@ -13,10 +13,21 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://sahasatvik.github.io/icons/favicon-16x16.png">
     <link rel="manifest" href="https://sahasatvik.github.io/icons/site.webmanifest">
     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" > 
     <link rel="stylesheet" href="https://sahasatvik.github.io/cards.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="dark-theme">
+    <nav class="hidden noselect">
+        <a id="nav-name" href="https://sahasatvik.github.io">Satvik Saha<span>.me</span></a>
+        <a href="https://sahasatvik.github.io/cv.pdf" target="_blank">cv</a>
+        <a href="https://sahasatvik.github.io/assignments">notes &amp; assignments</a>
+        <a onmouseup="scrollToTop()">dotfiles</a>
+        <div class="theme-toggles">
+            <div id="nav-theme-light" class="material-icons" onmouseup="toggleTheme()">dark_mode</div>
+            <div id="nav-theme-dark" class="material-icons" onmouseup="toggleTheme()">light_mode</div>
+        </div>
+    </nav>
     <div id="global-container">
         <div id="logo-container">
             <img id="logo" src="https://sahasatvik.github.io/logo_alpha.svg" alt="" onmouseup="toggleTheme()"/>
@@ -115,6 +126,29 @@
         }
         
         refreshTheme();
+        
+        function scrollToTop() {
+            const c = document.documentElement.scrollTop || document.body.scrollTop;
+            if (c > 0) {
+                window.requestAnimationFrame(scrollToTop);
+                window.scrollTo(0, c - c / 8);
+            }
+        }
+
+        const logo_container = document.querySelector("#logo-container");
+        const nav = document.querySelector("nav");
+
+        observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    nav.classList.add("hidden")
+                } else {
+                    nav.classList.remove("hidden");
+                }
+            });
+        });
+
+        observer.observe(logo_container);
     </script>
 </body>
 </html>
