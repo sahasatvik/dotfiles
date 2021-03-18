@@ -6,7 +6,7 @@ set rulerformat=%l,%c%V%=%p%%
 set ignorecase
 set modeline
 set nobackup
-set wrap
+set nowrap
 set hidden
 set backspace=indent,eol,start
 set spelllang=en_gb
