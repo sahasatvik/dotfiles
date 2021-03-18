@@ -13,12 +13,6 @@
 [submodule "vim/pack/interface/start/indentline"]
 	path = vim/pack/interface/start/indentline
 	url = https://github.com/Yggdroot/indentLine
-[submodule "vim/pack/interface/start/lightline-bufferline"]
-	path = vim/pack/interface/start/lightline-bufferline
-	url = https://github.com/mengelbrecht/lightline-bufferline
-[submodule "vim/pack/interface/start/lightline"]
-	path = vim/pack/interface/start/lightline
-	url = https://github.com/itchyny/lightline.vim
 [submodule "vim/pack/interface/start/nerdtree"]
 	path = vim/pack/interface/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree

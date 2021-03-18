@@ -1,8 +1,8 @@
 " Basic settings
 set nocp
-set laststatus=2
+set laststatus=0
 set ruler
-set number
+set rulerformat=%l,%c%V%=%p%%
 set ignorecase
 set modeline
 set nobackup
@@ -12,8 +12,6 @@ set backspace=indent,eol,start
 set spelllang=en_gb
 set spell
 set incsearch
-set wildmode=full
-set wildmenu
 set completeopt=longest,menuone
 set termguicolors
 set shortmess+=F
@@ -39,9 +37,6 @@ let g:indentLine_char = '▏'
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_concealcursor = 'nc'
 let g:indentLine_conceallevel = 1
-
-set noshowmode
-set showtabline=2
 
 " Highlight search
 set hlsearch
@@ -141,33 +136,8 @@ imap <F4> <Plug>(JavaComplete-Imports-AddMissing)
 
 " Emmet
 let g:user_emmet_leader_key=','
-
-" Lightline
-source ~/.vim/colors/tomorrow-night-lightline.vim
-let g:lightline = {
-\ 'colorscheme': 'tomorrow_night_lightline',
-\ 'tabline': {
-\       'left': [['buffers']],
-\       'right': [[]]
-\ },
-\ 'active': {
-\       'left': [
-\                       ['mode', 'paste'],
-\                       ['readonly', 'filename', 'modified']
-\               ],
-\       'right': [
-\                       ['lineinfo'],
-\                       ['percent'],
-\                       ['fileformat', 'fileencoding', 'filetype']
-\               ]
-\ },
-\ 'component_expand': {
-\       'buffers': 'lightline#bufferline#buffers'
-\ },
-\ 'component_type': {
-\       'buffers': 'tabsel'
-\ }
-\}
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
