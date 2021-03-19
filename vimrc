@@ -4,6 +4,7 @@ set ignorecase
 set modeline
 set cursorline
 set nobackup
+set lazyredraw
 set nowrap
 set hidden
 set backspace=indent,eol,start
@@ -21,9 +22,9 @@ let mapleader = ','
 
 " Statusline and ruler
 set ruler
-set rulerformat=%42(%=%<%F%r%m\ \›\ %l/%L:%v%)
-set laststatus=1
-set statusline=%F%r%m%=%l/%L:%v
+set rulerformat=%42(%=%<%F%r%m\ \ %l/%L:%v%)
+set laststatus=0
+set statusline=%=%F%r%m\ \ %l/%L:%v
 
 " Indentation
 set tabstop=8
