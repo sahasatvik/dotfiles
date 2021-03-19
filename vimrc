@@ -1,11 +1,8 @@
 " Basic settings
 set nocp
-set ruler
-set rulerformat=%32(%=%l,%c,%p%%\ %y%)
-set laststatus=1
-set statusline=%f%r%M%=%l,%c,%p%%\ %y
 set ignorecase
 set modeline
+set cursorline
 set nobackup
 set nowrap
 set hidden
@@ -21,6 +18,12 @@ set listchars=tab:▏\
 set list
 
 let mapleader = ','
+
+" Statusline and ruler
+set ruler
+set rulerformat=%42(%=%<%F%r%m\ \›\ %l/%L:%v%)
+set laststatus=1
+set statusline=%F%r%m%=%l/%L:%v
 
 " Indentation
 set tabstop=8
@@ -93,9 +96,9 @@ let g:miniBufExplMapWindowNavArrows = 1
 let base16colorspace=256
 colorscheme base16-tomorrow-night
 
-" Spellchecking colors
+" Spellcheck
 highlight clear SpellBad
-highlight SpellBad cterm=underline
+highlight SpellBad cterm=underline gui=underline
 nnoremap <leader>s a<C-X><C-S>
 
 " Enter to finish completion
