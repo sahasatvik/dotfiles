@@ -1,8 +1,9 @@
 " Basic settings
 set nocp
-set laststatus=0
 set ruler
-set rulerformat=%l,%c%V%=%p%%
+set rulerformat=%32(%=%l,%c,%p%%\ %y%)
+set laststatus=1
+set statusline=%f%r%M%=%l,%c,%p%%\ %y
 set ignorecase
 set modeline
 set nobackup
@@ -40,7 +41,7 @@ let g:indentLine_conceallevel = 1
 
 " Highlight search
 set hlsearch
-nnoremap <CR> :noh<CR><CR>
+nnoremap <silent> <CR> :noh<CR>
 
 " Syntax highlighting
 syntax enable
