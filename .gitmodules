@@ -67,3 +67,6 @@
 [submodule "vim/pack/complete/start/vim-closetag"]
 	path = vim/pack/complete/start/vim-closetag
 	url = https://github.com/alvan/vim-closetag
+[submodule "vim/pack/complete/start/jedi-vim"]
+	path = vim/pack/complete/start/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim

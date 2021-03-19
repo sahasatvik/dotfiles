@@ -40,7 +40,7 @@ let g:indentLine_color_tty_light = 7
 let g:indentLine_color_dark = 1
 let g:indentLine_char = '▏'
 let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_concealcursor = 'nc'
+let g:indentLine_concealcursor=0
 let g:indentLine_conceallevel = 1
 
 " Highlight search
@@ -73,8 +73,6 @@ autocmd Filetype html setlocal completefunc=htmlcomplete#CompleteTags
 
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 autocmd Filetype html setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete 
-
 
 " Make
 set makeprg=./%
@@ -138,6 +136,10 @@ nmap <F3> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F3> <Plug>(JavaComplete-Imports-RemoveUnused)
 nmap <F4> <Plug>(JavaComplete-Imports-AddMissing)
 imap <F4> <Plug>(JavaComplete-Imports-AddMissing)
+
+" Python 
+let g:pymode_rope = 0
+let g:jedi#popup_on_dot = 0
 
 " Emmet
 let g:user_emmet_leader_key=','
