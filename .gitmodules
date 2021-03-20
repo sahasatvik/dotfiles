@@ -10,9 +10,6 @@
 [submodule "vim/pack/filetype/start/html5"]
 	path = vim/pack/filetype/start/html5
 	url = https://github.com/othree/html5.vim
-[submodule "vim/pack/interface/start/indentline"]
-	path = vim/pack/interface/start/indentline
-	url = https://github.com/Yggdroot/indentLine
 [submodule "vim/pack/interface/start/nerdtree"]
 	path = vim/pack/interface/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree
