@@ -87,10 +87,6 @@ map ,. <Esc>:make<Return>
 autocmd Filetype tex noremap ,. <Esc>:LatexView<Return>
 autocmd Filetype tex noremap <> :autocmd TextChanged,TextChangedI <buffer> silent write<Return>
 
-" MiniBufExplorer
-let g:miniBufExplMapWindowNavVim    = 1
-let g:miniBufExplMapWindowNavArrows = 1
-
 " Colorscheme
 let base16colorspace=256
 colorscheme base16-tomorrow-night
