@@ -54,38 +54,49 @@ set encoding=utf-8
 " Filetype
 filetype plugin on
 
-autocmd Filetype plaintex setlocal ft=tex
-autocmd Filetype css,html,javascript,markdown,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd FileType make setlocal noexpandtab
+augroup filetype_settings
+        autocmd!
+        autocmd Filetype plaintex setlocal ft=tex
+        autocmd Filetype css,html,javascript,markdown,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
+        autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
+        autocmd FileType make setlocal noexpandtab
 
-autocmd FileType markdown setlocal nolist
-autocmd FileType markdown syntax region markdownMath start=/\$\$/ end=/\$\$/
-autocmd FileType markdown syntax match markdownMath '\$[^$].\{-}\$'
+        autocmd FileType markdown setlocal nolist
+        autocmd FileType markdown syntax region markdownMath start=/\$\$/ end=/\$\$/
+        autocmd FileType markdown syntax match markdownMath '\$[^$].\{-}\$'
+augroup END
 
 " OmniCompletion - <CTRL>X <CTRL>O
 set ofu=syntaxcomplete#Complete
 
 " Completion - <CTRL>X <CTRL>U
-autocmd Filetype java setlocal completefunc=javacomplete#Complete
-autocmd Filetype go setlocal completefunc=go#complete#Complete
-autocmd Filetype html setlocal completefunc=htmlcomplete#CompleteTags
-
-autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-autocmd Filetype html setlocal omnifunc=htmlcomplete#CompleteTags
+augroup complete_functions
+        autocmd!
+        autocmd Filetype java setlocal completefunc=javacomplete#Complete
+        autocmd Filetype go setlocal completefunc=go#complete#Complete
+        autocmd Filetype html setlocal completefunc=htmlcomplete#CompleteTags
+        autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+        autocmd Filetype html setlocal omnifunc=htmlcomplete#CompleteTags
+augroup END
 
 " Make
 set makeprg=./%
-autocmd Filetype java setlocal makeprg=javac\ %
-autocmd Filetype cpp setlocal makeprg=c++\ %\ -o\ %:p:h/a.out
-autocmd Filetype python setlocal makeprg=python3\ %
-autocmd Filetype c setlocal makeprg=cc\ %\ -o\ %:p:h/a.out
-autocmd Filetype html setlocal makeprg=w3m\ %
+augroup make_programs
+        autocmd!
+        autocmd Filetype java setlocal makeprg=javac\ %
+        autocmd Filetype cpp setlocal makeprg=c++\ %\ -o\ %:p:h/a.out
+        autocmd Filetype python setlocal makeprg=python3\ %
+        autocmd Filetype c setlocal makeprg=cc\ %\ -o\ %:p:h/a.out
+        autocmd Filetype html setlocal makeprg=w3m\ %
+augroup END
 
 map ,. <Esc>:make<Return>
 
-autocmd Filetype tex noremap ,. <Esc>:LatexView<Return>
-autocmd Filetype tex noremap <> :autocmd TextChanged,TextChangedI <buffer> silent write<Return>
+augroup tex_commands
+        autocmd!
+        autocmd Filetype tex noremap ,. <Esc>:LatexView<Return>
+        autocmd Filetype tex noremap <> :autocmd TextChanged,TextChangedI <buffer> silent write<Return>
+augroup END
 
 " Colorscheme
 let base16colorspace=256
