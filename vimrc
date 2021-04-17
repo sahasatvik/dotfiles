@@ -22,9 +22,10 @@ let mapleader = ','
 
 " Statusline and ruler
 set ruler
-set rulerformat=%42(%=%<%F%r%m\ \ %l/%L:%v%)
+set rulerformat=%42(%=%#Statusline#%<%t%r%m%#Normal#%14(%l/%L:%v%)%)
+
 set laststatus=0
-set statusline=%=%F%r%m\ \ %l/%L:%v
+set statusline=%=%#Statusline#%<%t%r%m%#Normal#%14(%l/%L:%v%)
 
 " Indentation
 set tabstop=8
