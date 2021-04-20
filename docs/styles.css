@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400|Josefin+Sans:300');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Fira+Sans:wght@300;400&family=Fira+Mono:wght@400&display=swap');
 
 * {
     padding: 0px;
     margin: 0px;
-    font-family: "Roboto Mono", monospace;
+    font-family: "Fira Sans", "Fira Mono", monospace;
 }
 
 body.light-theme {
-    background-color: #f2f2f2;
+    background-color: #f8f8f8;
 }
 body.dark-theme {
     background-color: #1d1f21;
@@ -44,7 +44,7 @@ nav.hidden {
     transform: translateY(-120%);
 }
 .light-theme nav {
-    background: #f2f2f2;
+    background: #f8f8f8;
     box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .dark-theme nav {
@@ -54,6 +54,7 @@ nav.hidden {
 
 nav a {
     position: relative;
+    font-family: "Fira Mono", monospace;
     font-size: 1rem;
     color: #81a2be;
     margin: 0em 1em;
@@ -72,7 +73,7 @@ nav a:hover {
     cursor: pointer;
 }
 #nav-name span {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Fira Mono', monospace;
     font-size: 1rem;
     opacity: 0.6;
 }
@@ -115,6 +116,10 @@ nav a:hover {
 
 .card {
     transition: .2s ease background;
+}
+
+.card a {
+    font-family: "Fira Mono", monospace;
 }
 
 .card.borderless img {
@@ -175,6 +180,7 @@ nav a:hover {
 }
 
 #github {
+    font-family: "Fira Mono", monospace;
     font-size: 1rem;
     font-weight: 400;
     color: #81a2be;
