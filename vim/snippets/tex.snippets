@@ -68,9 +68,9 @@ snippet table "Table environment" b
 		\end{tabular}
 	\end{table}
 snippet thm thm (or arbitrary) environment with optional argument
-	\\begin[${1:author}]{${2:thm}}
+	\begin[${1:author}]{${2:thm}}
 		${0:${VISUAL}}
-	\\end{$2}
+	\end{$2}
 snippet center center environment
 	\begin{center}
 		${1}
@@ -197,14 +197,14 @@ snippet rem remark environment
 	\end{remark}
 # Part
 snippet part document \part
-	\\part{${1:part name}} % (fold)%
-	\\label{prt:${2:$1}}
+	\part{${1:part name}} % (fold)%
+	\label{prt:${2:$1}}
 	${0}
 	% part $2 (end)
 # Chapter
 snippet cha \chapter
-	\\chapter{${1:chapter name}}%
-	\\label{cha:${2:$1}}
+	\chapter{${1:chapter name}}%
+	\label{cha:${2:$1}}
 	${0}
 # Section
 snippet sec \section
@@ -239,23 +239,23 @@ snippet subp \subparagraph
 	\subparagraph{${1:subparagraph name}}
 	${0}
 snippet ni \noindent
-	\\noindent
+	\noindent
 	${0}
 #References
 snippet itd description \item
 	\item[${1:description}] ${2:item}
 snippet figure reference to a figure
-	${1:Figure}~\\ref{${2:fig:}}
-snippet table reference to a table
-	${1:Table}~\\ref{${2:tab:}}
+	${1:Figure}~\ref{${2:fig:}}
+snippet tableref reference to a table
+	${1:Table}~\ref{${2:tab:}}
 snippet listing reference to a listing
-	${1:Listing}~\\ref{${2:list}}
+	${1:Listing}~\ref{${2:list}}
 snippet section reference to a section
-	${1:Section}~\\ref{sec:${2}} ${0}
+	${1:Section}~\ref{sec:${2}} ${0}
 snippet page reference to a page
-	${1:page}~\\pageref{${2}} ${0}
+	${1:page}~\pageref{${2}} ${0}
 snippet index \index
-	\\index{${1:index}} ${0}
+	\index{${1:index}} ${0}
 #Citations
 snippet citen \citen
 	\citen{${1}} ${2}
@@ -305,47 +305,24 @@ snippet mb mathbb
 snippet ft \footnote
 	\footnote{${1}} ${2}
 snippet fig figure environment (includegraphics)
-	\\begin{figure}
-	\\begin{center}
-		\\includegraphics[scale=${1}]{Figures/${2}}
-	\\end{center}
-	\\caption{${3}}
-	\\label{fig:${4}}
-	\\end{figure}
+	\begin{figure}
+	\begin{center}
+		\includegraphics[scale=${1}]{Figures/${2}}
+	\end{center}
+	\caption{${3}}
+	\label{fig:${4}}
+	\end{figure}
 	${0}
 snippet tikz figure environment (tikzpicture)
 	\begin{figure}[htpb]
 	\begin{center}
 	\begin{tikzpicture}[scale=${1:1}, transform shape]
 		${2}
-	\\end{tikzpicture}
-	\\end{center}
-	\\caption{${3}}
-	\\label{fig:${4}}
-	\\end{figure}
-	${0}
-snippet subfig subfigure environment
-	\\begin{subfigure}[${1}]{${2:\\textwidth}}
-	\\begin{center}
-		${3}
-	\\end{center}
-	\\caption{${4}}
-	\\label{fig:${5}}
-	\\end{subfigure}
-	${0}
-snippet tikzcd tikzcd environment in equation
-	\\begin{equation}
-	\\begin{tikzcd}
-		${1}
-	\\end{tikzcd}
-	\\end{equation}
-	${0}
-snippet tikzcd* tikzcd environment in equation*
-	\\begin{equation*}
-	\\begin{tikzcd}
-		${1}
-	\\end{tikzcd}
-	\\end{equation*}
+	\end{tikzpicture}
+	\end{center}
+	\caption{${3}}
+	\label{fig:${4}}
+	\end{figure}
 	${0}
 snippet subfig subfigure environment
 	\begin{subfigure}[${1}]{${2:\textwidth}}
@@ -373,20 +350,16 @@ snippet tikzcd* tikzcd environment in equation*
 #math
 snippet arr array
 	\begin{array*}{${1:rl}}
-		${2:} &= $3\\\\
+		${2:} &= $3
 	\end{array*}
-
 snippet pmat pmat
 	\begin{pmatrix}
 		$1
 	\end{pmatrix}
-	$0
 snippet bmat bmat
 	\begin{bmatrix}
 		$1
 	\end{bmatrix}
-	$0
-
 snippet eqv equivalence
 	\; \equiv \; ${1}
 snippet sr square root
@@ -395,7 +368,6 @@ snippet sq square
 	^2
 snippet cb cube
 	^3
-
 snippet sin sine
 	\sin
 snippet cos cosine
@@ -408,14 +380,12 @@ snippet acos arccos / inverse cosine
 	\cos^{-1}
 snippet atan arctan / inverse tangent
 	\tan^{-1}
-
 snippet exp exponential
 	\exp
 snippet ln natural logarithm
 	\ln
 snippet log logarithm
 	\log_{${1}}${2}
-
 snippet ceil ceiling
 	\left\lceil ${1} \right\rceil ${2}
 snippet floor floor
@@ -468,8 +438,8 @@ snippet example exampleblock environment
 		${2}
 	\end{exampleblock}
 snippet col2 two-column environment
-	\\begin{columns}
-		\\begin{column}{0.5\\textwidth}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
 			${1}
 		\end{column}
 		\begin{column}{0.5\textwidth}
@@ -497,17 +467,17 @@ snippet lst
 		${2}
 	\end{listing}
 snippet lsi
-	\\lstinline|${1}| ${0}
+	\lstinline|${1}| ${0}
 # Hyperlinks
 snippet url
-	\\url{${1}} ${0}
+	\url{${1}} ${0}
 snippet href
-	\\href{${1}}{${2}} ${0}
+	\href{${1}}{${2}} ${0}
 # URL from Clipboard.
 snippet urlc
-	\\url{`@+`} ${0}
+	\url{`@+`} ${0}
 snippet hrefc
-	\\href{`@+`}{${1}} ${0}
+	\href{`@+`}{${1}} ${0}
 # enquote from package csquotes
 snippet enq enquote
-	\\enquote{${1:${VISUAL:text}}} ${0}
+	\enquote{${1:${VISUAL:text}}} ${0}
