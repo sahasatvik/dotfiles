@@ -14,6 +14,13 @@ servers = (
     port = "6697";
     use_tls = "yes";
     tls_verify = "yes";
+  },
+  {
+    address = "irc.libera.chat";
+    chatnet = "liberachat";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
   }
 );
 
@@ -35,6 +42,13 @@ chatnets = {
     sasl_username = "sahasatvik";
     sasl_password = "PASSWORD";
   };
+  liberachat = {
+    type = "IRC";
+    nick = "sahasatvik";
+    sasl_mechanism = "PLAIN";
+    sasl_username = "sahasatvik";
+    sasl_password = "PASSWORD";
+  };
 };
 
 channels = (
@@ -46,11 +60,21 @@ channels = (
   { name = "#vim"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#git"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#zsh"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#macosx"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#macosx"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "##linux"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "##programming"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#math"; chatnet = "Snoonet"; },
-  { name = "#space"; chatnet = "Snoonet"; }
+  { name = "#space"; chatnet = "Snoonet"; },
+  { name = "##math"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "##physics"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "##chess"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "#irssi"; chatnet = "liberachat"; autojoin = "no"; }
+  { name = "#vim"; chatnet = "liberachat"; autojoin = "yes"; }
+  { name = "#git"; chatnet = "liberachat"; autojoin = "yes"; }
+  { name = "#zsh"; chatnet = "liberachat"; autojoin = "yes"; }
+  { name = "#macosx"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "#linux"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "#programming"; chatnet = "liberachat"; autojoin = "yes"; },
 );
 
 aliases = {
