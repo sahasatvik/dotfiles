@@ -16,12 +16,12 @@ endsnippet
 
 snippet dm "Math" wA
 \[
-${1:${VISUAL}}
+	${1:${VISUAL}}
 \] $0
 endsnippet
 
 snippet f/ "Fraction" iA
-\\frac{$1}{$2}$0
+\frac{$1}{$2}$0
 endsnippet
 
 #priority 1000
@@ -31,7 +31,7 @@ endsnippet
 
 priority 10
 snippet '(\d+)/' "number frac" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
 #snippet '^.*\)/' "() frac" wrA
@@ -172,8 +172,8 @@ snippet ~~ "~" iA
 \sim 
 endsnippet
 
-snippet || "mid" iA
- \mid 
+snippet || "vert" iA
+ \Vert
 endsnippet
 
 snippet inwend "mathring" iA
