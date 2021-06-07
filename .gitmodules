@@ -13,6 +13,9 @@
 [submodule "vim/pack/interface/start/nerdtree"]
 	path = vim/pack/interface/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+[submodule "vim/pack/interface/start/indentLine"]
+	path = vim/pack/interface/start/indentLine
+	url = https://github.com/Yggdroot/indentLine
 [submodule "vim/pack/command/start/tabular"]
 	path = vim/pack/command/start/tabular
 	url = https://github.com/godlygeek/tabular
