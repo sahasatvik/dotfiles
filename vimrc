@@ -139,16 +139,6 @@ else
         endif
 endif
 
-" JavaComplete
-nmap <F3> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F3> <Plug>(JavaComplete-Imports-RemoveUnused)
-nmap <F4> <Plug>(JavaComplete-Imports-AddMissing)
-imap <F4> <Plug>(JavaComplete-Imports-AddMissing)
-
-" Python 
-let g:pymode_rope = 0
-let g:jedi#popup_on_dot = 0
-
 " Emmet
 let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0

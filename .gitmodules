@@ -37,12 +37,6 @@
 [submodule "vim/pack/interface/start/devicons"]
 	path = vim/pack/interface/start/devicons
 	url = https://github.com/ryanoasis/vim-devicons
-[submodule "vim/pack/filetype/start/go"]
-	path = vim/pack/filetype/start/go
-	url = https://github.com/fatih/vim-go
-[submodule "vim/pack/filetype/start/java"]
-	path = vim/pack/filetype/start/java
-	url = https://github.com/artur-shaik/vim-javacomplete2
 [submodule "vim/pack/filetype/start/javascript"]
 	path = vim/pack/filetype/start/javascript
 	url = https://github.com/pangloss/vim-javascript
@@ -67,6 +61,6 @@
 [submodule "vim/pack/complete/start/vim-closetag"]
 	path = vim/pack/complete/start/vim-closetag
 	url = https://github.com/alvan/vim-closetag
-[submodule "vim/pack/complete/start/jedi-vim"]
-	path = vim/pack/complete/start/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim
+[submodule "vim/pack/complete/start/youcompleteme"]
+	path = vim/pack/complete/start/youcompleteme
+	url = https://github.com/ycm-core/YouCompleteMe
