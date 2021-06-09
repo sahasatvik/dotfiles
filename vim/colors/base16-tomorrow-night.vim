@@ -209,7 +209,7 @@ call <sid>hi("Conceal",       s:gui0D, s:gui00, s:cterm0D, s:cterm00, "", "")
 call <sid>hi("Cursor",        s:gui00, s:gui05, s:cterm00, s:cterm05, "", "")
 call <sid>hi("NonText",       s:gui03, "", s:cterm03, "", "", "")
 call <sid>hi("LineNr",        s:gui02, s:gui00, s:cterm03, s:cterm01, "", "")
-call <sid>hi("SignColumn",    s:gui03, s:gui01, s:cterm03, s:cterm01, "", "")
+call <sid>hi("SignColumn",    s:gui02, s:gui00, s:cterm03, s:cterm01, "", "")
 call <sid>hi("StatusLine",    s:gui04, s:gui00, s:cterm04, s:cterm02, "none", "")
 call <sid>hi("StatusLineNC",  s:gui03, s:gui00, s:cterm03, s:cterm01, "none", "")
 call <sid>hi("VertSplit",     s:gui02, s:gui00, s:cterm02, s:cterm02, "none", "")
@@ -417,6 +417,10 @@ call <sid>hi("StartifySpecial",  s:gui03, "", s:cterm03, "", "", "")
 " Java highlighting
 call <sid>hi("javaAnnotation",   s:gui09, "", s:cterm09, "", "", "")
 call <sid>hi("javaOperator",     s:gui0D, "", s:cterm0D, "", "", "")
+
+" YCM
+call <sid>hi("YcmErrorSign",     s:gui08, "", s:cterm08, "", "", "")
+call <sid>hi("YcmWarningSign",   s:gui0A, "", s:cterm0A, "", "", "")
 
 " Remove functions
 delf <sid>hi

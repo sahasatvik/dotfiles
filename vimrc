@@ -59,6 +59,7 @@ augroup filetype_settings
         autocmd!
         autocmd Filetype plaintex setlocal ft=tex
         autocmd Filetype css,html,javascript,markdown,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
+        autocmd Filetype java,c,cpp,go setlocal signcolumn=yes
         autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType make setlocal noexpandtab
 
@@ -138,6 +139,26 @@ else
                 inoremap <Nul> <C-x><C-o>
         endif
 endif
+
+" YouCompleteMe
+let g:ycm_error_symbol = '!!'
+let g:ycm_warning_symbol = '??'
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar': 1,
+      \ 'notes': 1,
+      \ 'markdown': 1,
+      \ 'netrw': 1,
+      \ 'unite': 1,
+      \ 'text': 1,
+      \ 'vimwiki': 1,
+      \ 'pandoc': 1,
+      \ 'infolog': 1,
+      \ 'leaderf': 1,
+      \ 'mail': 1,
+      \ 'css': 1,
+      \ 'html': 1
+      \}
+let g:ycm_key_list_select_completion = ['<Down>']
 
 " Emmet
 let g:user_emmet_leader_key=','
