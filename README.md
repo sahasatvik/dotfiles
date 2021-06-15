@@ -1,6 +1,18 @@
 # Dotfiles
 
-## Screenshots
+# Arch
+
+## Desktop
+![desktop](docs/screenshots/ranger.png)
+
+## Music
+![desktop](docs/screenshots/music.png)
+
+## Editing
+![desktop](docs/screenshots/editing.png)
+
+
+# MacOS
 
 ### Cmus
 ![cmus](docs/screenshots/cmus.png)
