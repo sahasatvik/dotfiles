@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+printf '%.0f%%\n' $(xbacklight)
