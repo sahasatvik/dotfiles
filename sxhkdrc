@@ -133,19 +133,16 @@ super + {Left,Down,Up,Right}
 #
 
 # take a screenshot of the whole screen
-super + alt + 4
-        maim "/home/satvik/Pictures/screenshots/screenshot-$(date +%s).png"
-
-Print
-        maim "/home/satvik/Pictures/screenshots/screenshot-$(date +%s).png"
+{super + alt + 4, Print}
+        maim "$HOME/Pictures/screenshots/screenshot-$(date +%s).png"
 
 # take a screenshot of a selection
 super + alt + 5
-        maim -s "/home/satvik/Pictures/screenshots/screenshot-$(date +%s).png"
+        maim -s "$HOME/Pictures/screenshots/screenshot-$(date +%s).png"
 
 # take a screenshot of a window
 super + alt + 6
-        maim -st 9999999 "/home/satvik/Pictures/screenshots/screenshot-$(date +%s).png"
+        maim -st 9999999 "$HOME/Pictures/screenshots/screenshot-$(date +%s).png"
 
 
 #
@@ -153,56 +150,39 @@ super + alt + 6
 #
 
 super + Escape
-        notify-send -t 2000 -i none -u low "$(date +'%a %e %B %T')" "$(/home/satvik/bin/status.sh)" \
+        notify-send -t 2000 -i none -u low "$(date +'%a %e %B %T')" "$(~/bin/status.sh)" \
                 -h string:x-canonical-private-synchronous:statusinfo
 
 #
 # media keys
 #
 
-# raise volume
-XF86AudioRaiseVolume
-        amixer set Master 5%+ && \
-        notify-send -t 1000 -i none -u low "Volume : $(/home/satvik/bin/volume.sh)" \
-                -h string:x-canonical-private-synchronous:volume
-
-# lower volume
-XF86AudioLowerVolume
-        amixer set Master 5%- && \
-        notify-send -t 1000 -i none -u low "Volume : $(/home/satvik/bin/volume.sh)" \
+# raise/lower volume
+{XF86AudioRaiseVolume, XF86AudioLowerVolume}
+        amixer set Master 5%{+,-} && \
+        notify-send -t 1000 -i none -u low "Volume : $(~/bin/volume.sh)" \
                 -h string:x-canonical-private-synchronous:volume
 
 # toggle mute
 XF86AudioMute
         amixer set Master toggle && \
-        notify-send -t 1000 -i none -u low "Speakers : $(/home/satvik/bin/muted.sh)" \
+        notify-send -t 1000 -i none -u low "Speakers : $(~/bin/muted.sh)" \
                 -h string:x-canonical-private-synchronous:speakermute
 
-# pause/play
+# pause/play cmus
 XF86AudioPlay
         cmus-remote -u
 
-# next track
-XF86AudioNext
-        cmus-remote -n
-
-# previous track
-XF86AudioPrev
-        cmus-remote -r
+# next/previous track
+{XF86AudioNext, XF86AudioPrev}
+        cmus-remote -{n,r}
 
 #
 # backlight
 #
 
-# raise brightness
-XF86MonBrightnessUp
-        xbacklight -inc 10 && \
-        notify-send -t 1000 -i none -u low "Brightness : $(/home/satvik/bin/brightness.sh)" \
+# raise/lower brightness
+{XF86MonBrightnessUp, XF86MonBrightnessDown}
+        xbacklight -{inc,dec} 10 && \
+        notify-send -t 1000 -i none -u low "Brightness : $(~/bin/brightness.sh)" \
                 -h string:x-canonical-private-synchronous:brightness
-
-# lower brightness
-XF86MonBrightnessDown
-        xbacklight -dec 10 && \
-        notify-send -t 1000 -i none -u low "Brightness : $(/home/satvik/bin/brightness.sh)" \
-                -h string:x-canonical-private-synchronous:brightness
-
