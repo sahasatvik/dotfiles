@@ -9,7 +9,7 @@ super + Return
 # program launcher
 super + @space
         rofi -show run -modi run -location 2 -width 100 -padding 20 \
-                -lines 2 -line-margin 2 -line-phttps://wiki.archlinux.org/title/Rofiadding 1 \
+                -lines 2 -line-margin 2 -line-padding 1 \
                 -separator-style none -font "Fira Mono 12" -columns 7 -bw 0 \
                 -hide-scrollbar \
                 -color-window "#1d1f21, #1d1f21, #dddddd" \
