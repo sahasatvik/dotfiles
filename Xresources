@@ -3,7 +3,7 @@
 URxvt.scrollBar:        false
 URxvt.scrollBar_right:  false
 
-URxvt.font:             xft:Fira Code Nerd Font:style=Regular:size=12
+URxvt.font:             xft:Fira Code Nerd Font:style=Regular:size=12, xft:Symbola:style=Regular:size=12
 URxvt.boldFont:         xft:Fira Code Nerd Font:style=Bold:size=12
 URxvt.italicFont:       xft:Fira Code Nerd Font:style=Regular:size=12
 
