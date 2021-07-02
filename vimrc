@@ -159,6 +159,9 @@ let g:ycm_filetype_blacklist = {
       \ 'html': 1
       \}
 let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_confirm_extra_conf=0
+nnoremap <leader>r :YcmCompleter RefactorRename
+nnoremap <leader>f :YcmCompleter FixIt<CR>
 
 " Emmet
 let g:user_emmet_leader_key=','
