@@ -6,9 +6,9 @@
 super + Return
         urxvt
 
-# program launcher
-super + @space
-        rofi -show run -modi run -location 2 -width 100 -padding 20 \
+# program launcher / calculator
+super + {_,alt + }@space
+        rofi -show {run,calc} -modi run,calc -location 2 -width 100 -padding 20 \
                 -lines 2 -line-margin 2 -line-padding 1 \
                 -separator-style none -font "Fira Mono 12" -columns 7 -bw 0 \
                 -hide-scrollbar \
