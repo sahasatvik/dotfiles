@@ -159,13 +159,13 @@ super + Escape
 
 # raise/lower volume
 {XF86AudioRaiseVolume, XF86AudioLowerVolume}
-        amixer set Master 5%{+,-} && \
+        pamixer {--increase,--decrease} 5 && \
         notify-send -t 1000 -i none -u low "Volume : $(~/bin/volume.sh)" \
                 -h string:x-canonical-private-synchronous:volume
 
 # toggle mute
 XF86AudioMute
-        amixer set Master toggle && \
+        pamixer --toggle-mute && \
         notify-send -t 1000 -i none -u low "Speakers : $(~/bin/muted.sh)" \
                 -h string:x-canonical-private-synchronous:speakermute
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-muted=$(amixer sget Master | grep 'Mono:' | sed -E 's/.*\[(on|off)\].*/\1/g')
-if [[ "$muted" == "off" ]]; then
+muted=$(pamixer --get-volume-human)
+if [[ "$muted" == "muted" ]]; then
         echo "muted"
 else
         echo "unmuted"
