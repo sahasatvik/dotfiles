@@ -4,11 +4,11 @@
 ![desktop](docs/screenshots/ranger.png)
 
 ## Music
-![desktop](docs/screenshots/music.png)
+![music](docs/screenshots/clock-gotop-cmus-cava.png)
 
 ## Editing
-![desktop](docs/screenshots/editing.png)
-
+![c-coding](docs/screenshots/editing.png)
+![latex](docs/screenshots/vim-zathura.png)
 
 # MacOS
 
