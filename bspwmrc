@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/env sh
 
 xsetroot -cursor_name left_ptr &
 pgrep -x sxhkd > /dev/null || sxhkd &
