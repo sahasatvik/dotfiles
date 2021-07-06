@@ -150,7 +150,7 @@ super + alt + 6
 #
 
 super + Escape
-        notify-send -t 2000 -i none -u low "$(date +'%a %e %B %T')" "$(~/bin/status.sh)" \
+        notify-send -t 2000 -i none -u low "$(date +'%a %d %B %H:%M')" "$(~/bin/status.sh)" \
                 -h string:x-canonical-private-synchronous:statusinfo
 
 #
