@@ -11,8 +11,18 @@ super + @space
         rofi -show run -modi run,drun
 
 # calculator
-super + alt @space
+super + alt + @c
         rofi -show calc -modi calc
+
+# finder
+super + alt + @space
+        found="$(fd --base-directory=$HOME | rofi -dmenu -i -p 'find')" && \
+        [[ ! -z "$found" ]] && \
+        xdg-open "$HOME/$found"
+
+# file browser
+super + alt + @f
+        rofi -show file-browser -modi file-browser
 
 # browser
 super + alt + b
@@ -23,7 +33,7 @@ super + alt + k
         pkill -USR1 -x sxhkd
 
 # show keybindings
-super + slash
+super + @slash
         ~/bin/sxhkd_help.sh
 
 #
