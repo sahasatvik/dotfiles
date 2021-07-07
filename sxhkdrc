@@ -6,11 +6,23 @@
 super + Return
         urxvt
 
-# program launcher / calculator
-super + {_,alt + }@space
-        rofi -show {run,calc} -modi run,calc -location 2 -width 100 -padding 20 \
-                -lines 2 -line-margin 2 -line-padding 1 \
+# program launcher
+super + @space
+        rofi -show run -modi run,drun -location 2 -width 100 -padding 20 \
+                -lines 1 -line-margin 2 -line-padding 1 \
                 -separator-style none -font "Fira Mono 12" -columns 7 -bw 0 \
+                -hide-scrollbar \
+                -color-window "#1d1f21, #1d1f21, #dddddd" \
+                -color-normal "#1d1f21, #b1b4b3, #1d1f21, #282a2e, #ffffff" \
+                -color-active "#1d1f21, #dddddd, #1d1f21, #b294bb, #1d1f21" \
+                -color-urgent "#1d1f21, #b1b4b3, #1d1f21, #cc6666, #1d1f21" \
+                -kb-row-select "Tab" -kb-row-tab ""
+
+# calculator
+super + alt @space
+        rofi -show calc -modi calc -location 2 -width 100 -padding 20 \
+                -lines 5 -line-margin 2 -line-padding 1 \
+                -separator-style none -font "Fira Mono 12" -columns 1 -bw 0 \
                 -hide-scrollbar \
                 -color-window "#1d1f21, #1d1f21, #dddddd" \
                 -color-normal "#1d1f21, #b1b4b3, #1d1f21, #282a2e, #ffffff" \
