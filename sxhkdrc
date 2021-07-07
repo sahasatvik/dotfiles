@@ -22,6 +22,10 @@ super + alt + b
 super + alt + k
         pkill -USR1 -x sxhkd
 
+# show keybindings
+super + slash
+        ~/bin/sxhkd_help.sh
+
 #
 # bspwm hotkeys
 #
@@ -30,7 +34,7 @@ super + alt + k
 super + alt + {q,r}
         bspc {quit,wm -r}
 
-# clse and kill
+# close and kill
 super + {_,shift + }w
         bspc node -{c,k}
 
