@@ -161,6 +161,7 @@ super + Escape
 {XF86AudioRaiseVolume, XF86AudioLowerVolume}
         pamixer {--increase,--decrease} 5 && \
         notify-send -t 1000 -i none -u low "Volume : $(~/bin/volume.sh)" \
+                -h int:value:"$(~/bin/volume.sh | sed 's/.$//')" \
                 -h string:x-canonical-private-synchronous:volume
 
 # toggle mute
@@ -185,4 +186,5 @@ XF86AudioPlay
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
         xbacklight -{inc,dec} 10 && \
         notify-send -t 1000 -i none -u low "Brightness : $(~/bin/brightness.sh)" \
+                -h int:value:"$(~/bin/brightness.sh | sed 's/.$//')" \
                 -h string:x-canonical-private-synchronous:brightness
