@@ -30,6 +30,10 @@ super + alt @space
                 -color-urgent "#1d1f21, #b1b4b3, #1d1f21, #cc6666, #1d1f21" \
                 -kb-row-select "Tab" -kb-row-tab ""
 
+# browser
+super + alt + b
+        chrome --new-window
+
 # make sxhkd reload its configuration files
 super + alt + k
         pkill -USR1 -x sxhkd
@@ -44,7 +48,7 @@ super + alt + {q,r}
 
 # clse and kill
 super + {_,shift + }w
-        bspc node -{k,c}
+        bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 super + m
