@@ -8,11 +8,11 @@ super + Return
 
 # program launcher
 super + @space
-        rofi -show run -modi run,drun -lines 1 -columns 7
+        rofi -show run -modi run,drun
 
 # calculator
 super + alt @space
-        rofi -show calc -modi calc -lines 5 -columns 1
+        rofi -show calc -modi calc
 
 # browser
 super + alt + b

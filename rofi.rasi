@@ -1,16 +1,14 @@
 
 configuration {
 
-        location: 2;
-        width: 100;
-        padding: 20;
+        padding: 16;
         line-margin: 2;
         line-padding: 1;
-        bw: 0;
+        bw: 1;
         separator-style: "none";
         font: "Fira Mono 12";
         hide-scrollbar: true;
-        color-window: "#1d1f21, #1d1f21, #dddddd";
+        color-window: "#1d1f21, #555555, #dddddd";
         color-normal: "#1d1f21, #b1b4b3, #1d1f21, #282a2e, #ffffff";
         color-active: "#1d1f21, #dddddd, #1d1f21, #b294bb, #1d1f21";
         color-urgent: "#1d1f21, #b1b4b3, #1d1f21, #cc6666, #1d1f21";
