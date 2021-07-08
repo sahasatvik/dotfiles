@@ -30,9 +30,15 @@ super + alt + @e
         [[ ! -z "$configpath" ]] && \
         xdg-open "$HOME/$configpath"
 
+# google meet
+super + alt + @m
+        meetcode="$(~/bin/meets.sh | rofi -dmenu -markup-rows -i -p 'gmeet' | sed 's/^.* //g')" && \
+        [[ ! -z "$meetcode" ]] && \
+        chrome  --profile-directory="Profile 1" "https://meet.google.com/$meetcode"
+
 # browser
-super + alt + b
-        chrome --new-window
+super + alt + {_, shift + }b
+        chrome --new-window --profile-directory="{Default,Profile 1}"
 
 # time/date toggle
 super + alt + t
