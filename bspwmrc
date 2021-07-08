@@ -23,4 +23,5 @@ bspc config presel_feedback_color       "#373b41"
 
 bspc rule -a feh                        state=floating
 bspc rule -a Zathura                    state=tiled
+bspc rule -a Google-chrome              state=fullscreen
 bspc rule -a Matplotlib                 state=floating
