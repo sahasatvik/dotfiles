@@ -24,6 +24,12 @@ super + alt + @space
 super + alt + @f
         rofi -show file-browser -modi file-browser
 
+# edit config
+super + alt + @e
+        configpath="$(cat ~/bin/configs | rofi -dmenu -i -p 'config' | sed 's/^.*~//g')" && \
+        [[ ! -z "$configpath" ]] && \
+        xdg-open "$HOME/$configpath"
+
 # browser
 super + alt + b
         chrome --new-window
