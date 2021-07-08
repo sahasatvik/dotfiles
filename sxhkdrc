@@ -16,7 +16,7 @@ super + alt + @c
 
 # finder
 super + alt + @space
-        found="$(fd --base-directory=$HOME | rofi -dmenu -i -p 'find')" && \
+        found="$(fd --base-directory=$HOME | sort | rofi -dmenu -i -p 'find')" && \
         [[ ! -z "$found" ]] && \
         xdg-open "$HOME/$found"
 
@@ -34,7 +34,7 @@ super + alt + k
 
 # show keybindings
 super + @slash
-        ~/bin/sxhkd_help.sh
+        ~/bin/sxhkd_help.sh | rofi -dmenu -i -p "keys"
 
 #
 # bspwm hotkeys
