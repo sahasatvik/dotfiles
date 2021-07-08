@@ -28,6 +28,10 @@ super + alt + @f
 super + alt + b
         chrome --new-window
 
+# time/date toggle
+super + alt + t
+        { pkill -x clock.sh && pkill -x lemonbar } || ~/bin/clock.sh | lemonbar -pd -F "#DDDDDD" -B "#1D1F21" -f "Fira Mono" -g 230x30+1690
+
 # make sxhkd reload its configuration files
 super + alt + k
         pkill -USR1 -x sxhkd
@@ -164,7 +168,7 @@ super + alt + 6
 #
 
 super + Escape
-        notify-send -t 2000 -i none -u low "$(date +'%a %d %B %H:%M')" "$(~/bin/status.sh)" \
+        notify-send -t 2000 -i none -u low "$(date +'%a %B %d %H:%M')" "$(~/bin/status.sh)" \
                 -h string:x-canonical-private-synchronous:statusinfo
 
 #
