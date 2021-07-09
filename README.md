@@ -10,6 +10,9 @@
 ![c-coding](docs/screenshots/editing.png)
 ![latex](docs/screenshots/vim-zathura.png)
 
+## Rofi custom menus
+![rofi](docs/screenshots/rofi_menus.png)
+
 # MacOS
 
 ### Cmus
