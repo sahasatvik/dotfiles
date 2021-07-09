@@ -3,6 +3,7 @@
 xsetroot -cursor_name left_ptr &
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x dunst > /dev/null || dunst &
+calcurse --daemon &
 nitrogen --restore &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9
