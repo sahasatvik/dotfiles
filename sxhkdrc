@@ -36,6 +36,13 @@ super + alt + @m
         [[ ! -z "$meetcode" ]] && \
         chrome  --profile-directory="Profile 1" "https://meet.google.com/$meetcode"
 
+# timetable
+super + alt + @n
+        prompt="$(date +%A)" && \
+        meetcode="$(~/bin/timetable.sh | rofi -dmenu -markup-rows -i -p $prompt | sed 's/^.* //g')" && \
+        [[ ! -z "$meetcode" ]] && \
+        chrome  --profile-directory="Profile 1" "https://meet.google.com/$meetcode"
+
 # browser
 super + alt + {_, shift + }b
         chrome --new-window --profile-directory="{Default,Profile 1}"
