@@ -76,6 +76,10 @@ super + y
 super + g
         bspc node -s biggest.window
 
+# rotate nodes about the parent
+super + {_,shift + }r
+        bspc node @parent -R {90,-90}
+
 #
 # state/flags
 #
