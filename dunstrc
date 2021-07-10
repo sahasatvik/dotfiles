@@ -465,4 +465,14 @@
 #    appname = "some_volume_notifiers"
 #    set_stack_tag = "volume"
 #
+
+[volume_pop]
+    summary = "Volume*"
+    script = /home/satvik/bin/pop.sh
+
+[critical_bell]
+    summary = "*"
+    msg_urgency = critical
+    script = /home/satvik/bin/bell.sh
+
 # vim: ft=cfg
