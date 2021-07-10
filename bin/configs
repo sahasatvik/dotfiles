@@ -12,4 +12,4 @@ zathura                                                 ~/.config/zathura/zathur
 xresources                                              ~/.Xresources
 configs                                                 ~/bin/configs
 meets                                                   ~/bin/meets
-calendar                                                ~/bin/timetable/calendar
+calendar                                                ~/bin/calendar

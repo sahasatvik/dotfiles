@@ -36,10 +36,9 @@ super + alt + @m
         [[ ! -z "$meetcode" ]] && \
         chrome  --profile-directory="Profile 1" "https://meet.google.com/$meetcode"
 
-# timetable
+# today's events
 super + alt + @n
-        prompt="$(date +%A)" && \
-        meetcode="$(~/bin/timetable.sh | rofi -dmenu -markup-rows -i -p $prompt | sed 's/^.* //g')" && \
+        meetcode="$(~/bin/today.sh | sort | rofi -dmenu -markup-rows -i -p 'today' | sed 's/<[^>]*>//g' | sed 's/^.* //g')" && \
         [[ ! -z "$meetcode" ]] && \
         chrome  --profile-directory="Profile 1" "https://meet.google.com/$meetcode"
 
