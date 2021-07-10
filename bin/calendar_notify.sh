@@ -5,7 +5,7 @@ currenttime=$(date +%s)
 # Notifies upcoming events in the $calendarfile file.
 # The lines of this file are written in the following format.
 #
-#       event time,title,description,google meet code (or additional info)
+#       event time, title, description, google meet code (or additional info)
 #
 # The description, google meet code are optional. Note that 'event time'
 # must be in a valid 'date --date=' string format. For example, '14:30'
@@ -24,7 +24,7 @@ log="$(cat $logfile)"
 
 IFS=,
 cat "$calendarfile" | \
-sed 's/^\s*#.*$//g' | sed '/^$/d' | \
+sed 's/^\s*#.*$//g' | sed '/^$/d' | sed 's/\s*,\s*/,/g' | \
 while read line; do
         read etime title description meetcode <<< $line
         eventtime="$(date --date=$etime +%s)"
