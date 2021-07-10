@@ -17,6 +17,7 @@
 # (2:30 pm on the current day) or '16:45 January 11 2020' are valid.
 # The daily.x files usually have 'event time' in the simple HH:MM format,
 # while the calendar file mentions the full time and date.
+# These files may contain comments (#) and empty lines.
 
 # Run as a timed systemd service.
 
@@ -31,7 +32,9 @@ touch "$cachefile"
 cache="$(cat $cachefile)"
 
 IFS=,
-cat "$tablefile" "$calendarfile" | while read line; do
+cat "$tablefile" "$calendarfile" | \
+sed 's/^\s*#.*$//g' | sed '/^$/d' | \
+while read line; do
 
         [[ -z "$line" ]] && continue
 

@@ -8,7 +8,11 @@
 #
 # The description, google meet code are optional.
 # The 'event time' is in simple HH:MM format.
+# These files may contain comments (#) and empty lines.
 
 tablefile="$HOME/bin/timetable/daily.$(date +%u)"
 
-cat $tablefile | awk -F',' '{printf "<span color=\"#777777\">%6s</span>%8s  <span color=\"#777777\">%-50s</span> %16s\n", $1, $2, $3, $4}'
+cat $tablefile | \
+        sed 's/^\s*#.*$//g' | \
+        sed '/^$/d' | \
+        awk -F',' '{printf "<span color=\"#777777\">%6s</span>%8s  <span color=\"#777777\">%-50s</span> %16s\n", $1, $2, $3, $4}'
