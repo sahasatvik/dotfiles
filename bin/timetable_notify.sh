@@ -1,34 +1,33 @@
 #!/usr/bin/env sh
 
-# Reads events from the ~/bin/timetable/day.x files and notifies 5 minutes in advance.
-# Ideally run as a systemd user service.
+# Notifies upcoming events in the ~/bin/timetable/day.x files.
+# Run as a timed systemd service.
+
+SECONDS_BEFORE=300
+
+currentdate=$(date +%s)
+tablefile="$HOME/bin/timetable/day.$(date +%u)"
+
+touch "$HOME/bin/timetable/.cache"
+cache="$(cat $HOME/bin/timetable/.cache)"
 
 IFS=,
-while true; do
-        
-        tablefile="$HOME/bin/timetable/day.$(date +%u)"                 # Set the timetable file
-        currentdate=$(date +%s)                                         # Get the current UNIX timestamp
-        cache=$(cat $HOME/bin/timetable/.cache)                         # Load the cache of already notified events
-        
-        while read line; do
-                [[ -z "$line" ]] && continue                            # Skip empty lines
+while read line; do
 
-                read hhmm title description meetcode <<< $line          # Read the line into vars        
-                eventdate=$(date --date=$hhmm +%s)                      # Get the event UNIX timestamp
+        [[ -z "$line" ]] && continue
 
-                [[ ! -z $(echo "$cache" | grep "$eventdate$title") ]] && continue
-                                                                        # Skip if found in cache
-                [[ $eventdate -lt $currentdate ]] && continue           # Skip if overdue
+        read hhmm title description meetcode <<< $line
+        eventdate=$(date --date=$hhmm +%s)
 
-                diff=$(($eventdate-$currentdate))                       # Calculate the seconds remaining
-                [[ $diff -gt "300" ]] && continue                       # Skip if over 5mins remaining
+        [[ ! -z $(echo "$cache" | grep "$eventdate$title") ]] && continue
+        [[ $eventdate -lt $currentdate ]] && continue
 
-                notify-send -u critical \
-                        "$title at $hhmm" "$description\n<span foreground='gray'>$meetcode</span>" \
-                        -h string:x-canonical-private-synchronous:"$hhmm $title"
+        diff=$(($eventdate-$currentdate))
+        [[ $diff -gt "$SECONDS_BEFORE" ]] && continue
 
-                echo "$eventdate$title" >> $HOME/bin/timetable/.cache   # Add to cache
+        notify-send -u critical \
+                "$title at $hhmm" "$description\n<span foreground='gray'>$meetcode</span>" \
+                -h string:x-canonical-private-synchronous:"$hhmm $title" && \
+        echo "$eventdate$title" >> $HOME/bin/timetable/.cache
 
-        done < $tablefile
-        sleep 60
-done
+done < $tablefile
