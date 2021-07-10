@@ -26,7 +26,7 @@ super + alt + @f
 
 # edit config
 super + alt + @e
-        configpath="$(cat ~/bin/configs | rofi -dmenu -i -p 'config' | sed 's/^.*~//g')" && \
+        configpath="$(cat ~/.config/configs | rofi -dmenu -i -p 'config' | sed 's/^.*~//g')" && \
         [[ ! -z "$configpath" ]] && \
         xdg-open "$HOME/$configpath"
 

@@ -1,3 +1,4 @@
+configs                                                 ~/.config/configs
 vim                                                     ~/.vimrc
 zsh                                                     ~/.zshrc
 bspwm                                                   ~/.config/bspwm/bspwmrc
@@ -9,7 +10,6 @@ ranger                                                  ~/.config/ranger/rc.conf
 ranger (scope)                                          ~/.config/ranger/scope.sh
 ranger (rifle)                                          ~/.config/ranger/rifle.conf
 zathura                                                 ~/.config/zathura/zathurarc
+meets                                                   ~/.config/meets
+calendar                                                ~/.config/calendar
 xresources                                              ~/.Xresources
-configs                                                 ~/bin/configs
-meets                                                   ~/bin/meets
-calendar                                                ~/bin/calendar

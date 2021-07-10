@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+currenttime=$(date +%s)
+
 # Notifies upcoming events in the $calendarfile file.
 # The lines of this file are written in the following format.
 #
@@ -13,34 +15,30 @@
 
 # Run as a timed systemd --user service.
 
-SECONDS_BEFORE=300
-currentdate=$(date +%s)
+seconds_before=300                              # notify this many seconds before the event
+calendarfile="$HOME/.config/calendar"           # calendar event file
+logfile="$HOME/.calendarlog"                    # logs notified events
 
-calendarfile="$HOME/bin/calendar"
-cachefile="$HOME/bin/.calendarcache"
-
-touch "$cachefile"
-cache="$(cat $cachefile)"
+touch "$logfile"
+log="$(cat $logfile)"
 
 IFS=,
 cat "$calendarfile" | \
 sed 's/^\s*#.*$//g' | sed '/^$/d' | \
 while read line; do
-
         read etime title description meetcode <<< $line
-        eventdate="$(date --date=$etime +%s)"
+        eventtime="$(date --date=$etime +%s)"
 
-        [[ ! -z $(echo "$cache" | grep "$eventdate $title") ]] && continue
-        [[ $eventdate -lt $currentdate ]] && continue
+        [[ ! -z $(echo "$log" | grep "$eventtime $title") ]] && continue
+        [[ $eventtime -lt $currenttime ]] && continue
 
-        diff=$(($eventdate-$currentdate))
-        [[ $diff -gt "$SECONDS_BEFORE" ]] && continue
+        diff=$(($eventtime-$currenttime))
+        [[ $diff -gt "$seconds_before" ]] && continue
 
-        echo $eventdate $title $description
+        echo $eventtime $title $description
         hhmm="$(date --date=$etime +%H:%M)"
         notify-send -u critical \
                 "$title at $hhmm" "$description\n<span foreground='gray'>$meetcode</span>" \
                 -h string:x-canonical-private-synchronous:"$hhmm $title" && \
-        echo "$eventdate $title" >> $cachefile
-
+        echo "$eventtime $title" >> $logfile
 done

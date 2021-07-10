@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+currenttime="$(date +%s)"
+
 # Events are placed in $calendarfile.
 # The lines of this file are written in the following format.
 #
@@ -11,16 +13,14 @@
 # useful for daily timetables), or '16:45 January 11 2020' are valid.
 # The file may contain comments (#) and empty lines.
 
-calendarfile="$HOME/bin/calendar"
+calendarfile="$HOME/.config/calendar"           # calendar event file
 
 todaydate="$(date +%D)"
-currenttime="$(date +%s)"
 
 IFS=,
 cat "$calendarfile" | \
 sed 's/^\s*#.*$//g' | sed '/^$/d' | \
 while read line; do
-        
         read etime title description meetcode <<< $line
         eventdate="$(date --date=$etime +%D)"
 
