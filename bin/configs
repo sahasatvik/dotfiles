@@ -11,3 +11,5 @@ ranger (rifle)                                          ~/.config/ranger/rifle.c
 zathura                                                 ~/.config/zathura/zathurarc
 xresources                                              ~/.Xresources
 configs                                                 ~/bin/configs
+meets                                                   ~/bin/meets
+calendar                                                ~/bin/timetable/calendar
