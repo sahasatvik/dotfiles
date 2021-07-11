@@ -4,6 +4,9 @@ meetfile="$HOME/.config/meets"
 
 format_entries() {
         cat $meetfile \
+                | sed 's/^\s*#.*$//g' \
+                | sed '/^$/d' \
+                | sed 's/\s*,\s*/,/g' \
                 | awk -F',' '{printf "%-26s<span color=\"#777777\">%-46s</span> %16s\n", $1, $2, $3}'
 }
 
