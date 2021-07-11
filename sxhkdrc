@@ -16,9 +16,7 @@ super + alt + @c
 
 # finder
 super + alt + @space
-        found="$(fd --base-directory=$HOME | sort | rofi -dmenu -i -p 'find')" && \
-        [[ ! -z "$found" ]] && \
-        xdg-open "$HOME/$found"
+        ~/bin/finder.sh
 
 # file browser
 super + alt + @f
@@ -26,21 +24,15 @@ super + alt + @f
 
 # edit config
 super + alt + @e
-        configpath="$(cat ~/.config/configs | rofi -dmenu -i -p 'config' | sed 's/^.*~//g')" && \
-        [[ ! -z "$configpath" ]] && \
-        xdg-open "$HOME/$configpath"
+        ~/bin/configs.sh
 
 # google meet
 super + alt + @m
-        meetcode="$(~/bin/meets.sh | rofi -dmenu -markup-rows -i -p 'gmeet' | sed 's/^.* //g')" && \
-        [[ ! -z "$meetcode" ]] && \
-        chrome  --profile-directory="Profile 1" "https://meet.google.com/$meetcode"
+        ~/bin/meets.sh
 
 # today's events
 super + alt + @n
-        meetcode="$(~/bin/today.sh | sort | rofi -dmenu -markup-rows -i -p 'today' | sed 's/<[^>]*>//g' | sed 's/^.* //g')" && \
-        [[ ! -z "$meetcode" ]] && \
-        chrome  --profile-directory="Profile 1" "https://meet.google.com/$meetcode"
+        ~/bin/today.sh
 
 # browser
 super + alt + {_, shift + }b

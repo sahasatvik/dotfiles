@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 currenttime="$(date +%s)"
+todaydate="$(date +%D)"
 
 # Events are placed in $calendarfile.
 # The lines of this file are written in the following format.
@@ -15,25 +16,38 @@ currenttime="$(date +%s)"
 
 calendarfile="$HOME/.config/calendar"           # calendar event file
 
-todaydate="$(date +%D)"
+format_entries() {
+        IFS=,
+        cat "$calendarfile" | \
+        sed 's/^\s*#.*$//g' | sed '/^$/d' | sed 's/\s*,\s*/,/g' | \
+        while read line; do
+                read etime title description meetcode <<< $line
+                eventdate="$(date --date=$etime +%D)"
 
-IFS=,
-cat "$calendarfile" | \
-sed 's/^\s*#.*$//g' | sed '/^$/d' | sed 's/\s*,\s*/,/g' | \
-while read line; do
-        read etime title description meetcode <<< $line
-        eventdate="$(date --date=$etime +%D)"
+                [[ "$eventdate" != "$todaydate" ]] && continue
 
-        [[ "$eventdate" != "$todaydate" ]] && continue
-        
-        eventtime="$(date --date=$etime +%s)"
-        hhmm="$(date --date=$etime +%H:%M)"
+                eventtime="$(date --date=$etime +%s)"
+                hhmm="$(date --date=$etime +%H:%M)"
 
-        if [[ $eventtime -lt $currenttime ]]; then
-                echo "$hhmm,$title,$description,$meetcode" | \
-                awk -F',' '{printf "<span color=\"#444444\">%6s  %-16s  %-46s %16s</span>\n", $1, $2, $3, $4}'
-        else
-                echo "$hhmm,$title,$description,$meetcode" | \
-                awk -F',' '{printf "%6s  %-16s  <span color=\"#777777\">%-46s</span> %16s\n", $1, $2, $3, $4}'
-        fi
-done
+                if [[ $eventtime -lt $currenttime ]]; then
+                        echo "$hhmm,$title,$description,$meetcode" | \
+                        awk -F',' '{printf "<span color=\"#444444\">%6s  %-16s  %-46s %16s</span>\n", $1, $2, $3, $4}'
+                else
+                        echo "$hhmm,$title,$description,$meetcode" | \
+                        awk -F',' '{printf "%6s  %-16s  <span color=\"#777777\">%-46s</span> %16s\n", $1, $2, $3, $4}'
+                fi
+        done
+}
+
+get_code() {
+        format_entries \
+                | sort \
+                | rofi -dmenu -markup-rows -i -p 'today' \
+                | sed 's/<[^>]*>//g' \
+                | sed 's/^.* //g'
+}
+
+meetcode="$(get_code)"
+if [[ ! -z "$meetcode" ]]; then
+        chrome --profile-directory="Profile 1" "https://meet.google.com/$meetcode"
+fi
