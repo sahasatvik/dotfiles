@@ -2,7 +2,7 @@
 
 percent=$(acpi | sed -E 's/.*[^0-9]([0-9]+)%.*/\1/g')
 if [[ $percent -gt 50 ]]; then
-        echo $percent
+        echo "$percent%"
 elif [[ $percent -gt 25 ]]; then
         echo "<b><span foreground='#cd9a76'>$percent%</span></b>"
 elif [[ $percent -gt 15 ]]; then
