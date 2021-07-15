@@ -16,11 +16,13 @@ todaydate="$(date +%D)"
 
 calendarfile="$HOME/.config/calendar"           # calendar event file
 
+strip_excess() {
+        sed 's/^\s*#.*$//g' | sed '/^$/d' | sed 's/\s*,\s*/,/g'
+}
+
 format_entries() {
         IFS=,
-        cat "$calendarfile" | \
-        sed 's/^\s*#.*$//g' | sed '/^$/d' | sed 's/\s*,\s*/,/g' | \
-        while read line; do
+        cat "$calendarfile" | strip_excess | while read line; do
                 read etime title description meetcode <<< $line
                 eventdate="$(date --date=$etime +%D)"
 
@@ -30,11 +32,9 @@ format_entries() {
                 hhmm="$(date --date=$etime +%H:%M)"
 
                 if [[ $eventtime -lt $currenttime ]]; then
-                        echo "$hhmm,$title,$description,$meetcode" | \
-                        awk -F',' '{printf "<span color=\"#444444\">%6s  %-16s  %-46s %16s</span>\n", $1, $2, $3, $4}'
+                        printf "<span color=\"#444444\">%6s  %-16s  %-46s %16s</span>\n" "$hhmm" "$title" "$description" "$meetcode"
                 else
-                        echo "$hhmm,$title,$description,$meetcode" | \
-                        awk -F',' '{printf "%6s  %-16s  <span color=\"#777777\">%-46s</span> %16s\n", $1, $2, $3, $4}'
+                        printf "%6s  %-16s  <span color=\"#777777\">%-46s</span> %16s\n" "$hhmm" "$title" "$description" "$meetcode"
                 fi
         done
 }
