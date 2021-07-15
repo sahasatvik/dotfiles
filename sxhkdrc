@@ -26,17 +26,21 @@ super + alt + @f
 super + alt + @e
         ~/bin/configs.sh
 
-# google meet
-super + alt + @m
-        ~/bin/meets.sh
-
 # today's events
 super + alt + @n
         ~/bin/today.sh
 
+# google meet links (from events)
+super + alt + @g
+        ~/bin/meets.sh
+
 # browser
 super + alt + {_, shift + }b
         chrome --new-window --profile-directory="{Default,Profile 1}"
+
+# gmail
+super + alt + {_, shift + }m
+        chrome --profile-directory="{Default,Profile 1}" --app="https://mail.google.com"
 
 # time/date toggle
 super + alt + t

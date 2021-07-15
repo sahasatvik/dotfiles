@@ -1,17 +1,23 @@
 #!/usr/bin/env sh
 
-meetfile="$HOME/.config/meets"
+calendarfile="$HOME/.config/calendar"
+
+strip_excess() {
+        sed 's/^\s*#.*$//g' | sed '/^$/d' | sed 's/\s*,\s*/,/g'
+}
 
 format_entries() {
-        cat $meetfile \
-                | sed 's/^\s*#.*$//g' \
-                | sed '/^$/d' \
-                | sed 's/\s*,\s*/,/g' \
-                | awk -F',' '{printf "%-26s<span color=\"#777777\">%-46s</span> %16s\n", $1, $2, $3}'
+        IFS=,
+        cat "$calendarfile" | strip_excess | while read line; do
+                read etime title description meetcode <<< $line
+                [[ -z "$meetcode" ]] && continue
+                printf "  %-22s  <span color=\"#777777\">%-46s</span> %16s\n" "$title" "$description" "$meetcode"
+        done
 }
 
 get_code() {
         format_entries \
+                | sort -u \
                 | rofi -dmenu -markup-rows -i -p 'gmeet' \
                 | sed 's/^.* //g'
 }
