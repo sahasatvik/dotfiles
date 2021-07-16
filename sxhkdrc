@@ -2,37 +2,13 @@
 # wm hotkeys
 #
 
-# terminal emulator
+# urxvt
 super + Return
         urxvt
 
-# program launcher
-super + @space
-        rofi -show run -modi run,drun
-
-# calculator
-super + alt + @c
-        rofi -show calc -modi calc
-
-# finder
-super + alt + @space
-        ~/bin/finder.sh
-
-# file browser
-super + alt + @f
-        rofi -show file-browser -modi file-browser
-
-# edit config
-super + alt + @e
-        ~/bin/configs.sh
-
-# today's events
-super + alt + @n
-        ~/bin/today.sh
-
-# google meet links (from events)
-super + alt + @g
-        ~/bin/meets.sh
+# urxvt (floating)
+super + alt + Return
+        bspc rule -a \* -o state=floating && urxvt
 
 # browser
 super + alt + {_, shift + }b
@@ -46,13 +22,45 @@ super + alt + {_, shift + }m
 super + alt + t
         { pkill -x clock.sh && pkill -x lemonbar } || ~/bin/clock.sh | lemonbar -pd -F "#DDDDDD" -B "#1D1F21" -f "Fira Mono" -g 230x30+1690
 
-# make sxhkd reload its configuration files
+# reload sxhkd
 super + alt + k
         pkill -USR1 -x sxhkd
+
+#
+# rofi menus
+#
+
+# rofi
+super + @space
+        rofi -show run -modi run,drun
 
 # show keybindings
 super + @slash
         ~/bin/sxhkd_help.sh | rofi -dmenu -i -p "keys"
+
+# calculator
+super + alt + @c
+        rofi -show calc -modi calc
+
+# finder
+super + alt + @space
+        ~/bin/finder.sh
+
+# file browser
+super + alt + @f
+        rofi -show file-browser -modi file-browser
+
+# edit configs
+super + alt + @e
+        ~/bin/configs.sh
+
+# today's events
+super + alt + @n
+        ~/bin/today.sh
+
+# google meet links
+super + alt + @g
+        ~/bin/meets.sh
 
 #
 # bspwm hotkeys
@@ -62,7 +70,7 @@ super + @slash
 super + alt + {q,r}
         bspc {quit,wm -r}
 
-# close and kill
+# close/kill
 super + {_,shift + }w
         bspc node -{c,k}
 
@@ -183,7 +191,6 @@ super + alt + 5
 # take a screenshot of a window
 super + alt + 6
         maim -st 9999999 "$HOME/Pictures/screenshots/screenshot-$(date +%s).png"
-
 
 #
 # status
