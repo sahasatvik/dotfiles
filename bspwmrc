@@ -3,6 +3,7 @@
 xsetroot -cursor_name left_ptr &
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x dunst > /dev/null || dunst &
+pgrep -x light-locker > /dev/null || light-locker &
 calcurse --daemon &
 nitrogen --restore &
 

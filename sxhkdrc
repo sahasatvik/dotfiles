@@ -26,6 +26,10 @@ super + alt + t
 super + alt + k
         pkill -USR1 -x sxhkd
 
+# lock screen
+super + alt + z
+        light-locker-command -l
+
 #
 # rofi menus
 #
