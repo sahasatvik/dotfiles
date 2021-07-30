@@ -2,14 +2,13 @@
 #PREAMBLE
 
 snippet article basic template
-	\documentclass[a4paper, 11pt, reqno]{article}
+	\documentclass[11pt]{article}
 	
-	\usepackage[utf8]{inputenc}
 	\usepackage[T1]{fontenc}
 	\usepackage{geometry}
 	\usepackage{amsmath, amssymb, amsthm}
 
-	\geometry{letterpaper}
+	\geometry{a4paper}
 
 	\title{${1}}
 	\author{Satvik Saha}
@@ -19,27 +18,68 @@ snippet article basic template
 		\maketitle
 		${3}
 	\end{document}
+snippet homework homework template
+	\documentclass[10pt]{article}
+
+	\usepackage[T1]{fontenc}
+	\usepackage{geometry}
+	\usepackage{amsmath, amssymb, amsthm}
+
+	\geometry{a4paper, margin=1in}
+
+	\renewcommand{\labelenumi}{(\roman{enumi})}
+
+	\newcounter{prob}
+	\newcommand{\problem}{\stepcounter{prob}\paragraph{Exercise \arabic{prob}}}
+	\newcommand{\solution}{\paragraph{Solution}}
+
+	\newcommand{\C}{\mathbb{C}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\N}{\mathbb{N}}
+
+	\title{${1}}
+	\author{Satvik Saha}
+	\date{}
+
+	\begin{document}
+	    \noindent\textbf{IISER Kolkata} \hfill \textbf{${2}}
+	    \vspace{3pt}
+	    \hrule
+	    \vspace{3pt}
+	    \begin{center}
+		\LARGE{\textbf{${3}}}
+	    \end{center}
+	    \vspace{3pt}
+	    \hrule
+	    \vspace{3pt}
+	    Satvik Saha, \texttt{19MS154} \hfill \today
+	    \vspace{20pt}
+
+	    ${4}
+
+	\end{document}
 #newcommand
 snippet nc \newcommand
-	\newcommand{\${1:cmd}}[${2:opt}]{${3:realcmd}} ${4}
+	\newcommand{${1:cmd}}[${2:opt}]{${3:realcmd}}
 #usepackage
 snippet up \usepackage
-	\usepackage[${1:options}]{${2:package}} ${3}
+	\usepackage{${1:package}}
 #newunicodechar
 snippet nuc \newunicodechar
-	\newunicodechar{${1}}{${2:\ensuremath}${3:tex-substitute}}} ${4}
+	\newunicodechar{${1}}{${2:\ensuremath}${3:tex-substitute}}}
 #DeclareMathOperator
 snippet dmo \DeclareMathOperator
-	\DeclareMathOperator{${1}}{${2}} ${3}
+	\DeclareMathOperator{${1}}{${2}}
 #newtheorem
 snippet nth \newtheorem
-	\newtheorem{${1:env}}{${2:Theorem}} ${3}
+	\newtheorem{${1:env}}{${2:Theorem}}
 #problem-solution setup
 snippet probsol
 	\newcounter{prob}
-	\def\problem{\stepcounter{prob}\paragraph{Problem \arabic{prob}}}
-	\def\solution{\paragraph{Solution}}
-
+	\newcommand{\problem}{\stepcounter{prob}\paragraph{Exercise \arabic{prob}}}
+	\newcommand{\solution}{\paragraph{Solution}}
 #DOCUMENT
 # \begin{}...\end{}
 snippet beg \begin{} ... \end{} block
@@ -116,10 +156,10 @@ snippet lab \label
 	\label{${1:eq:}${2:fig:}${3:tab:}${0}}
 #Tag
 snippet tag \Tag
-	\tag{${1}} ${2}
+	\tag{${1}}
 #boxed
 snippet box \boxed
-	\boxed{${1}} ${2}
+	\boxed{${1}}
 # Enumerate
 snippet enum enumerate environment
 	\begin{enumerate}
@@ -240,7 +280,6 @@ snippet subp \subparagraph
 	${0}
 snippet ni \noindent
 	\noindent
-	${0}
 #References
 snippet itd description \item
 	\item[${1:description}] ${2:item}
@@ -258,52 +297,52 @@ snippet index \index
 	\index{${1:index}} ${0}
 #Citations
 snippet citen \citen
-	\citen{${1}} ${2}
+	\citen{${1}}
 # natbib citations
 snippet citep \citep
-	\citep{${1}} ${2}
+	\citep{${1}}
 snippet citet \citet
-	\citet{${1}} ${2}
+	\citet{${1}}
 snippet cite \cite[]{}
-	\cite[${1}]{${2}} ${3}
+	\cite[${1}]{${2}}
 snippet citea \citeauthor
-	\citeauthor{${1}} ${2}
+	\citeauthor{${1}}
 snippet citey \citeyear
-	\citeyear{${1}} ${2}
+	\citeyear{${1}}
 snippet fcite \footcite[]{}
-	\footcite[${1}]{${2}}${3}
+	\footcite[${1}]{${2}}
 #Formating text: italic, bold, underline, small capital, emphase ..
 snippet ita italic text
-	\textit{${1}} ${2}
+	\textit{${1}}
 snippet bf bold face text
-	\textbf{${1}} ${2}
+	\textbf{${1}}
 snippet under underline text
-	\underline{${1}} ${2}
+	\underline{${1}}
 snippet emp emphasize text
-	\emph{${1}} ${2}
+	\emph{${1}}
 snippet sc small caps text
-	\textsc{${1}} ${2}
+	\textsc{${1}}
 #Choosing font
 snippet sf sans serife text
-	\textsf{${1}} ${2}
+	\textsf{${1}}
 snippet rm roman font text
-	\textrm{${1}} ${2}
+	\textrm{${1}}
 snippet tt typewriter (monospace) text
-	\texttt{${1}} ${2}
+	\texttt{${1}}
 #Math font
 snippet mf mathfrak
-	\mathfrak{${1}} ${2}
+	\mathfrak{${1}}
 snippet mc mathcal
-	\mathcal{${1}} ${2}
+	\mathcal{${1}}
 snippet ms mathscr
-	\mathscr{${1}} ${2}
+	\mathscr{${1}}
 snippet mr mathrm
-	\mathrm{${1}} ${2}
+	\mathrm{${1}}
 snippet mb mathbb
-	\mathbb{${1}} ${2}
+	\mathbb{${1}}
 #misc
 snippet ft \footnote
-	\footnote{${1}} ${2}
+	\footnote{${1}}
 snippet fig figure environment (includegraphics)
 	\begin{figure}
 	\begin{center}
@@ -361,9 +400,9 @@ snippet bmat bmat
 		$1
 	\end{bmatrix}
 snippet eqv equivalence
-	\; \equiv \; ${1}
+	\; \equiv \; ${0}
 snippet sr square root
-	\sqrt{${1}}${2}
+	\sqrt{${1}}
 snippet sq square
 	^2
 snippet cb cube
@@ -385,37 +424,37 @@ snippet exp exponential
 snippet ln natural logarithm
 	\ln
 snippet log logarithm
-	\log_{${1}}${2}
+	\log_{${1}}
 snippet ceil ceiling
-	\left\lceil ${1} \right\rceil ${2}
+	\left\lceil ${1} \right\rceil
 snippet floor floor
-	\left\lfloor ${1} \right\rfloor ${2}
+	\left\lfloor ${1} \right\rfloor
 snippet stackrel \stackrel{}{}
-	\stackrel{${1:above}}{${2:below}} ${3}
+	\stackrel{${1:above}}{${2:below}}
 snippet frac \frac{}{}
-	\frac{${1:num}}{${2:denom}} ${3}
+	\frac{${1:num}}{${2:denom}}
 snippet // \frac{}{}
-	\frac{${1:num}}{${2:denom}} ${3}
+	\frac{${1:num}}{${2:denom}}
 snippet fun "function" iA
-	${1:f}\colon {${2:\R}} \to ${3:\R} ${4}
+	${1:f}\colon {${2:\R}} \to ${3:\R}
 snippet derv derivative
-	\frac{\mathrm{d} ${1}}{\mathrm{d}${2:x}} ${3}
+	\frac{\mathrm{d} ${1}}{\mathrm{d}${2:x}}
 snippet pderv partial derivative
-	\frac{\partial ${1}}{\partial ${2:x}} ${3}
+	\frac{\partial ${1}}{\partial ${2:x}}
 snippet dint integral
-	\int_{${1:-\infty}}^{${2:\infty}} ${3}\: ${4:dx} ${5}
+	\int_{${1:-\infty}}^{${2:\infty}} ${3}\: ${4:dx}
 snippet int integral
-	\int ${1:x}\: \mathrm{d}${2:x} ${3}
+	\int ${1:x}\: \mathrm{d}${2:x}
 snippet sum sum
-	\sum_{${1:k}=${2:1}}^{${3:\infty}} ${4} ${5}
+	\sum_{${1:k}=${2:1}}^{${3:\infty}}
 snippet taylor taylor
-	\sum_{${1:k}=${2:0}}^{${3:\infty}} ${4:c_$1} (x-a)^$1 ${5}
+	\sum_{${1:k}=${2:0}}^{${3:\infty}} ${4:c_$1} (x-a)^$1
 snippet lim limit
-	\lim_{${1:n} \to ${2:\infty}} ${3} 
+	\lim_{${1:n} \to ${2:\infty}}
 snippet prod product
-	\prod_{${1:n=${2:1}}}^{${3:\infty}} ${4}
+	\prod_{${1:n=${2:1}}}^{${3:\infty}}
 snippet bol bol
-	\left(${1:x} - ${2:\delta}, $1 + $2 \right) ${3}
+	\left(${1:x} - ${2:\delta}, $1 + $2 \right)
 #blocks
 snippet slide slide
 	\begin{slide}{$1}
@@ -472,7 +511,7 @@ snippet lsi
 snippet url
 	\url{${1}} ${0}
 snippet href
-	\href{${1}}{${2}} ${0}
+	\href{${1:url}}{${2}} ${0}
 # URL from Clipboard.
 snippet urlc
 	\url{`@+`} ${0}
