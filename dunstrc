@@ -68,7 +68,7 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 2
+    separator_height = 1
 
     # Padding between text and separator.
     padding = 12
@@ -81,7 +81,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 2
+    frame_width = 0
 
     # Defines color of the frame around the notification window.
     frame_color = "#555555"
@@ -92,7 +92,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = frame
+    separator_color = "#000000"
 
     # Sort messages by urgency.
     sort = yes
@@ -209,7 +209,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/rofi -dmenu -p dunst
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/chrome

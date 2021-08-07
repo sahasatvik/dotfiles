@@ -4,7 +4,7 @@ configuration {
         padding: 16;
         line-margin: 2;
         line-padding: 1;
-        bw: 1;
+        bw: 0;
         separator-style: "none";
         font: "Fira Mono 12";
         hide-scrollbar: true;

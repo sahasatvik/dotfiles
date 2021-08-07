@@ -4,12 +4,13 @@ xsetroot -cursor_name left_ptr &
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x dunst > /dev/null || dunst &
 pgrep -x light-locker > /dev/null || light-locker &
+pgrep -x picom > /dev/null || picom &
 calcurse --daemon &
 nitrogen --restore &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9
 
-bspc config border_width                2
+bspc config border_width                0
 bspc config window_gap                  6
 bspc config top_padding                 0
 
