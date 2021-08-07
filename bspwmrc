@@ -5,8 +5,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x dunst > /dev/null || dunst &
 pgrep -x light-locker > /dev/null || light-locker &
 pgrep -x picom > /dev/null || picom &
-calcurse --daemon &
-nitrogen --restore &
+feh --bg-scale ~/Pictures/wallpapers/leaves_dark.jpg &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9
 
