@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
 Clock() {
-        DATETIME=$(date "+%a %b %d, %T")
+        DATE=$(date "+%a %b %d")
+        TIME=$(date "+%T")
 
-        echo -n "$DATETIME"
+        echo -n "%{F#bbbbbb}$DATE%{F-}, $TIME"
 }
 
 while true; do
