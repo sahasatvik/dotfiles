@@ -43,4 +43,5 @@ bspc rule -a Google-chrome              state=fullscreen
 bspc rule -a Matplotlib                 state=floating
 
 # lemonbar
-~/bin/panel &
+killall panel; setsid ~/bin/panel &
+
