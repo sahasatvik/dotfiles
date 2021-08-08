@@ -20,7 +20,7 @@ super + alt + {_, shift + }m
 
 # toggle lemonbar
 super + alt + t
-        ~/bin/bar_toggle.sh
+        pkill --signal SIGTERM -x panel || ~/bin/panel
 
 # reload sxhkd
 super + alt + k

@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+
+PANEL_FIFO=/tmp/panel-fifo
+PANEL_FONT="Fira Mono-10"
+PANEL_HEIGHT=24
+
+if [ $(pgrep -cx panel) -gt 1 ] ; then
+        printf "%s\n" "The panel is already running." >&2
+        exit 1
+fi
+
+trap 'bspc config top_padding 0; trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+
+bspc config top_padding $PANEL_HEIGHT
+
+bspc subscribe > "$PANEL_FIFO" &
+
+while true; do
+        echo "C" $(date +"%T")
+        sleep 1
+done > "$PANEL_FIFO" &
+
+while true; do
+        echo "D" $(date "+%a %b %d")
+        sleep 5
+done > "$PANEL_FIFO" &
+
+cat "$PANEL_FIFO" | ~/bin/panel_bar | lemonbar -F "#DDDDDD" -B "#1D1F21" -f "$PANEL_FONT" -g x$PANEL_HEIGHT | sh &
+
+wait

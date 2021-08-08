@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+
+while read -r line; do
+        case $line in
+                C*)
+                        clock="${line#?}"
+                        ;;
+                D*)
+                        date="%{F#bbbbbb}${line#?},%{F-}"
+                        ;;
+                W*)
+                        wm_info=""
+                        IFS=':'
+                        set -- ${line#?}
+                        while [ $# -gt 0 ]; do
+                                item=$1
+                                name=${item#?}
+                                click="%{A:bspc desktop -f '$name':} $name %{A}"
+                                case $item in
+                                        O*|F*)
+                                                wm_info="$wm_info%{F#1d1f21}%{B#81a2be}$click%{B-}%{F-}"
+                                                ;;
+                                        o*)
+                                                wm_info="$wm_info%{F#ffffff}$click%{F-}"
+                                                ;;
+                                        f*)
+                                                wm_info="$wm_info%{F#969896}$click%{F-}"
+                                                ;;
+                                esac
+                                shift
+                        done
+                        ;;
+        esac
+        echo "%{l}${wm_info}%{r}${date}${clock} "
+done
