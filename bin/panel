@@ -29,6 +29,9 @@ while true; do
         sleep 5
 done > "$PANEL_FIFO" &
 
-cat "$PANEL_FIFO" | ~/bin/panel_bar | lemonbar -F "#DDDDDD" -B "#1D1F21" -f "$PANEL_FONT" -g x$PANEL_HEIGHT | sh &
+cat "$PANEL_FIFO" | ~/bin/panel_bar | lemonbar -F "#DDDDDD" -B "#1D1F21" -f "$PANEL_FONT" -g x$PANEL_HEIGHT -a 16| sh &
+
+until bar_id=$(xdo id -n lemonbar); do sleep 0.001; done
+xdo above -t $(xdo id -n root) $bar_id
 
 wait
