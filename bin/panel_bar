@@ -6,7 +6,7 @@ while read -r line; do
                         clock="${line#?}"
                         ;;
                 D*)
-                        date="%{F#bbbbbb}${line#?},%{F-}"
+                        date="%{F#969896}${line#?},%{F-}"
                         ;;
                 W*)
                         wm_info=""
@@ -29,6 +29,8 @@ while read -r line; do
                                 esac
                                 shift
                         done
+                        wm_info="%{A4:bspc desktop -f next.local:}$wm_info%{A}"
+                        wm_info="%{A5:bspc desktop -f prev.local:}$wm_info%{A}"
                         ;;
         esac
         echo "%{l}${wm_info}%{r}${date}${clock} "
