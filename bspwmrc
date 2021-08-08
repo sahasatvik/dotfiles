@@ -4,6 +4,9 @@
 xsetroot -cursor_name left_ptr &
 hsetroot -solid "#1d1f21" &
 
+# map capslock to escape
+setxkbmap -option caps:escape
+
 # hotkey daemon
 pgrep -x sxhkd > /dev/null || sxhkd &
 
@@ -41,4 +44,3 @@ bspc rule -a Matplotlib                 state=floating
 
 # lemonbar
 ~/bin/panel &
-xdo above -t $(xdo id -n root) $(xdo id -n lemonbar) &
