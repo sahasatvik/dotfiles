@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 PANEL_FIFO=/tmp/panel-fifo
-PANEL_FONT="Fira Mono-10"
+PANEL_FONT="Fira Code Nerd Font-10"
 PANEL_HEIGHT=24
 
 if [ $(pgrep -cx panel) -gt 1 ] ; then

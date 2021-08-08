@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+music=""
+
 while read -r line; do
         case $line in
                 C*)
@@ -7,6 +9,19 @@ while read -r line; do
                         ;;
                 D*)
                         date="%{F#969896}${line#?},%{F-}"
+                        ;;
+                Mstopped*|Mexiting*)
+                        music=""
+                        ;;
+                Mplaying*)
+                        title="$(cmus-remote -C status | grep 'tag title' | sed 's/tag title //g')"
+                        music="%{A:cmus-remote -u:}%{A} $title"
+                        music="%{F#969896}$music%{F-}"
+                        ;;
+                Mpaused*)
+                        title="$(cmus-remote -C status | grep 'tag title' | sed 's/tag title //g')"
+                        music="%{A:cmus-remote -u:}%{A} $title"
+                        music="%{F#969896}$music%{F-}"
                         ;;
                 W*)
                         wm_info=""
@@ -33,5 +48,5 @@ while read -r line; do
                         wm_info="%{A5:bspc desktop -f prev.local:}$wm_info%{A}"
                         ;;
         esac
-        echo "%{l}${wm_info}%{r}${date}${clock} "
+        echo "%{l}${wm_info}%{c}${music}%{r}${date}${clock} "
 done
