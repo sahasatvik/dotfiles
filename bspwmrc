@@ -1,21 +1,31 @@
 #!/usr/bin/env sh
 
+# set pointer and wallpaper
 xsetroot -cursor_name left_ptr &
 hsetroot -solid "#1d1f21" &
+
+# hotkey daemon
 pgrep -x sxhkd > /dev/null || sxhkd &
+
+# notification daemon
 pgrep -x dunst > /dev/null || dunst &
+
+# locker
 pgrep -x light-locker > /dev/null || light-locker &
+
+# compositor
 pgrep -x picom > /dev/null || picom &
+
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9
 
 bspc config border_width                0
 bspc config window_gap                  6
-bspc config top_padding                 0
+bspc config top_padding                 24
 
 bspc config split_ratio                 0.5
 bspc config borderless_monocle          true
-bspc config gapless_monocle             true
+bspc config gapless_monocle             false
 bspc config focus_follows_pointer       false
 
 bspc config focused_border_color        "#555555"
@@ -27,3 +37,11 @@ bspc rule -a feh                        state=floating
 bspc rule -a Zathura                    state=tiled
 bspc rule -a Google-chrome              state=fullscreen
 bspc rule -a Matplotlib                 state=floating
+
+
+# lemonbar
+pgrep -x bar_clock.sh  > /dev/null || ~/bin/bar_clock.sh  | lemonbar -pd -F "#DDDDDD" -B "#1D1F21" -f "Fira Mono-10" -g 180x24+1740 &
+pgrep -x bar_spaces.sh > /dev/null || ~/bin/bar_spaces.sh | lemonbar -pd -F "#DDDDDD" -B "#1D1F21" -f "Fira Mono-10" -g 220x24+0 | sh &
+
+xdo above -t $(xdo id -n root) $(xdo id -n lemonbar)
+

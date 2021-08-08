@@ -18,9 +18,9 @@ super + alt + {_, shift + }b
 super + alt + {_, shift + }m
         chrome --profile-directory="{Default,Profile 1}" --app="https://mail.google.com"
 
-# time/date toggle
+# toggle lemonbar
 super + alt + t
-        { pkill -x clock.sh && pkill -x lemonbar } || ~/bin/clock.sh | lemonbar -pd -F "#DDDDDD" -B "#1D1F21" -f "Fira Mono" -g 230x30+1690
+        ~/bin/bar_toggle.sh
 
 # reload sxhkd
 super + alt + k
