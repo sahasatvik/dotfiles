@@ -18,6 +18,10 @@ super + alt + {_, shift + }b
 super + alt + {_, shift + }m
         chrome --profile-directory="{Default,Profile 1}" --app="https://mail.google.com"
 
+# whatsapp web
+super + alt + w
+        chrome --profile-directory="Profile 1" --app="https://web.whatsapp.com"
+
 # toggle lemonbar
 super + alt + t
         pkill --signal SIGTERM -x panel || ~/bin/panel
