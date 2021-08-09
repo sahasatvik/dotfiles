@@ -24,7 +24,7 @@ super + alt + w
 
 # toggle lemonbar
 super + alt + t
-        pkill --signal SIGTERM -x panel || ~/bin/panel
+        pkill -SIGTERM -x panel || ~/bin/panel
 
 # reload sxhkd
 super + alt + k
@@ -199,6 +199,30 @@ super + alt + 5
 # take a screenshot of a window
 super + alt + 6
         maim -st 9999999 "$HOME/Pictures/screenshots/screenshot-$(date +%s).png"
+
+#
+# screenrecords
+#
+
+# start recording the whole screen
+super + alt + 8
+        ~/bin/screenrecord.sh
+
+# start recording a window
+super + alt + 9
+        ~/bin/screenrecord.sh window
+
+# start recording the whole screen with microphone audio
+super + alt + shift + 8
+        ~/bin/screenrecord.sh microphone
+
+# start recording a window with microphone audio
+super + alt + shift + 9
+        ~/bin/screenrecord.sh window microphone
+
+# stop recording the screen
+super + alt + 0
+        pkill -SIGTERM -x screenrecord.sh
 
 #
 # status
