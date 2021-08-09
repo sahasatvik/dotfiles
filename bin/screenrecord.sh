@@ -17,7 +17,7 @@ stop_recording() {
         trap - SIGTERM
         kill -SIGINT $pid 2>/dev/null
         notify-send -t 2000 -u low "Recording stopped"
-        ffmpeg -i "$filemkv" -c:v libx264 -c:a aac "$filempg"
+        ffmpeg -i "$filemkv" -af 'lowpass=3000, highpass=200, afftdn=tn=enabled' -c:v libx264 -c:a aac "$filempg"
         notify-send -t 2000 -u low "Recording converted"
 }
 
