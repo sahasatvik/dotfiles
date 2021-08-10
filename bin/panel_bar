@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 music=""
+record=""
 
 while read -r line; do
         case $line in
@@ -22,6 +23,12 @@ while read -r line; do
                         title="$(cmus-remote -C status | grep 'tag title' | sed 's/tag title //g')"
                         music="%{A:cmus-remote -u:}%{A} $title"
                         music="%{F#969896}$music%{F-}"
+                        ;;
+                Rstarted*)
+                        record="%{A:pkill -SIGTERM -x screenrecord.sh:}%{F#FF8B8B} 雷 %{F-}%{A}"
+                        ;;
+                Rprocessing*|Rdone*)
+                        record=""
                         ;;
                 W*)
                         wm_info=""
@@ -48,5 +55,5 @@ while read -r line; do
                         wm_info="%{A5:bspc desktop -f prev.local:}$wm_info%{A}"
                         ;;
         esac
-        echo "%{l}${wm_info}%{c}${music}%{r}${date}${clock} "
+        echo "%{l}${wm_info}%{c}${music}%{r}${record}${date}${clock} "
 done

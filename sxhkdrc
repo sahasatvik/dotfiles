@@ -212,13 +212,13 @@ super + alt + 8
 super + alt + 9
         ~/bin/screenrecord.sh window
 
-# start recording the whole screen with microphone audio
-super + alt + shift + 8
-        ~/bin/screenrecord.sh microphone
+# start recording the whole screen with microphone/desktop audio
+super + alt + {shift,ctrl} + 8
+        ~/bin/screenrecord.sh {microphone, desktop}
 
-# start recording a window with microphone audio
-super + alt + shift + 9
-        ~/bin/screenrecord.sh window microphone
+# start recording a window with microphone/desktop audio
+super + alt + {shift,ctrl} + 9
+        ~/bin/screenrecord.sh window {microphone, desktop}
 
 # stop recording the screen
 super + alt + 0
