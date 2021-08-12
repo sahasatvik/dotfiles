@@ -24,5 +24,5 @@ get_code() {
 
 meetcode="$(get_code)"
 if [[ ! -z "$meetcode" ]]; then
-        chrome --profile-directory="Profile 1" "https://meet.google.com/$meetcode"
+        chrome --profile-directory="Profile 1" --app="https://meet.google.com/$meetcode"
 fi
