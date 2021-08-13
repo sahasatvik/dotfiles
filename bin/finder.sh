@@ -6,7 +6,9 @@ get_filepath() {
                 | rofi -dmenu -i -p 'find'
 }
 
-filepath="$(get_filepath)"
+filepath="$HOME/$(get_filepath)"
+filedir=$(dirname "$filepath")
 if [[ ! -z "$filepath" ]]; then
-        xdg-open "$HOME/$filepath"
+        cd "$filedir"
+        xdg-open "$filepath"
 fi
