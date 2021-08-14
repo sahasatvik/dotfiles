@@ -1,9 +1,6 @@
 [submodule "vim/pack/complete/start/autocomplete-popup"]
 	path = vim/pack/complete/start/autocomplete-popup
 	url = https://github.com/vim-scripts/AutoComplPop
-[submodule "vim/pack/filetype/start/latex-box"]
-	path = vim/pack/filetype/start/latex-box
-	url = https://github.com/LaTeX-Box-Team/LaTeX-Box
 [submodule "vim/pack/interface/start/colorizer"]
 	path = vim/pack/interface/start/colorizer
 	url = https://github.com/lilydjwg/colorizer
@@ -64,3 +61,6 @@
 [submodule "vim/pack/complete/start/youcompleteme"]
 	path = vim/pack/complete/start/youcompleteme
 	url = https://github.com/ycm-core/YouCompleteMe
+[submodule "vim/pack/filetype/start/vimtex"]
+	path = vim/pack/filetype/start/vimtex
+	url = https://github.com/lervag/vimtex

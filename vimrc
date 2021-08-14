@@ -17,8 +17,11 @@ set shortmess+=F
 
 set listchars=tab:▏\ 
 set list
+set conceallevel=1
 
 let mapleader = ','
+
+set mouse=a
 
 " Statusline and ruler
 set ruler
@@ -41,8 +44,7 @@ let g:indentLine_color_tty_light = 7
 let g:indentLine_color_dark = 1
 let g:indentLine_char = '▏'
 let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_concealcursor=0
-let g:indentLine_conceallevel = 1
+let g:indentLine_setConceal = 0
 
 " Highlight search
 set hlsearch
@@ -58,7 +60,7 @@ filetype plugin on
 augroup filetype_settings
         autocmd!
         autocmd Filetype plaintex setlocal ft=tex
-        autocmd Filetype css,html,javascript,markdown,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
+        autocmd Filetype tex,css,scss,html,javascript,markdown,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
         autocmd Filetype java,c,cpp,go setlocal signcolumn=yes
         autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType make setlocal noexpandtab
@@ -96,8 +98,8 @@ map ,. <Esc>:make<Return>
 
 augroup tex_commands
         autocmd!
-        autocmd Filetype tex noremap ,. <Esc>:LatexView<Return>
-        autocmd Filetype tex noremap <> :autocmd TextChanged,TextChangedI <buffer> silent write<Return>
+        autocmd Filetype tex noremap ,. <Esc>:VimtexView<Return>
+        autocmd Filetype tex setlocal textwidth=85 conceallevel=0
 augroup END
 
 " Colorscheme
@@ -156,6 +158,7 @@ let g:ycm_filetype_blacklist = {
       \ 'leaderf': 1,
       \ 'mail': 1,
       \ 'css': 1,
+      \ 'scss': 1,
       \ 'html': 1
       \}
 let g:ycm_key_list_select_completion = ['<Down>']
@@ -166,7 +169,7 @@ nnoremap <leader>f :YcmCompleter FixIt<CR>
 " Emmet
 let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,scss EmmetInstall
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -174,7 +177,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Latex
-let g:tex_conceal = ""
-let g:LatexBox_viewer = "open -a Skim"
-let g:LatexBox_latexmk_preview_continuously=1
-let g:LatexBox_quickfix=2
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+let g:tex_conceal=''
