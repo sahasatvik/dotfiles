@@ -52,12 +52,6 @@
 [submodule "oh-my-zsh/custom/plugins/zsh-autosuggestions"]
 	path = oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "vim/pack/complete/start/auto-pairs"]
-	path = vim/pack/complete/start/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs
-[submodule "vim/pack/complete/start/vim-closetag"]
-	path = vim/pack/complete/start/vim-closetag
-	url = https://github.com/alvan/vim-closetag
 [submodule "vim/pack/complete/start/youcompleteme"]
 	path = vim/pack/complete/start/youcompleteme
 	url = https://github.com/ycm-core/YouCompleteMe
