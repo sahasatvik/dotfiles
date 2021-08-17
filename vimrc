@@ -110,6 +110,7 @@ colorscheme base16-tomorrow-night
 highlight clear SpellBad
 highlight SpellBad cterm=underline gui=underline
 nnoremap <leader>s a<C-X><C-S>
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Enter to finish completion
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
