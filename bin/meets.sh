@@ -16,13 +16,16 @@ format_entries() {
 }
 
 get_code() {
+        { printf "  %-22s  %-46s %16s\n" "Google Meet" "" "............"; \
         format_entries \
-                | sort -u \
+                | sort -u; } \
                 | rofi -dmenu -markup-rows -i -p 'gmeet' \
                 | sed 's/^.* //g'
 }
 
 meetcode="$(get_code)"
-if [[ ! -z "$meetcode" ]]; then
-        chrome --profile-directory="Profile 1" --app="https://meet.google.com/$meetcode"
+[[ -z "$meetcode" ]] && exit 1;
+if [[ "$meetcode" == "............" ]]; then
+        meetcode=""
 fi
+chrome --profile-directory="Profile 1" --app="https://meet.google.com/$meetcode"
