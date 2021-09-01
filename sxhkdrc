@@ -30,9 +30,6 @@ super + alt + t
 super + alt + k
         pkill -USR1 -x sxhkd
 
-# lock screen
-super + alt + z
-        light-locker-command -l
 
 #
 # rofi menus
@@ -56,7 +53,7 @@ super + alt + @space
 
 # file browser
 super + alt + @f
-        rofi -show file-browser -modi file-browser
+        rofi -show filebrowser -modi filebrowser
 
 # edit configs
 super + alt + @e
