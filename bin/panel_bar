@@ -39,8 +39,11 @@ while read -r line; do
                                 name=${item#?}
                                 click="%{A:bspc desktop -f '$name':} $name %{A}"
                                 case $item in
-                                        O*|F*)
-                                                wm_info="$wm_info%{F#1d1f21}%{B#81a2be}$click%{B-}%{F-}"
+                                        O*)
+                                                wm_info="$wm_info%{F#ffffff}%{B#373b41}$click%{B-}%{F-}"
+                                                ;;
+                                        F*)
+                                                wm_info="$wm_info%{F#969896}%{B#373b41}$click%{B-}%{F-}"
                                                 ;;
                                         o*)
                                                 wm_info="$wm_info%{F#ffffff}$click%{F-}"
