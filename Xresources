@@ -1,25 +1,26 @@
 ! URxvt configuration
 
-URxvt.scrollBar:        false
-URxvt.scrollBar_right:  false
+URxvt.font:                     xft:Fira Code Nerd Font:style=Regular:size=12, xft:Symbola:style=Regular:size=12
+URxvt.boldFont:                 xft:Fira Code Nerd Font:style=Bold:size=12
+URxvt.italicFont:               xft:Fira Mono:style=Italic:size=12
+URxvt.boldItalicFont:           xft:Fira Mono:style=Bold Italic:size=12
+URxvt.cursorBlink:              true
+URxvt.internalBorder:           12
 
-URxvt.font:             xft:Fira Code Nerd Font:style=Regular:size=12, xft:Symbola:style=Regular:size=12
-URxvt.boldFont:         xft:Fira Code Nerd Font:style=Bold:size=12
-URxvt.italicFont:       xft:Fira Mono:style=Italic:size=12
-URxvt.boldItalicFont:   xft:Fira Mono:style=Bold Italic:size=12
+URxvt.keysym.Control-Up:        \033[1;5A
+URxvt.keysym.Control-Down:      \033[1;5B
+URxvt.keysym.Control-Left:      \033[1;5D
+URxvt.keysym.Control-Right:     \033[1;5C
 
-URxvt.cursorBlink:      true
+URxvt.scrollBar:                false
+URxvt.scrollBar_right:          false
+URxvt.scrollTtyOutput:          false
+URxvt.scrollWithBuffer:         true
+URxvt.scrollTtyKeypress:        true
 
-URxvt.internalBorder:   12
-
-URxvt.keysym.Control-Up:     \033[1;5A
-URxvt.keysym.Control-Down:   \033[1;5B
-URxvt.keysym.Control-Left:   \033[1;5D
-URxvt.keysym.Control-Right:  \033[1;5C
-
-URxvt.perl-ext-common:  default,matcher
-URxvt.url-launcher:     /usr/bin/xdg-open
-URxvt.matcher.button:   1
+URxvt.perl-ext-common:          default,matcher
+URxvt.url-launcher:             /usr/bin/xdg-open
+URxvt.matcher.button:           1
 
 ! Colours : Tomorrow Night
 #define t_background            #1d1f21
@@ -35,38 +36,38 @@ URxvt.matcher.button:   1
 #define t_blue                  #81a2be
 #define t_purple                #b294bb
 
-*.foreground:   t_foreground
-*.background:   t_background
-*.cursorColor:  #aeafad
+*.foreground:                   t_foreground
+*.background:                   t_background
+*.cursorColor:                  #aeafad
 
 ! Black / Grey
-*.color0:       #1d1f21
-*.color8:       #666666
+*.color0:                       #1d1f21
+*.color8:                       #666666
 
 ! Red / Bright Red
-*.color1:       t_red
-*.color9:       #FF3334
+*.color1:                       t_red
+*.color9:                       #FF3334
 
 ! Green + Bright Green
-*.color2:       t_green
-*.color10:      #9ec400
+*.color2:                       t_green
+*.color10:                      #9ec400
 
 ! Yellow (Orange) + Bright Yellow (Yellow)
-*.color3:       t_orange
-*.color11:      t_yellow
+*.color3:                       t_orange
+*.color11:                      t_yellow
 
 ! Blue + Bright Blue
-*.color4:       t_blue
-*.color12:      t_blue
+*.color4:                       t_blue
+*.color12:                      t_blue
 
 ! Magenta (Purple) + Bright Magenta
-*.color5:       t_purple
-*.color13:      #b777e0
+*.color5:                       t_purple
+*.color13:                      #b777e0
 
 ! Cyan (Aqua) + Bright Cyan
-*.color6:       t_aqua
-*.color14:      #54ced6
+*.color6:                       t_aqua
+*.color14:                      #54ced6
 
 ! Light Grey + White
-*.color7:       t_foreground
-*.color15:      #ffffff
+*.color7:                       t_foreground
+*.color15:                      #ffffff
