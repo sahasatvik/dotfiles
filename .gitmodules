@@ -55,6 +55,7 @@
 [submodule "vim/pack/complete/start/youcompleteme"]
 	path = vim/pack/complete/start/youcompleteme
 	url = https://github.com/ycm-core/YouCompleteMe
+        ignore = dirty
 [submodule "vim/pack/filetype/start/vimtex"]
 	path = vim/pack/filetype/start/vimtex
 	url = https://github.com/lervag/vimtex
