@@ -13,9 +13,6 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # notification daemon
 pgrep -x dunst > /dev/null || dunst &
 
-# locker
-pgrep -x light-locker > /dev/null || light-locker &
-
 # compositor
 pgrep -x picom > /dev/null || picom &
 
