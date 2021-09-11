@@ -16,6 +16,9 @@ pgrep -x dunst > /dev/null || dunst &
 # compositor
 pgrep -x picom > /dev/null || picom &
 
+# urxvt daemon
+pgrep -x urxvtd > /dev/null || urxvtd -q -o -f
+
 
 # bspc monitor -d α β γ δ ε ζ η θ ι
 bspc monitor -d 1 2 3 4 5 6 7 8 9

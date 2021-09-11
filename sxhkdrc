@@ -4,11 +4,11 @@
 
 # urxvt
 super + Return
-        urxvt
+        urxvtc
 
 # urxvt (floating)
 super + alt + Return
-        bspc rule -a \* -o state=floating && urxvt
+        bspc rule -a \* -o state=floating && urxvtc
 
 # browser
 super + alt + {_, shift + }b
