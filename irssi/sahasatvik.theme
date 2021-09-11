@@ -337,13 +337,13 @@ formats = {
     url = "Home page for {channelhilight $0}: %_$1%_";
   };
   "Irssi::Script::adv_windowlist" = {
-    awl_display_key = "%X7H $H$C$S %N";
-    awl_display_nokey = "%X7H $H$C$S %N";
-    awl_display_key_active = "%W $H$C$S %N";
-    awl_display_nokey_active = "%W $H$C$S %N";
-    awl_display_key_visible = "%W $H$C$S %N";
-    awl_display_nokey_visible = "%W $H$C$S %N";
-    awl_display_header = "%B $C %N";
+    awl_display_key = "%X7H$H$C$S %N";
+    awl_display_nokey = "%X7H$H$C$S %N";
+    awl_display_key_active = "%W$H$C$S %N";
+    awl_display_nokey_active = "%W$H$C$S %N";
+    awl_display_key_visible = "%W$H$C$S %N";
+    awl_display_nokey_visible = "%W$H$C$S %N";
+    awl_display_header = "%B$C %N";
     awl_title = "\\";
   };
 };

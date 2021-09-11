@@ -102,7 +102,7 @@ use strict;
 use warnings;
 use vars qw($VERSION %IRSSI);
 
-$VERSION = "2.6"; # c99d17e529ad9ce
+$VERSION = "2.9"; # a4c78e85092a271
 
 %IRSSI = (
     authors     => "Peter 'kinlo' Leurs, Uwe Dudenhoeffer, " .
@@ -123,7 +123,7 @@ $VERSION = "2.6"; # c99d17e529ad9ce
 # Use /SET  to change the value or /TOGGLE to switch it on or off.
 #
 #
-#    Tip:     The command 'trackbar' is very usefull if you bind that to a key,
+#    Tip:     The command 'trackbar' is very useful if you bind that to a key,
 #             so you can easily jump to the trackbar. Please see 'help bind' for
 #             more information about keybindings in Irssi.
 #
@@ -172,6 +172,8 @@ $VERSION = "2.6"; # c99d17e529ad9ce
 
 ## Version history:
 #
+#  2.9: - fix crash on /mark in empty window
+#  2.8: - fix /^join bug
 #  2.7: - add /set trackbar_all_manual option
 #  2.5: - merge back on scripts.irssi.org
 #       - fix /trackbar redraw broken in 2.4
@@ -295,10 +297,22 @@ sub remove_one_trackbar {
     }
 }
 
-sub add_one_trackbar {
+sub add_one_trackbar_pt1 {
     my $win = shift;
     my $view = shift || $win->view;
+
+    my $last_cur_line = ($view->{buffer}{cur_line}||+{})->{_irssi};
     $win->print(line($win->{width}), MSGLEVEL_NEVER);
+
+    my $cur_line = ($win->view->{buffer}{cur_line}||+{})->{_irssi}; # get a fresh buffer
+
+    ($last_cur_line//'') ne ($cur_line//'') # printing was successful
+}
+
+sub add_one_trackbar_pt2 {
+    my $win = shift;
+    my $view = $win->view;
+
     $view->set_bookmark_bottom('trackbar');
     $unseen_trackbar{ $win->{_irssi} } = 1;
     Irssi::signal_emit("window trackbar added", $win);
@@ -310,10 +324,16 @@ sub update_one_trackbar {
     my $view = shift || $win->view;
     my $force = shift;
     my $ignored = win_ignored($win, $view);
-    remove_one_trackbar($win, $view)
-	if $force || !defined $force || !$ignored;
-    add_one_trackbar($win, $view)
+    my $success;
+
+    $success = add_one_trackbar_pt1($win, $view) ? 1 : 0
 	if $force || !$ignored;
+
+    remove_one_trackbar($win, $view)
+	if ( $success || !defined $success ) && ( $force || !defined $force || !$ignored );
+
+    add_one_trackbar_pt2($win)
+	if $success;
 }
 
 sub win_ignored {
@@ -580,7 +600,7 @@ Irssi::command_bind('trackbar'           => 'trackbar_runsub');
 Irssi::command_bind('mark'               => 'cmd_mark');
 Irssi::command_bind_last('help' => 'cmd_help');
 
-# Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'trackbar_loaded', $IRSSI{name}, $VERSION, $IRSSI{authors});
+Irssi::printformat(MSGLEVEL_CLIENTCRAP, 'trackbar_loaded', $IRSSI{name}, $VERSION, $IRSSI{authors});
 
 # workaround for issue #271
 { package Irssi::Nick }

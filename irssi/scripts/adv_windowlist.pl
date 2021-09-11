@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-our $VERSION = '1.7'; # 9926bc6b1f9d094
+our $VERSION = '1.9.1'; # fcc63b8a943723b
 our %IRSSI = (
     authors     => 'Nei',
     contact     => 'Nei @ anti@conference.jabber.teamidiot.de',
@@ -426,19 +426,18 @@ sub syncLines {
 		my ($item, $get_size_only) = @_;
 
 		my $text = $actString[0];
-		# my $title = _get_format(set 'title');
-		# if (length $title) {
-		#     $title =~ s{\\(.)|(.)}{
-		# 	defined $2 ? quotemeta $2
-		# 	    : $1 eq 'V' ? '\u'
-		# 	    : $1 eq ':' ? quotemeta ':%n'
-		# 	    : $1 =~ /^[uUFQE]$/ ? "\\$1"
-		# 	    : quotemeta "\\$1"
-		# 	}sge;
-		#     $title = eval qq{"$title"};
-		#     $title .= ' ';
-		# }
-                my $title = ' ';
+		my $title = _get_format(set 'title');
+		if (length $title) {
+		    $title =~ s{\\(.)|(.)}{
+			defined $2 ? quotemeta $2
+			    : $1 eq 'V' ? '\u'
+			    : $1 eq ':' ? quotemeta ':%n'
+			    : $1 =~ /^[uUFQE]$/ ? "\\$1"
+			    : quotemeta "\\$1"
+			}sge;
+		    $title = eval qq{"$title"};
+		    $title .= ' ';
+		}
 		my $pat = defined $text ? "{sb $title\$*}" : '{sb }';
 		$text //= '';
 		$item->default_handler($get_size_only, $pat, $text, 0);
@@ -648,22 +647,27 @@ sub sb_format_expand { # Irssi::current_theme->format_expand wrapper
 }
 
 { my $term_type = Irssi::version > 20040819 ? 'term_charset' : 'term_type';
-  local $@;
-  eval { require Text::CharWidth; };
-  unless ($@) {
-      *screen_length = sub { Text::CharWidth::mbswidth($_[0]) };
+  if (Irssi->can('string_width')) {
+      *screen_length = sub { Irssi::string_width($_[0]) };
   }
   else {
-      my $err = $@; chomp $err; $err =~ s/\sat .* line \d+\.$//;
-      #Irssi::print("%_$IRSSI{name}: warning:%_ Text::CharWidth module failed to load. Length calculation may be off! Error was:");
-      print "%_$IRSSI{name}:%_ $err";
-      *screen_length = sub {
-	  my $temp = shift;
-	  if (lc Irssi::settings_get_str($term_type) eq 'utf-8') {
-	      Encode::_utf8_on($temp);
-	  }
-	  length($temp)
-      };
+    local $@;
+    eval { require Text::CharWidth; };
+    unless ($@) {
+        *screen_length = sub { Text::CharWidth::mbswidth($_[0]) };
+    }
+    else {
+        my $err = $@; chomp $err; $err =~ s/\sat .* line \d+\.$//;
+        #Irssi::print("%_$IRSSI{name}: warning:%_ Text::CharWidth module failed to load. Length calculation may be off! Error was:");
+        print "%_$IRSSI{name}:%_ $err";
+        *screen_length = sub {
+  	  my $temp = shift;
+  	  if (lc Irssi::settings_get_str($term_type) eq 'utf-8') {
+  	      Encode::_utf8_on($temp);
+  	  }
+  	  length($temp)
+        };
+    }
   }
   sub as_uni {
       no warnings 'utf8';
@@ -1006,7 +1010,7 @@ sub _spread_items {
     my $curLine;
     my $curLen = 0;
     if ($S{shared_sbar}) {
-	$curLen += $S{shared_sbar}[0];
+	$curLen += $S{shared_sbar}[0] + 2;
 	$width -= $S{shared_sbar}[2];
     }
     my $mouse_header_check = 0;
@@ -1262,6 +1266,7 @@ sub syncViewer {
 		ha => $S{height_adjust},
 		mc => $S{maxcolumns},
 		ml => $S{maxlines},
+		tc => $S{true_colour},
 	       );
 	    $viewer{client_settings} = 1;
 	}
@@ -1353,6 +1358,7 @@ sub reset_awl {
 	mouse_escape  => Irssi::settings_get_int( 'mouse_escape'),
 	line_shade    => Irssi::settings_get_time(set 'last_line_shade'),
 	no_mode_hint  => Irssi::settings_get_bool(set 'no_mode_hint'),
+	true_colour   => Irssi::parse_special('$colors_ansi_24bit'),
 	viewer_launch	      => Irssi::settings_get_bool(set 'viewer_launch'),
 	viewer_launch_env     => Irssi::settings_get_str(set 'viewer_launch_env'),
 	viewer_xwin_command   => Irssi::settings_get_str(set 'viewer_xwin_command'),
@@ -1429,7 +1435,7 @@ return sub {
     }
 
     my $new_settings = join "\n", $VIEWER_MODE
-	 ? ("\\", $S{block}, $S{height_adjust}, $S{maxlines}, $S{maxcolumns})
+	 ? ("\\", $S{block}, $S{height_adjust}, $S{maxlines}, $S{maxcolumns}, $S{true_colour})
 	 : ("!", $S{placement}, $S{position});
 
     my $first_viewer = $settings_str eq '1';
@@ -2009,8 +2015,8 @@ awl_init();
 
 # Mouse script based on irssi mouse patch by mirage
 { my $mouse_status = -1; # -1:off 0,1,2:filling mouse_combo
-  my @mouse_combo; # 0:button 1:x 2:y
-  my @mouse_previous; # previous contents of mouse_combo
+  my @mouse_combo = (-1, -1, -1); # 0:button 1:x 2:y
+  my @mouse_previous = (-1, -1, -1); # previous contents of mouse_combo
 
   sub mouse_xterm_off {
       $mouse_status = -1;
@@ -2118,6 +2124,8 @@ UNITCHECK
     sub setab16    { "\e[10" . $_[0] . 'm' }
     sub setaf256   { "\e[38;5;" . $_[0] . 'm' }
     sub setab256   { "\e[48;5;" . $_[0] . 'm' }
+    sub setafrgb   { "\e[38;2;" . $_[0] . ';' . $_[1] . ';' . $_[2] . 'm' }
+    sub setabrgb   { "\e[48;2;" . $_[0] . ';' . $_[1] . ';' . $_[2] . 'm' }
     sub sgr0       { "\e[0m" }
     sub bold       { "\e[1m" }
     sub it         { "\e[3m" }
@@ -2304,16 +2312,84 @@ UNITCHECK
 	    $ansi_table{ "X7\U$ch" } =
 		sub { Terminfo::setaf256($close) };
     }
+    # fe-windows.c:color_24bit_256
+    my $cc = sub {
+	use integer;
+
+	my $cstep_size = 40;
+	my $cstep_start = 0x5f;
+
+	my $gstep_size = 10;
+	my $gstep_start = 0x08;
+
+	my @dist = (0) x 3;
+	my @r; my @gr;
+
+	for (my $i = 0; $i < 3; ++$i) {
+	    my $n = $_[$i];
+	    $gr[$i] = -1;
+	    if ($n < $cstep_start /2) {
+		$r[$i] = 0;
+		$dist[$i] = -$cstep_size/2;
+	    }
+	    else {
+		$r[$i] = 1+(($n-$cstep_start + $cstep_size /2)/$cstep_size);
+		$dist[$i] = (($n-$cstep_start + $cstep_size /2)% $cstep_size - $cstep_size/2);
+	    }
+	    if ($n < $gstep_start /2) {
+		$gr[$i] = -1;
+	    }
+	    else {
+		$gr[$i] = (($n-$gstep_start + $gstep_size /2)/$gstep_size);
+	    }
+	}
+	if ($r[0] == $r[1] && $r[1] == $r[2] &&
+	    4*abs($dist[0]) < $gstep_size && 4*abs($dist[1]) < $gstep_size && 4*abs($dist[2]) < $gstep_size) {
+	    # skip gray detection
+	}
+	else {
+	    my $j = $r[1] == $r[2] ? 0 : 1;
+	    if (($r[0] == $r[1] || $r[$j] == $r[2]) && abs($r[$j]-$r[($j+1)% 3]) <= 1) {
+		my $k = $gr[1] == $gr[2] ? 0 : 1;
+		if (($gr[0] == $gr[1] || $gr[$k] == $gr[2]) && abs($gr[$k]-$gr[($k+1)% 3]) <= 2) {
+		    if ($gr[$k] < 0) {
+			$r[0] = $r[1] = $r[2] = 0;
+		    }
+		    elsif ($gr[$k] > 23) {
+			$r[0] = $r[1] = $r[2] = 5;
+		    }
+		    else {
+			$r[0] = 6;
+			$r[1] = ($gr[$k] / 6);
+			$r[2] = $gr[$k]% 6;
+		    }
+		}
+	    }
+	}
+	return 16 + $r[0]*36 + $r[1] * 6 + $r[2];
+    };
+    $ansi_table{z} = sub {
+	my ($r, $g, $b) = map { hex } unpack '(A2)*', $_[0];
+	$vars{tc} eq 'ON' ? Terminfo::setabrgb($r, $g, $b) : Terminfo::setab256($cc->($r, $g, $b));
+    };
+    $ansi_table{Z} = sub {
+	my ($r, $g, $b) = map { hex } unpack '(A2)*', $_[0];
+	$vars{tc} eq 'ON' ? Terminfo::setafrgb($r, $g, $b) : Terminfo::setaf256($cc->($r, $g, $b));
+    };
     sub formats_to_ansi_basic {
 	my $o = shift;
-	$o =~ s/(%(X..|x..|.))/exists $ansi_table{$2} ? $ansi_table{$2}->() : $1/gex;
+	$o =~ s{(%((Z|z)(......)|X..|x..|.))}{
+	    if ($ansi_table{$2}) { $ansi_table{$2}->() }
+	    elsif ($ansi_table{$3}) { $ansi_table{$3}->($4) }
+	    else { $1 }
+	}gex;
 	$o
     }
   }
 
   sub _header {
       my $str = $vars{title} // uc ::setc();
-      my $ccs = qr/%(?:X(?:[1-6][0-9A-Z]|7[A-X])|[0-9BCFGIKMNRUWY_])/i;
+      my $ccs = qr/%(?:Z(?:[0-9A-F]{6})|X(?:[1-6][0-9A-Z]|7[A-X])|[0-9BCFGIKMNRUWY_])/i;
       (my $stripstr = $str) =~ s/($ccs)//g;
       my $space = int( ((abs $vars{block}) - length $stripstr) / (1 + length $stripstr));
       if ($space > 0) {
@@ -2735,6 +2811,15 @@ UNITCHECK
 
 # Changelog
 # =========
+# 1.9.1
+# - fix crash on mouse click
+#
+# 1.9
+# - add %Z support to viewer
+#
+# 1.8
+# - use string_width in Irssi 1.2.0
+#
 # 1.7
 # - fix crash on invalid /set awl_sort, introduced in 1.6, reported by
 #   tpetazzoni
