@@ -146,22 +146,13 @@ endif
 " YouCompleteMe
 let g:ycm_error_symbol = '!!'
 let g:ycm_warning_symbol = '??'
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar': 1,
-      \ 'notes': 1,
-      \ 'markdown': 1,
-      \ 'netrw': 1,
-      \ 'unite': 1,
-      \ 'text': 1,
-      \ 'vimwiki': 1,
-      \ 'pandoc': 1,
-      \ 'infolog': 1,
-      \ 'leaderf': 1,
-      \ 'mail': 1,
-      \ 'css': 1,
-      \ 'scss': 1,
-      \ 'html': 1
-      \}
+let g:ycm_filetype_whitelist = {
+      \ 'c': 1,
+      \ 'cpp': 1,
+      \ 'python': 1,
+      \ 'java': 1,
+      \ 'go': 1,
+\}
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_confirm_extra_conf=0
 nnoremap <leader>r :YcmCompleter RefactorRename
