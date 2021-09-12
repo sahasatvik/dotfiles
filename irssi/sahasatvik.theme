@@ -320,8 +320,8 @@ formats = {
     own_msg_private_query = "{ownprivmsgnick $nickalign{ownprivnick $nickcolor$[.16]2$nicktrunc}}$1";
     pubmsg_me = "{pubmsgmenick $nickalign$2 {menick $nickcolor$[.16]0$nicktrunc}}$1";
     pubmsg_me_channel = "{pubmsgmenick $nickalign$3 {menick $nickcolor$[.16]0$nicktrunc}{msgchannel $1}}$2";
-    pubmsg_hilight = "{pubmsghinick $0 $nickalign$3 $[.16]1$nicktrunc}$2";
-    pubmsg_hilight_channel = "{pubmsghinick $0 $nickalign$4 $[.16]1$nicktrunc{msgchannel $2}}$3";
+    pubmsg_hilight = "{pubmsghinick $0 $nickalign$3 $nickcolor$[.16]1$nicktrunc}$2";
+    pubmsg_hilight_channel = "{pubmsghinick $0 $nickalign$4 $nickcolor$[.16]1$nicktrunc{msgchannel $2}}$3";
     pubmsg_channel = "{pubmsgnick $nickalign$3 {pubnick $nickcolor$[.16]0$nicktrunc}{msgchannel $1}}$2";
     msg_private_query = "{privmsgnick $nickalign$nickcolor$[.16]0$nicktrunc}$2";
 
