@@ -346,4 +346,5 @@ formats = {
     awl_display_header = "%B$C %N";
     awl_title = "\\";
   };
+  "Irssi::Script::trackbar" = { trackbar_loaded = ""; };
 };
