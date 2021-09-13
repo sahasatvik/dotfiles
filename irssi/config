@@ -2,13 +2,6 @@
 
 servers = (
   {
-    address = "chat.freenode.net";
-    chatnet = "freenode";
-    port = "6697";
-    use_tls = "yes";
-    tls_verify = "yes";
-  },
-  {
     address = "irc.snoonet.org";
     chatnet = "snoonet";
     port = "6697";
@@ -25,44 +18,23 @@ servers = (
 );
 
 chatnets = {
-  freenode = {
-    type = "IRC";
-    nick = "sahasatvik";
-    max_kicks = "1";
-    max_msgs = "4";
-    max_whois = "1";
-    sasl_mechanism = "PLAIN";
-    sasl_username = "sahasatvik";
-    sasl_password = "PASSWORD";
-  };
   snoonet = {
     type = "IRC";
-    nick = "sahasatvik";
+    nick = "NICK";
     sasl_mechanism = "PLAIN";
-    sasl_username = "sahasatvik";
+    sasl_username = "USERNAME";
     sasl_password = "PASSWORD";
   };
   liberachat = {
     type = "IRC";
-    nick = "sahasatvik";
+    nick = "NICK";
     sasl_mechanism = "PLAIN";
-    sasl_username = "sahasatvik";
+    sasl_username = "USERNAME";
     sasl_password = "PASSWORD";
   };
 };
 
 channels = (
-  { name = "#freenode"; chatnet = "freenode"; autojoin = "No"; },
-  { name = "##math"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "##physics"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "##chess"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#irssi"; chatnet = "freenode"; autojoin = "No"; },
-  { name = "#vim"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#git"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#zsh"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#macosx"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "##linux"; chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "##programming"; chatnet = "freenode"; autojoin = "Yes"; },
   { name = "#math"; chatnet = "Snoonet"; },
   { name = "#space"; chatnet = "Snoonet"; },
   { name = "##math"; chatnet = "liberachat"; autojoin = "yes"; },
@@ -249,8 +221,8 @@ statusbar = {
     window_empty = "{sb $winref{sbservertag $tag}}";
     wininfo = "{sb $tag:%W$winname$itemname%n}";
 
-    prompt = "{prompt $[.15]itemname}";
-    prompt_empty = "{prompt $winname}";
+    prompt = "{prompt $[-10]N}";
+    prompt_empty = "";
 
     topic = " $topic";
     topic_empty = " Irssi v$J - http://www.irssi.org";
@@ -321,7 +293,6 @@ statusbar = {
 
       items = {
         time = { priority = "-1"; };
-        promptspace = { priority = "-1"; };
         prompt = { priority = "-1"; };
         prompt_empty = { priority = "-1"; };
         awaybar = { priority = "5"; alignment = "right"; };
@@ -346,17 +317,17 @@ statusbar = {
 };
 settings = {
   core = {
-    real_name = "Satvik Saha";
-    user_name = "sahasatvik";
-    nick = "sahasatvik";
+    real_name = "REALNAME";
+    user_name = "USERNAME";
+    nick = "NICK";
     timestamp_format = "%H:%M:%S";
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "perl/core/scripts" = {
     neat_color_menick = "yes";
     neat_global_colors = "yes";
-    neat_dynamic = "no";
-    neat_maxlength = "16";
+    neat_dynamic = "yes";
+    neat_maxlength = "10";
     neat_shrink = "no";
     neat_colors = "X40X66X61X6LX37X3DX36X4CX46X5CX56X6CX6JX47X5DX6KX6DX57X6EX5EX4EX4KX4JX5JX4DX6RX3CX4IX4OX2DX2CX3IX3OX2JX3PX3JX1CX2IX1IX1OX1PX1DX1JX1QX2RX2KX3KX3QX2QX2PX1EX1LX1KX1RX1SX1MX1NX1TX2EX18X1FX19X1GX1AX1BX1HX2NX2HX3HX3NX2MX2GX2AX2FX2LX3LX3MX3GX29X23X25X24X14X15X2BX4NX22X45X6AX5HX3BX4HX3AX4GX39X4FX5LX5NX42X53X52X34X35X6BX4BX4AX48X5GX6HX5MX6MX6NX38X54X51X69X68X59X5FX6FX58X49X6G";
     awl_all_disable = "no";
@@ -385,7 +356,7 @@ settings = {
     fancy_abbrev = "head";
     neat_color_hinick = "yes";
   };
-  "irc/core" = { alternate_nick = "sahasatvik_"; };
+  "irc/core" = { alternate_nick = "NICK_"; };
   "fe-common/core" = {
     theme = "sahasatvik";
     show_names_on_join = "no";
@@ -403,7 +374,7 @@ keyboard = (
   { key = "meta-[M"; id = "command"; data = "mouse_xterm"; }
 );
 hilights = (
-  { text = "sahasatvik"; color = "%y"; nick = "yes"; word = "yes"; }
+  { text = "NICK"; color = "%y"; nick = "yes"; word = "yes"; }
 );
 windows = {
   1 = { immortal = "yes"; name = "status"; level = "ALL"; };
