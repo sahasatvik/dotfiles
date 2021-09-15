@@ -177,10 +177,10 @@ abstracts = {
   ##
 
   # used internally by this theme
-  action_core = "%_%m * %n$*%_ %K:%n%|%m";
+  action_core = "%_%m * %n$*%N %K:%n %|%m";
 
   # generic one that's used by most actions
-  action = "{action_core $*} ";
+  action = "{action_core $*}";
 
   # own action, both private/public
   ownaction = "{action $*}";
