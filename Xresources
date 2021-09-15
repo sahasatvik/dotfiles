@@ -18,7 +18,7 @@ URxvt.scrollTtyOutput:          false
 URxvt.scrollWithBuffer:         true
 URxvt.scrollTtyKeypress:        true
 
-URxvt.perl-ext-common:          default,matcher
+URxvt.perl-ext-common:          default,matcher,resize-font
 URxvt.url-launcher:             /usr/bin/xdg-open
 URxvt.matcher.button:           1
 
