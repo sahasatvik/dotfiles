@@ -53,7 +53,7 @@
 	path = oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "vim/pack/complete/start/youcompleteme"]
-	path = vim/pack/complete/start/youcompleteme
+	path = vim/pack/complete/opt/youcompleteme
 	url = https://github.com/ycm-core/YouCompleteMe
         ignore = dirty
 [submodule "vim/pack/filetype/start/vimtex"]
