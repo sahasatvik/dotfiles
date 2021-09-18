@@ -30,6 +30,10 @@ super + alt + t
 super + alt + k
         pkill -USR1 -x sxhkd
 
+# toggle wallpaper mode
+super + semicolon; w
+        pkill -USR1 -x background.sh
+
 
 #
 # rofi menus

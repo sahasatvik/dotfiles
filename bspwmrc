@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
 
-# set pointer and wallpaper
+# set pointer
 xsetroot -cursor_name left_ptr &
-hsetroot -solid "#1d1f21" &
+
+# wallpaper script
+killall background.sh; setsid ~/bin/background.sh &
 
 # merge Xresources
 xrdb ~/.Xresources &
@@ -22,6 +24,8 @@ pgrep -x picom > /dev/null || picom &
 # urxvt daemon
 pgrep -x urxvtd > /dev/null || urxvtd -q -o -f
 
+# lemonbar
+killall panel; setsid ~/bin/panel &
 
 # bspc monitor -d α β γ δ ε ζ η θ ι
 bspc monitor -d 1 2 3 4 5 6 7 8 9
@@ -44,7 +48,3 @@ bspc rule -a Zathura                    state=tiled
 bspc rule -a Thunar                     state=floating
 bspc rule -a Google-chrome              state=fullscreen
 bspc rule -a Matplotlib                 state=floating
-
-# lemonbar
-killall panel; setsid ~/bin/panel &
-
