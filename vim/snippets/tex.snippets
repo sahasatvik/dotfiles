@@ -197,9 +197,12 @@ snippet mat smart matrix environment
 # Cases
 snippet cas cases environment
 	\begin{cases}
-		${1:equation}, &\text{ if }${2:case}\
+		${1:equation}, &\text{ if } ${2:case} \\\\
 		${3}
 	\end{cases}
+# Case item
+snippet casi cases item
+	${1:equation}, &\text{ if } ${2:case} \\\\
 # Split
 snippet spl split environment
 	\begin{split}
@@ -472,7 +475,7 @@ snippet alert alertblock environment
 	\begin{alertblock}{${1:title}}
 		${2}
 	\end{alertblock}
-snippet example exampleblock environment
+snippet exampleb exampleblock environment
 	\begin{exampleblock}{${1:title}}
 		${2}
 	\end{exampleblock}
