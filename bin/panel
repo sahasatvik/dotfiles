@@ -25,8 +25,31 @@ while true; do
 done > "$PANEL_FIFO" &
 
 while true; do
-        echo "D" $(date "+%a %b %d")
+        echo "D" $(date "+%a %d %b")
         sleep 5
+done > "$PANEL_FIFO" &
+
+while true; do
+        echo "B" $(cat /sys/class/power_supply/BAT0/capacity)
+        
+        netstatus="$(iwconfig wlp2s0)"
+        
+        essid="$(echo $netstatus | grep -oe 'ESSID:[^ ]*')"
+        essid="${essid#ESSID:}"
+
+        if [[ "$essid" =~ "off" ]]; then
+                echo "N off"
+        else
+                quality="$(echo $netstatus | grep -oe "Link Quality=[^ ]*/[^ ]*")"
+                quality=${quality#Link Quality=}
+                numerator="${quality%/*}"
+                denominator="${quality#*/}"
+                percent="$(($numerator * 100 / $denominator))"
+
+                echo "N" $percent $essid
+        fi
+
+        sleep 10
 done > "$PANEL_FIFO" &
 
 cat "$PANEL_FIFO" | ~/bin/panel_bar | lemonbar -F "#DDDDDD" -B "#1D1F21" -f "$PANEL_FONT" -g x$PANEL_HEIGHT -a 16| sh &

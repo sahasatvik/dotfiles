@@ -1,15 +1,66 @@
 #!/usr/bin/bash
 
+verbose=""
 music=""
 record=""
+power=""
+network=""
+
+PANEL_FIFO=/tmp/panel-fifo
 
 while read -r line; do
         case $line in
+                verbose*)
+                        if [[ -z $verbose ]]; then
+                                verbose="yes"
+                        else
+                                verbose=""
+                        fi
+                        ;;
                 C*)
-                        clock="${line#?}"
+                        clock="${line#?} "
+                        clock="%{A:echo verbose > $PANEL_FIFO:}$clock%{A}"
                         ;;
                 D*)
-                        date="%{F#969896}${line#?},%{F-}"
+                        date="%{F#969896}${line#?}%{F-}"
+                        ;;
+                B*)
+                        adapter="$(cat /sys/class/power_supply/ADP0/online)"
+                        percent="${line#??}"
+                        if [[ $adapter -eq "0" ]]; then
+                                if [[ $percent -gt 50 ]]; then
+                                        power=" %{F#969896}$percent%%%{F-} "
+                                elif [[ $percent -gt 25 ]]; then
+                                        power=" %{F#cd9a76}$percent%%%{F-} "
+                                elif [[ $percent -gt 15 ]]; then
+                                        power=" %{F#ffaa55}$percent%%%{F-} "
+                                else
+                                        power=" %{F#ff3334}$percent%%%{F-} "
+                                fi
+                        else
+                                power=" %{F#969896}+$percent%%%{F-} "
+                        fi
+                        ;;
+                N*)     
+                        netstat="${line#??}"
+                        if [[ $netstat == "off" ]]; then
+                                network=""
+                        else
+                                percent="${netstat%% *}"
+                                if [[ $percent -gt 80 ]]; then
+                                        quality=""
+                                elif [[ $percent -gt 60 ]]; then
+                                        quality="%{F#969896}!%{F-}"
+                                elif [[ $percent -gt 40 ]]; then
+                                        quality="%{F#ffaa55}!%{F-}"
+                                elif [[ $percent -gt 20 ]]; then
+                                        quality="%{F#ff8855}!!%{F-}"
+                                else
+                                        quality="%{F#ff3334}!!%{F-}"
+                                fi
+                                essid=$(echo ${netstat#* } | tr -d '"')
+                                network=" $quality%{F#969896}$essid%{F-} "
+                        fi
                         ;;
                 Mstopped*|Mexiting*)
                         music=""
@@ -58,5 +109,9 @@ while read -r line; do
                         wm_info="%{A5:bspc desktop -f prev.local:}$wm_info%{A}"
                         ;;
         esac
-        echo "%{l}${wm_info}%{c}${music}%{r}${record}${date}${clock} "
+        if [[ -z $verbose ]]; then
+                echo "%{l}${wm_info}%{c}${music}%{r}${record}${date}${clock}"
+        else
+                echo "%{l}${wm_info}%{c}${music}%{r}${record}${network}${power}${date}${clock}"
+        fi
 done
