@@ -27,12 +27,16 @@ super + alt + t
         pkill -SIGTERM -x panel || ~/bin/panel
 
 # reload sxhkd
-super + alt + k
+super + alt + x
         pkill -USR1 -x sxhkd
 
 # toggle wallpaper mode
 super + semicolon; w
         pkill -USR1 -x background.sh
+
+# toggle desktop padding
+super + semicolon; p
+        ~/bin/padding.sh
 
 
 #
