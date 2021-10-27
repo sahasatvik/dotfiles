@@ -14,9 +14,9 @@ super + alt + Return
 super + alt + {_, shift + }b
         chrome --new-window --profile-directory="{Default,Profile 1}"
 
-# gmail
-super + alt + {_, shift + }m
-        chrome --profile-directory="{Default,Profile 1}" --app="https://mail.google.com"
+# email
+super + alt + m
+        thunderbird
 
 # whatsapp web
 super + alt + w
@@ -34,9 +34,9 @@ super + alt + x
 super + semicolon; w
         pkill -USR1 -x background.sh
 
-# toggle desktop padding
-super + semicolon; p
-        ~/bin/padding.sh
+# cycle desktop padding/window gap
+super + semicolon; {_, super +} p
+        ~/bin/padding.sh {padding,gap}
 
 # lock screen
 super + semicolon; l
@@ -126,7 +126,7 @@ super + ctrl + {m,c,s,z}
 # focus/swap
 #
 
-# focus the node in the given direction
+# focus/send node in the given direction
 super + {_,shift + }{h,j,k,l}
         bspc node -{f,s} {west,south,north,east}
 
@@ -152,7 +152,7 @@ super + {o,i}
         bspc node {older,newer} -f; \
         bspc wm -h on
 
-# focus or send to the given desktop
+# focus/send to the given desktop
 super + {_,shift + }{1-9}
         bspc {desktop -f,node -d} '^{1-9}'
 

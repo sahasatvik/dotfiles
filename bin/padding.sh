@@ -1,16 +1,16 @@
 #!/usr/bin/env sh
 
-current=$(bspc config -d focused top_padding)
-if [[ $current == "0" ]]; then
-        padding=8
-        gap=32
-else
-        padding=0
-        gap=6
+padding=$(bspc config -d focused top_padding)
+gap=$(bspc config -d focused window_gap)
+
+if [[ $1 == "padding" ]]; then
+        padding=$(( ($padding + 64) % 256 ))
+        for direction in top bottom left right ; do
+                bspc config -d focused "${direction}_padding" $padding
+        done
+elif [[ $1 == "gap" ]]; then
+        gap=$(( ($gap + 12) % 48 ))
+        bspc config -d focused window_gap $gap
 fi
 
-for direction in top bottom left right ; do
-        bspc config -d focused "${direction}_padding" $padding
-done
-bspc config -d focused window_gap $gap
 
