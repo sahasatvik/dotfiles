@@ -47,4 +47,4 @@ bspc rule -a feh                        state=floating
 bspc rule -a Zathura                    state=tiled
 bspc rule -a Thunar                     state=floating
 bspc rule -a Google-chrome              state=fullscreen
-bspc rule -a Matplotlib                 state=floating
+bspc rule -a matplotlib                 state=floating
