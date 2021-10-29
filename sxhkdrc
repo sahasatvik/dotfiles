@@ -3,12 +3,8 @@
 #
 
 # urxvt
-super + Return
-        urxvtc
-
-# urxvt (floating)
-super + alt + Return
-        bspc rule -a \* -o state=floating && urxvtc
+super + {_, alt +} Return
+        {_, bspc rule -a \* -o state=floating &&} urxvtc
 
 # browser
 super + alt + {_, shift + }b
@@ -117,6 +113,10 @@ super + {_,shift + }r
 # set the window state
 super + {t,shift + t,s,f}
         bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# make the window about to be opened float
+super + semicolon; f
+        bspc rule -a \* -o state=floating
 
 # set the node flags
 super + ctrl + {m,c,s,z}
