@@ -8,14 +8,14 @@ if [[ "$status" == "playing" ]]; then
 
         echo
         echo "<b>Playing</b>"
+        echo "$artist"
         echo "$title"
-        echo "<span foreground='#969896'>$artist</span>"
 elif [[ "$status" == "paused" ]]; then
         title="$(cmus-remote -C status | grep 'tag title' | sed 's/tag title //g')"
         artist="$(cmus-remote -C status | grep 'tag artist' | sed 's/tag artist //g')"
         
         echo
         echo "<b>Paused</b>"
+        echo "$artist"
         echo "$title"
-        echo "<span foreground='#969896'>$artist</span>"
 fi
