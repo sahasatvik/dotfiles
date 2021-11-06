@@ -64,6 +64,8 @@ augroup filetype_settings
         autocmd Filetype java,c,cpp,go setlocal signcolumn=yes
         autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType make setlocal noexpandtab
+        
+        autocmd Filetype rust nnoremap <leader>, :%! rustfmt<CR>
 
         autocmd FileType markdown setlocal nolist
         autocmd FileType markdown syntax region markdownMath start=/\$\$/ end=/\$\$/
@@ -91,6 +93,7 @@ augroup make_programs
         autocmd Filetype cpp setlocal makeprg=c++\ %\ -o\ %:p:h/a.out
         autocmd Filetype python setlocal makeprg=python3\ %
         autocmd Filetype c setlocal makeprg=cc\ %\ -o\ %:p:h/a.out
+        autocmd Filetype rust setlocal makeprg=cargo\ run
         autocmd Filetype html setlocal makeprg=w3m\ %
 augroup END
 
@@ -152,6 +155,7 @@ let g:ycm_filetype_whitelist = {
       \ 'python': 1,
       \ 'java': 1,
       \ 'go': 1,
+      \ 'rust': 1,
 \}
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_confirm_extra_conf=0
