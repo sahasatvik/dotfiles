@@ -26,12 +26,13 @@ done > "$PANEL_FIFO" &
 
 while true; do
         echo "D" $(date "+%a %d %b")
+        echo "B" $(cat /sys/class/power_supply/BAT0/capacity)
+        echo "MEM" $(free -m | grep Mem | awk '{printf "%.2f", $3/1000}')
+        
         sleep 5
 done > "$PANEL_FIFO" &
 
 while true; do
-        echo "B" $(cat /sys/class/power_supply/BAT0/capacity)
-        
         netstatus="$(iwconfig wlp2s0)"
         
         essid="$(echo $netstatus | grep -oe 'ESSID:[^ ]*')"

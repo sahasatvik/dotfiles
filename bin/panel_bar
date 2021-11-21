@@ -4,6 +4,7 @@ verbose=""
 music=""
 record=""
 power=""
+memory=""
 network=""
 
 PANEL_FIFO=/tmp/panel-fifo
@@ -23,6 +24,9 @@ while read -r line; do
                         ;;
                 D*)
                         date="%{F#969896}${line#?}%{F-}"
+                        ;;
+                MEM*)
+                        memory="%{F#969896}${line#???}G%{F-} "
                         ;;
                 B*)
                         adapter="$(cat /sys/class/power_supply/ADP0/online)"
@@ -112,6 +116,6 @@ while read -r line; do
         if [[ -z $verbose ]]; then
                 echo "%{l}${wm_info}%{c}${music}%{r}${record}${date}${clock}"
         else
-                echo "%{l}${wm_info}%{c}${music}%{r}${record}${network}${power}${date}${clock}"
+                echo "%{l}${wm_info}%{c}${music}%{r}${record}${network}${memory}${power}${date}${clock}"
         fi
 done
