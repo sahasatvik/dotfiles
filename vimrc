@@ -61,7 +61,7 @@ augroup filetype_settings
         autocmd!
         autocmd Filetype plaintex setlocal ft=tex
         autocmd Filetype tex,css,scss,html,javascript,markdown,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
-        autocmd Filetype java,c,cpp,go setlocal signcolumn=yes
+        autocmd Filetype java,c,cpp,go,rust setlocal signcolumn=yes
         autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType make setlocal noexpandtab
         
