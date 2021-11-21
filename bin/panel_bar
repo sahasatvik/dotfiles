@@ -6,6 +6,7 @@ record=""
 power=""
 memory=""
 network=""
+window=""
 
 PANEL_FIFO=/tmp/panel-fifo
 
@@ -26,7 +27,17 @@ while read -r line; do
                         date="%{F#969896}${line#?}%{F-}"
                         ;;
                 MEM*)
-                        memory="%{F#969896}${line#???}G%{F-} "
+                        megs="${line#???}"
+                        gigs=$(awk -v m=$megs 'BEGIN {printf "%.2f", m/1000}')
+                        if [[ $megs -lt 1000 ]]; then
+                                memory=" %{F#969896}${gigs}G%{F-} "
+                        elif [[ $megs -lt 2000 ]]; then
+                                memory=" %{F#cd9a76}${gigs}G%{F-} "
+                        elif [[ $megs -lt 3000 ]]; then
+                                memory=" %{F#ffaa55}${gigs}G%{F-} "
+                        else
+                                memory=" %{F#ff3334}${gigs}G%{F-} "
+                        fi
                         ;;
                 B*)
                         adapter="$(cat /sys/class/power_supply/ADP0/online)"

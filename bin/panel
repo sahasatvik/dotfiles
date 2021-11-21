@@ -27,7 +27,7 @@ done > "$PANEL_FIFO" &
 while true; do
         echo "D" $(date "+%a %d %b")
         echo "B" $(cat /sys/class/power_supply/BAT0/capacity)
-        echo "MEM" $(free -m | grep Mem | awk '{printf "%.2f", $3/1000}')
+        echo "MEM" $(free -m | grep Mem | awk '{print $3}')
         
         sleep 5
 done > "$PANEL_FIFO" &
