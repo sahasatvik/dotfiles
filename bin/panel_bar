@@ -6,7 +6,6 @@ record=""
 power=""
 memory=""
 network=""
-window=""
 
 PANEL_FIFO=/tmp/panel-fifo
 
