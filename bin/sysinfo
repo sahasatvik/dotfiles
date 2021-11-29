@@ -29,7 +29,7 @@ cols=$(tput cols)
 ((paddingc=$cols/2 - 12))
 lines=$(tput lines)
 
-for ((i=0; i < $lines/2 - 4; i++)); do echo; done
+for ((i=0; i < ($lines+1)/2 - 3; i++)); do echo; done
 
 printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" distro $distro
 printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" kernel $kernel
@@ -40,7 +40,7 @@ printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" wm $wm
 echo
 printf "%${paddingc}s%b\n" "" $colors
 
-for ((i=0; i < $lines/2 - 4; i++)); do echo; done
+for ((i=0; i < $lines/2 - 5; i++)); do echo; done
 
 # hide cursor
 trap 'tput cnorm' INT TERM
