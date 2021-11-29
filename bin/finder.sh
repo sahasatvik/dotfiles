@@ -10,5 +10,5 @@ filepath="$(get_filepath)"
 filedir=$(dirname "$HOME/$filepath")
 if [[ ! -z "$filepath" ]]; then
         cd "$filedir"
-        xdg-open "$HOME/$filepath"
+        xdg-open "$HOME/$filepath" &
 fi
