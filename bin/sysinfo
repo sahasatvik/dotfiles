@@ -1,0 +1,51 @@
+#!/usr/bin/env sh
+
+distro=arch
+kernel=$(uname -r | sed 's/-.*//')
+wm=bspwm
+shell=${SHELL##*/}
+term=${TERM%-256color}
+packages=$(pacman -Q | wc -l)
+
+# colours
+BLK="\e[30;1m"
+RED="\e[31m"
+GRN="\e[32m"
+YLW="\e[33m"
+BLU="\e[34m"
+PUR="\e[35m"
+CYN="\e[36m"
+WHT="\e[37m"
+GRY="\e[90;1m"
+RST="\e[0m"
+BLD="\033[1m"
+
+BAR="███"
+colors="$BLK$BAR$RST$RED$BAR$GRN$BAR$YLW$BAR$BLU$BAR$PUR$BAR$CYN$BAR$WHT$BAR$RST"
+
+# padding
+cols=$(tput cols)
+((padding=$cols/2 - 12))
+((paddingc=$cols/2 - 12))
+lines=$(tput lines)
+
+for ((i=0; i < $lines/2 - 4; i++)); do echo; done
+
+printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" distro $distro
+printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" kernel $kernel
+printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" packages $packages
+printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" shell $shell
+printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" terminal $term
+printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" wm $wm
+echo
+printf "%${paddingc}s%b\n" "" $colors
+
+for ((i=0; i < $lines/2 - 4; i++)); do echo; done
+
+# hide cursor
+trap 'tput cnorm' INT TERM
+tput civis
+read -n 1
+tput cnorm
+
+
