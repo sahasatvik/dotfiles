@@ -1,10 +1,10 @@
 # Arch
 
 ## Desktop
-![desktop](docs/screenshots/ranger.png)
+![desktop](docs/screenshots/desktop.png)
 
 ## Music
-![music](docs/screenshots/clock-gotop-cmus-cava.png)
+![music](docs/screenshots/music.png)
 
 ## Editing
 ![c-coding](docs/screenshots/editing.png)
