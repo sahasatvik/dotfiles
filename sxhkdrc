@@ -26,10 +26,6 @@ super + alt + t
 super + alt + x
         pkill -USR1 -x sxhkd
 
-# toggle wallpaper mode
-super + semicolon; w
-        pkill -USR1 -x background.sh
-
 # cycle desktop padding/window gap
 super + semicolon; {_, super +} p
         ~/bin/padding.sh {padding,gap}

@@ -3,8 +3,9 @@
 # set pointer
 xsetroot -cursor_name left_ptr &
 
-# wallpaper script
-killall background.sh; setsid ~/bin/background.sh &
+# set wallpaper
+walldir="$HOME/Pictures/wallpapers/random/"
+hsetroot -cover "$walldir/$(ls $walldir | shuf -n 1)"
 
 # merge Xresources
 xrdb ~/.Xresources &
