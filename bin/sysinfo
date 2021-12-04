@@ -2,7 +2,7 @@
 
 distro=arch
 kernel=$(uname -r | sed 's/-.*//')
-wm=bspwm
+wm=$DESKTOP_SESSION
 shell=${SHELL##*/}
 term=${TERM%-256color}
 packages=$(pacman -Q | wc -l)
