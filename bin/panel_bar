@@ -110,11 +110,17 @@ while read -r line; do
                                         F*)
                                                 wm_info="$wm_info%{F#969896}%{B#373b41}$click%{B-}%{F-}"
                                                 ;;
+                                        U*)
+                                                wm_info="$wm_info%{F#ffaa55}%{B#373b41}$click%{B-}%{F-}"
+                                                ;;
                                         o*)
                                                 wm_info="$wm_info%{F#ffffff}$click%{F-}"
                                                 ;;
                                         f*)
                                                 wm_info="$wm_info%{F#969896}$click%{F-}"
+                                                ;;
+                                        u*)
+                                                wm_info="$wm_info%{F#ffaa55}$click%{F-}"
                                                 ;;
                                 esac
                                 shift
