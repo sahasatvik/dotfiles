@@ -22,6 +22,7 @@ logfile="$HOME/.calendarlog"                    # logs notified events
 touch "$logfile"
 log="$(cat $logfile)"
 
+
 IFS=,
 cat "$calendarfile" | \
 sed 's/^\s*#.*$//g' | sed '/^$/d' | sed 's/\s*,\s*/,/g' | \
@@ -37,8 +38,14 @@ while read line; do
 
         echo $eventtime $title $description
         hhmm="$(date --date=$etime +%H:%M)"
-        notify-send -u critical \
-                "$title at $hhmm" "$description\n<span foreground='gray'>$meetcode</span>" \
-                -h string:x-canonical-private-synchronous:"$hhmm $title" && \
+        if [[ -z $meetcode ]]; then
+                notify-send -u critical \
+                        "$title at $hhmm" "$description" \
+                        -h string:x-canonical-private-synchronous:"$hhmm $title"
+        else
+                notify-send -u critical \
+                        "$title at $hhmm" "$description\n<span foreground='gray'>$meetcode</span>" \
+                        -h string:x-canonical-private-synchronous:"$hhmm $title"
+        fi
         echo "$eventtime $title" >> $logfile
 done
