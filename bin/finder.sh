@@ -8,7 +8,12 @@ get_filepath() {
 
 filepath="$(get_filepath)"
 filedir=$(dirname "$HOME/$filepath")
-if [[ ! -z "$filepath" ]]; then
+
+[[ -z "$filepath" ]] && exit
+
+if [[ "$filepath" == ./Videos/* ]]; then
+        mpv "$filepath"
+else
         cd "$filedir"
         xdg-open "$HOME/$filepath" &
 fi
