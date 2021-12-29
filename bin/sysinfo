@@ -8,7 +8,7 @@ term=${TERM%-256color}
 packages=$(pacman -Q | wc -l)
 
 # colours
-BLK="\e[30;1m"
+BLK="\e[30m"
 RED="\e[31m"
 GRN="\e[32m"
 YLW="\e[33m"
@@ -21,7 +21,7 @@ RST="\e[0m"
 BLD="\033[1m"
 
 BAR="███"
-colors="$BLK$BAR$RST$RED$BAR$GRN$BAR$YLW$BAR$BLU$BAR$PUR$BAR$CYN$BAR$WHT$BAR$RST"
+colors="$GRY$BAR$RST$RED$BAR$GRN$BAR$YLW$BAR$BLU$BAR$PUR$BAR$CYN$BAR$WHT$BAR$RST"
 
 # padding
 cols=$(tput cols)
@@ -31,12 +31,12 @@ lines=$(tput lines)
 
 for ((i=0; i < ($lines+1)/2 - 3; i++)); do echo; done
 
-printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" distro $distro
-printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" kernel $kernel
-printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" packages $packages
-printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" shell $shell
-printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" terminal $term
-printf "%${padding}s$BLU%10s$RST $BLK-$RST %b\n" "" wm $wm
+printf "%${padding}s$BLU%10s$RST $GRY-$RST %b\n" "" distro $distro
+printf "%${padding}s$BLU%10s$RST $GRY-$RST %b\n" "" kernel $kernel
+printf "%${padding}s$BLU%10s$RST $GRY-$RST %b\n" "" packages $packages
+printf "%${padding}s$BLU%10s$RST $GRY-$RST %b\n" "" shell $shell
+printf "%${padding}s$BLU%10s$RST $GRY-$RST %b\n" "" terminal $term
+printf "%${padding}s$BLU%10s$RST $GRY-$RST %b\n" "" wm $wm
 echo
 printf "%${paddingc}s%b\n" "" $colors
 
