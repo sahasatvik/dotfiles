@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
 
-muted="$(/home/satvik/bin/muted.sh)"
+muted="$($HOME/bin/muted.sh)"
 mutetext=""
 if [[ "$muted" == "muted" ]]; then
         mutetext="(<span foreground='#cc6666'>muted</span>)"
 fi
 
-echo "<b>Volume</b>     : $(/home/satvik/bin/volume.sh) $mutetext"
-echo "<b>Brightness</b> : $(/home/satvik/bin/brightness.sh)"
-echo "<b>Battery</b>    : $(/home/satvik/bin/battery.sh)"
-echo "<b>Workspaces</b> : $(/home/satvik/bin/workspaces.sh)"
-echo "$(/home/satvik/bin/cmusinfo.sh)"
+echo "<b>Volume</b>     : $($HOME/bin/volume.sh) $mutetext"
+echo "<b>Brightness</b> : $($HOME/bin/brightness.sh)"
+echo "<b>Battery</b>    : $($HOME/bin/battery.sh)"
+echo "<b>Workspaces</b> : $($HOME/bin/workspaces.sh)"
+echo "$($HOME/bin/cmusinfo.sh)"
