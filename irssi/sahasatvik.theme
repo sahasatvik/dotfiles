@@ -122,7 +122,7 @@ abstracts = {
 
   # the basic styling of how to print message, $0 = nick mode, $1 = nick
   #msgnick = "%K%n$0$1-%K%n %K⎸%n %|";
-  msgnick = "%K%n$0$1-%K%n %K:%n %|";
+  msgnick = "%K$0%n$1-%K%n %K:%n %|";
 
   # message from you is printed. "ownnick" specifies the styling of the
   # nick ($0 part in msgnick) and "ownmsgnick" specifies the styling of the
@@ -177,7 +177,7 @@ abstracts = {
   ##
 
   # used internally by this theme
-  action_core = "%_%m * %n$*%N %K:%n %|%m";
+  action_core = "%_%m* %n$*%N %K:%n %|%m";
 
   # generic one that's used by most actions
   action = "{action_core $*}";
@@ -314,30 +314,25 @@ formats = {
     nick_changed = "          %y* %K:%n %K{channick $0} %yis now known as%K {channick $1}";
 
     timestamp = "{timestamp %%H:%%M:%%S} ";
-    pubmsg = "{pubmsgnick $nickalign$2 {pubnick $nickcolor$[.10]0$nicktrunc}}$1";
-    own_msg = "{ownmsgnick $nickalign$2 {ownnick $nickcolor$[.10]0$nicktrunc}}$1";
-    own_msg_channel = "{ownmsgnick $nickalign$3 {ownnick $nickcolor$[.10]0$nicktrunc}{msgchannel $1}}$2";
-    own_msg_private_query = "{ownprivmsgnick $nickalign{ownprivnick $nickcolor$[.10]2$nicktrunc}}$1";
-    pubmsg_me = "{pubmsgmenick $nickalign$2 {menick $nickcolor$[.10]0$nicktrunc}}$1";
-    pubmsg_me_channel = "{pubmsgmenick $nickalign$3 {menick $nickcolor$[.10]0$nicktrunc}{msgchannel $1}}$2";
-    pubmsg_hilight = "{pubmsghinick $0 $nickalign$3 $nickcolor$[.10]1$nicktrunc}$2";
-    pubmsg_hilight_channel = "{pubmsghinick $0 $nickalign$4 $nickcolor$[.10]1$nicktrunc{msgchannel $2}}$3";
-    pubmsg_channel = "{pubmsgnick $nickalign$3 {pubnick $nickcolor$[.10]0$nicktrunc}{msgchannel $1}}$2";
-    msg_private_query = "{privmsgnick $nickalign$nickcolor$[.10]0$nicktrunc}$2";
+    pubmsg = "{pubmsgnick $2 {pubnick $nickcolor$[-10]0}}$1";
+    own_msg = "{ownmsgnick $2 {ownnick $[-10]0}}$1";
+    own_msg_channel = "{ownmsgnick $3 {ownnick $[-10]0}{msgchannel $1}}$2";
+    own_msg_private_query = "{ownprivmsgnick {ownprivnick $[-10]2}}$1";
+    pubmsg_me = "{pubmsgmenick $2 {menick $[-10]0}}$1";
+    pubmsg_me_channel = "{pubmsgmenick $3 {menick $[-10]0}{msgchannel $1}}$2";
+    pubmsg_hilight = "{pubmsghinick $0 $3 $nickcolor$[-10]1}$2";
+    pubmsg_hilight_channel = "{pubmsghinick $0 $4 $nickcolor$[-10]1{msgchannel $2}}$3";
+    pubmsg_channel = "{pubmsgnick $3 {pubnick $nickcolor$[-10]0{msgchannel $1}}$2";
+    msg_private_query = "{privmsgnick $nickcolor$[-10]0}$2";
 
     servertag = "";
     daychange = "\012%W %_00:00:00%p            * %K:%p Day changed! Still up? Today is %%A %%d %%B %%Y.%n\012";
   };
-  "Irssi::Script::nm2" = {
-    neat_pad_char = " ";
-    neat_notruncate_char = "";
-    neat_truncate_char = "%m+";
-  };
   "fe-common/irc" = {
-    own_action = "$nickalign{ownaction $[.8]0$nicktrunc}$1";
-    action_private = "$nickalign{pvtaction $[.8]0$nicktrunc}$2";
-    action_private_query = "$nickalign{pvtaction_query $[.8]0$nicktrunc}$2";
-    action_public = "$nickalign{pubaction $[.8]0$nicktrunc}$1";
+    own_action = "{ownaction $[-9]0}$1";
+    action_public = "{pubaction $[-9]0}$1";
+    action_private = "{pvtaction $[-9]0}$2";
+    action_private_query = "{pvtaction_query $[-9]0}$2";
     url = "Home page for {channelhilight $0}: %_$1%_";
   };
   "Irssi::Script::adv_windowlist" = {

@@ -37,16 +37,20 @@ chatnets = {
 channels = (
   { name = "#math"; chatnet = "Snoonet"; },
   { name = "#space"; chatnet = "Snoonet"; },
+  { name = "##chat"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "##math"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "##physics"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "##physics"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "##chess"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#irssi"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "#vim"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "#git"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "#zsh"; chatnet = "liberachat"; autojoin = "no"; },
+  { name = "#latex"; chatnet = "liberachat"; autojoin = "no"; },
+  { name = "#bspwm"; chatnet = "liberachat"; autojoin = "no"; },
+  { name = "#python"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "#linux"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "##programming"; chatnet = "liberachat"; autojoin = "yes"; }
+  { name = "##programming"; chatnet = "liberachat"; autojoin = "no"; }
 );
 
 aliases = {
@@ -324,12 +328,8 @@ settings = {
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "perl/core/scripts" = {
-    neat_color_menick = "yes";
     neat_global_colors = "yes";
-    neat_dynamic = "yes";
-    neat_maxlength = "10";
-    neat_shrink = "no";
-    neat_colors = "X40X66X61X6LX37X3DX36X4CX46X5CX56X6CX6JX47X5DX6KX6DX57X6EX5EX4EX4KX4JX5JX4DX6RX3CX4IX4OX2DX2CX3IX3OX2JX3PX3JX1CX2IX1IX1OX1PX1DX1JX1QX2RX2KX3KX3QX2QX2PX1EX1LX1KX1RX1SX1MX1NX1TX2EX18X1FX19X1GX1AX1BX1HX2NX2HX3HX3NX2MX2GX2AX2FX2LX3LX3MX3GX29X23X25X24X14X15X2BX4NX22X45X6AX5HX3BX4HX3AX4GX39X4FX5LX5NX42X53X52X34X35X6BX4BX4AX48X5GX6HX5MX6MX6NX38X54X51X69X68X59X5FX6FX58X49X6G";
+    neat_colors = "X66X61X6LX37X3DX36X4CX46X5CX56X6CX6JX47X5DX6KX6DX57X6EX5EX4EX4KX4JX5JX4DX6RX3CX4IX4OX2DX2CX3IX3OX2JX3PX3JX1CX2IX1IX1OX1PX1DX1JX1QX2RX2KX3KX3QX2QX2PX1EX1LX1KX1RX1SX1MX1NX1TX2EX18X1FX19X1GX1AX1BX1HX2NX2HX3HX3NX2MX2GX2AX2FX2LX3LX3MX3GX29X23X25X24X2BX4NX22X45X6AX5HX3BX4HX3AX4GX39X4FX5LX5NX42X53X52X34X35X6BX4BX4AX48X5GX6HX5MX6MX6NX38X54X51X69X68X59X5FX6FX58X49X6G";
     awl_all_disable = "no";
     awl_automode = "sbar";
     awl_block = "8";
@@ -354,7 +354,7 @@ settings = {
     usercount_show_halfops = "yes";
     url_color = "1";
     fancy_abbrev = "head";
-    neat_color_hinick = "yes";
+    usercount_show_zero = "no";
   };
   "irc/core" = { alternate_nick = "NICK_"; };
   "fe-common/core" = {
@@ -362,6 +362,7 @@ settings = {
     show_names_on_join = "no";
     names_max_columns = "0";
     emphasis_italics = "yes";
+    timestamps = "yes";
   };
 };
 logs = { };
