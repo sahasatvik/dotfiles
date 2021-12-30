@@ -296,7 +296,7 @@ abstracts = {
   # hilight with specified color, $0 = color, $1 = text
   sb_act_hilight_color = "$0$1-%n";
 
-  sb_usercount = "%X7H $1- %n%W$0%n ";
+  sb_usercount = "%X7H $1- %n%w$0%n ";
   sb_uc_ircops = "%_*%_$*";
   sb_uc_ops = "%_@%_$*";
   sb_uc_halfops = "%_%%%_$*";
@@ -306,12 +306,12 @@ abstracts = {
 };
 formats = {
   "fe-common/core" = {
-    query_start = "          %g*%K :%n %gStarting query%W on {server $1} w/ {nick $0}";
-    join = "          %g*%K :%n %K{channick $0} %gjoined%K {channel $2}";
-    part = "          %r*%K :%n %K{channick $0} %rleft%K {channel $2}";
-    quit = "          %r*%K :%n %K{channick $0} %rquit%k %K{reason $2}";
-    quit_once = "          %r*%K :%n %K{channick $0} %rquit %K{reason $2}";
-    nick_changed = "          %y*%K :%n %K{channick $0} %yis now known as%K {channick $1}";
+    query_start = "          %g* %K:%n %gStarting query%W on {server $1} w/ {nick $0}";
+    join = "          %g* %K:%n %K{channick $0} %gjoined%K {channel $2}";
+    part = "          %r* %K:%n %K{channick $0} %rleft%K {channel $2}";
+    quit = "          %r* %K:%n %K{channick $0} %rquit%k %K{reason $2}";
+    quit_once = "          %r* %K:%n %K{channick $0} %rquit %K{reason $2}";
+    nick_changed = "          %y* %K:%n %K{channick $0} %yis now known as%K {channick $1}";
 
     timestamp = "{timestamp %%H:%%M:%%S} ";
     pubmsg = "{pubmsgnick $nickalign$2 {pubnick $nickcolor$[.10]0$nicktrunc}}$1";
@@ -326,7 +326,7 @@ formats = {
     msg_private_query = "{privmsgnick $nickalign$nickcolor$[.10]0$nicktrunc}$2";
 
     servertag = "";
-    daychange = "\012%W %_00:00:00%p            * : Day changed! Still up? Today is %%A %%d %%B %%Y.%n\012";
+    daychange = "\012%W %_00:00:00%p            * %K:%p Day changed! Still up? Today is %%A %%d %%B %%Y.%n\012";
   };
   "Irssi::Script::nm2" = {
     neat_pad_char = " ";
