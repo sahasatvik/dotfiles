@@ -290,7 +290,7 @@ abstracts = {
   # normal text
   sb_act_text = "%X7H$*";
   # public message
-  sb_act_msg = "%K$*";
+  sb_act_msg = "%X7N$*";
   # hilight
   sb_act_hilight = "%R$*";
   # hilight with specified color, $0 = color, $1 = text
