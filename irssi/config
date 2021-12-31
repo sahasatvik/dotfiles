@@ -43,7 +43,7 @@ channels = (
   { name = "##chess"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#linux"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "##programming"; chatnet = "liberachat"; autojoin = "yes"; }
+  { name = "##programming"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#python"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#c"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#irssi"; chatnet = "liberachat"; autojoin = "yes"; },
@@ -51,7 +51,7 @@ channels = (
   { name = "#git"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "#zsh"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "#latex"; chatnet = "liberachat"; autojoin = "no"; },
-  { name = "#bspwm"; chatnet = "liberachat"; autojoin = "no"; },
+  { name = "#bspwm"; chatnet = "liberachat"; autojoin = "no"; }
 );
 
 aliases = {
@@ -238,10 +238,10 @@ statusbar = {
   };
 
   default = {
-    window = { disabled = "yes"; }
-    window_inact = { disabled = "yes"; }
-    topic = { disabled = "yes"; }
-    
+    window = { disabled = "yes"; };
+    window_inact = { disabled = "yes"; };
+    topic = { disabled = "yes"; };
+
     wininfo = {
       placement = "top";
       position = "1";
@@ -255,12 +255,8 @@ statusbar = {
         barend = { priority = "100"; alignment = "right"; };
       };
     };
-    
-    empty_top = {
-      placement = "top";
-      position = "2";
-      disabled = "no";
-    };
+
+    empty_top = { placement = "top"; position = "2"; disabled = "no"; };
 
     prompt = {
       type = "root";
@@ -298,6 +294,8 @@ settings = {
     usercount_show_halfops = "yes";
     url_color = "1";
     fancy_abbrev = "head";
+    mouse_scroll_down = "/scrollback goto +2";
+    mouse_scroll_up = "/scrollback goto -2";
   };
   "irc/core" = { alternate_nick = "NICK_"; };
   "fe-common/core" = {
@@ -315,7 +313,7 @@ keyboard = (
     id = "command";
     data = "SCROLLBACK LEVELCLEAR -level JOINS,PARTS,QUITS";
   },
-  { key = "meta-[M"; id = "command"; data = "mouse_xterm"; }
+  { key = "meta-[M"; id = "command"; data = "mouse_xterm "; }
 );
 hilights = (
   { text = "NICK"; color = "%y"; nick = "yes"; word = "yes"; }
