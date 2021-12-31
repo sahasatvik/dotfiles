@@ -39,18 +39,19 @@ channels = (
   { name = "#space"; chatnet = "Snoonet"; },
   { name = "##chat"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "##math"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "##physics"; chatnet = "liberachat"; autojoin = "no"; },
+  { name = "##physics"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "##chess"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "#irssi"; chatnet = "liberachat"; autojoin = "no"; },
-  { name = "#vim"; chatnet = "liberachat"; autojoin = "no"; },
+  { name = "#linux"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "#archlinux"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "##programming"; chatnet = "liberachat"; autojoin = "yes"; }
+  { name = "#python"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "#c"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "#irssi"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "#vim"; chatnet = "liberachat"; autojoin = "yes"; },
   { name = "#git"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "#zsh"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "#latex"; chatnet = "liberachat"; autojoin = "no"; },
   { name = "#bspwm"; chatnet = "liberachat"; autojoin = "no"; },
-  { name = "#python"; chatnet = "liberachat"; autojoin = "no"; },
-  { name = "#linux"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "#archlinux"; chatnet = "liberachat"; autojoin = "yes"; },
-  { name = "##programming"; chatnet = "liberachat"; autojoin = "no"; }
 );
 
 aliases = {
@@ -223,7 +224,7 @@ statusbar = {
 
     window = "{sb $winref:$tag/$itemname{sbmode $M}}";
     window_empty = "{sb $winref{sbservertag $tag}}";
-    wininfo = "{sb $tag:%W$winname$itemname%n}";
+    wininfo = "%K$tag %w$winname$itemname%n %K$winref%n";
 
     prompt = "{prompt $[-10]N}";
     prompt_empty = "";
@@ -232,61 +233,33 @@ statusbar = {
     topic_empty = " Irssi v$J - http://www.irssi.org";
 
     lag = "{sb Lag: $0-}";
-    act = "{sb Act: $0-}";
+    act = "{sb $0-}";
     more = "-- more --";
   };
 
   default = {
-    window = {
-      type = "window";
-      placement = "bottom";
+    window = { disabled = "yes"; }
+    window_inact = { disabled = "yes"; }
+    topic = { disabled = "yes"; }
+    
+    wininfo = {
+      placement = "top";
       position = "1";
-      visible = "inactive";
+      visible = "always";
       disabled = "no";
 
       items = {
         barstart = { priority = "100"; };
-        time = { };
-        user = { };
-        window = { };
-        window_empty = { };
-        lag = { priority = "-1"; };
-        more = { priority = "-1"; alignment = "right"; };
-        usercount = { alignment = "right"; };
+        wininfo = { };
+        act = { priority = "10"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
     };
-
-    window_inact = {
-      type = "window";
-      placement = "bottom";
-      position = "1";
-      visible = "inactive";
-
-      items = {
-        barstart = { priority = "100"; };
-        window = { };
-        window_empty = { };
-        more = { priority = "-1"; alignment = "right"; };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
-
-    empty_top = { placement = "top"; position = "9"; disabled = "no"; };
-
-    topic = {
-      type = "root";
+    
+    empty_top = {
       placement = "top";
-      position = "1";
-      visible = "always";
-      disabled = "yes";
-
-      items = {
-        topicbarstart = { priority = "100"; };
-        topic = { };
-        topic_empty = { };
-        topicbarend = { priority = "100"; alignment = "right"; };
-      };
+      position = "2";
+      disabled = "no";
     };
 
     prompt = {
@@ -304,21 +277,9 @@ statusbar = {
         usercount = { priority = "5"; alignment = "right"; };
       };
     };
-
-    windowlist = {
-      placement = "top";
-      position = "0";
-      visible = "always";
-      disabled = "no";
-
-      items = {
-        barstart = { priority = "100"; };
-        awl_shared = { priority = "10"; alignment = "left"; };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
   };
 };
+
 settings = {
   core = {
     real_name = "REALNAME";
@@ -330,23 +291,6 @@ settings = {
   "perl/core/scripts" = {
     neat_global_colors = "yes";
     neat_colors = "X66X61X6LX37X3DX36X4CX46X5CX56X6CX6JX47X5DX6KX6DX57X6EX5EX4EX4KX4JX5JX4DX6RX3CX4IX4OX2DX2CX3IX3OX2JX3PX3JX1CX2IX1IX1OX1PX1DX1JX1QX2RX2KX3KX3QX2QX2PX1EX1LX1KX1RX1SX1MX1NX1TX2EX18X1FX19X1GX1AX1BX1HX2NX2HX3HX3NX2MX2GX2AX2FX2LX3LX3MX3GX29X23X25X24X2BX4NX22X45X6AX5HX3BX4HX3AX4GX39X4FX5LX5NX42X53X52X34X35X6BX4BX4AX48X5GX6HX5MX6MX6NX38X54X51X69X68X59X5FX6FX58X49X6G";
-    awl_all_disable = "no";
-    awl_automode = "sbar";
-    awl_block = "8";
-    awl_columns = "1";
-    awl_height_adjust = "1";
-    awl_hide_data = "0";
-    awl_maxlines = "9";
-    awl_placement = "top";
-    awl_position = "0";
-    awl_prefer_name = "yes";
-    awl_sbar_maxlength = "yes";
-    awl_separator = "%N %N";
-    awl_sort = "refnum";
-    awl_viewer = "no";
-    awl_mouse = "yes";
-    awl_mouse_offset = "0";
-    awl_shared_sbar = "0<0";
     trackbar_string = "─";
     trackbar_style = "%X7E";
     trackbar_print_timestamp = "yes";
@@ -354,7 +298,6 @@ settings = {
     usercount_show_halfops = "yes";
     url_color = "1";
     fancy_abbrev = "head";
-    usercount_show_zero = "no";
   };
   "irc/core" = { alternate_nick = "NICK_"; };
   "fe-common/core" = {

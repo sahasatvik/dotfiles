@@ -286,11 +286,12 @@ abstracts = {
   # activity in statusbar
 
   # ',' separator
-  sb_act_sep = "%w$*%n";
+  # sb_act_sep = "%w$*%n";
+  sb_act_sep = " ";
   # normal text
   sb_act_text = "%X7H$*";
   # public message
-  sb_act_msg = "%X7N$*";
+  sb_act_msg = "%w$*";
   # hilight
   sb_act_hilight = "%R$*";
   # hilight with specified color, $0 = color, $1 = text
@@ -334,16 +335,6 @@ formats = {
     action_private = "{pvtaction $[-9]0}$2";
     action_private_query = "{pvtaction_query $[-9]0}$2";
     url = "Home page for {channelhilight $0}: %_$1%_";
-  };
-  "Irssi::Script::adv_windowlist" = {
-    awl_display_key = "%X7H$H$C$S %N";
-    awl_display_nokey = "%X7H$H$C$S %N";
-    awl_display_key_active = "%W$H$C$S %N";
-    awl_display_nokey_active = "%W$H$C$S %N";
-    awl_display_key_visible = "%W$H$C$S %N";
-    awl_display_nokey_visible = "%W$H$C$S %N";
-    awl_display_header = "%B$C %N";
-    awl_title = "\\";
   };
   "Irssi::Script::trackbar" = { trackbar_loaded = ""; };
 };
