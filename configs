@@ -9,6 +9,8 @@ cava                                                    ~/.config/cava/config
 ranger                                                  ~/.config/ranger/rc.conf
 ranger (scope)                                          ~/.config/ranger/scope.sh
 ranger (rifle)                                          ~/.config/ranger/rifle.conf
+irssi                                                   ~/.irssi/config
+irssi (theme)                                           ~/.irssi/sahasatvik.theme
 zathura                                                 ~/.config/zathura/zathurarc
 calendar                                                ~/.config/calendar
 configs                                                 ~/.config/configs
