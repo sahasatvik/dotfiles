@@ -177,7 +177,7 @@ abstracts = {
   ##
 
   # used internally by this theme
-  action_core = "%_%m* %n$*%N %K:%n %|%m";
+  action_core = "          %_%m*%n %K:%n %|$* %m";
 
   # generic one that's used by most actions
   action = "{action_core $*}";
@@ -330,10 +330,10 @@ formats = {
     daychange = "\012%W %_00:00:00%p            * %K:%p Day changed! Still up? Today is %%A %%d %%B %%Y.%n\012";
   };
   "fe-common/irc" = {
-    own_action = "{ownaction $[-9]0}$1";
-    action_public = "{pubaction $[-9]0}$1";
-    action_private = "{pvtaction $[-9]0}$2";
-    action_private_query = "{pvtaction_query $[-9]0}$2";
+    own_action = "{ownaction {ownnick $0}}$1";
+    action_public = "{pubaction $nickcolor$0}$1";
+    action_private = "{pvtaction $nickcolor$0}$2";
+    action_private_query = "{pvtaction_query $nickcolor$0}$2";
     url = "Home page for {channelhilight $0}: %_$1%_";
   };
   "Irssi::Script::trackbar" = { trackbar_loaded = ""; };
