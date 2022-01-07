@@ -245,8 +245,8 @@ super + Escape
 #
 
 # raise/lower volume
-{XF86AudioRaiseVolume, XF86AudioLowerVolume}
-        pamixer {--increase,--decrease} 5 && \
+{_,shift +} {XF86AudioRaiseVolume, XF86AudioLowerVolume}
+        pamixer {_,--allow boost} {--increase,--decrease} 5  && \
         notify-send -t 1000 -i none -u low "Volume : $(~/bin/volume.sh)" \
                 -h int:value:"$(~/bin/volume.sh | sed 's/.$//')" \
                 -h string:x-canonical-private-synchronous:volume
