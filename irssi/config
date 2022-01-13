@@ -281,7 +281,7 @@ settings = {
     real_name = "REALNAME";
     user_name = "USERNAME";
     nick = "NICK";
-    timestamp_format = "%H:%M:%S";
+    timestamp_format = "%H:%M";
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "perl/core/scripts" = {
