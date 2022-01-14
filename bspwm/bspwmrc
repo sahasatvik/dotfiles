@@ -4,8 +4,7 @@
 xsetroot -cursor_name left_ptr &
 
 # set wallpaper
-walldir="$HOME/Pictures/wallpapers/random/"
-hsetroot -cover "$walldir/$(ls $walldir | shuf -n 1)"
+hsetroot -cover "$(cat $HOME/Pictures/wallpapers/current)"
 
 # merge Xresources
 xrdb ~/.Xresources &
