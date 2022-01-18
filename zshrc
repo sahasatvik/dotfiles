@@ -120,6 +120,8 @@ alias tb="nc termbin.com 9999"
 alias dirsize="du -hs * | sort -h"
 alias neofetch="neofetch --gtk2 off --gtk3 off"
 
+alias mail="systemctl --user start offlineimap && mutt"
+
 function up() {
         case $1 in
                 '')             cd .. ;;

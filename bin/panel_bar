@@ -6,6 +6,7 @@ record=""
 power=""
 memory=""
 network=""
+mail=""
 
 PANEL_FIFO=/tmp/panel-fifo
 WALL_DIR="$HOME/Pictures/wallpapers/main"
@@ -95,6 +96,16 @@ while read -r line; do
                                 network=" $quality%{F#969896}$essid%{F-} "
                         fi
                         ;;
+                MAIL*)
+                        mailcount="${line#MAIL?}"
+                        if [[ $mailcount -gt 1 ]]; then
+                                mail=" %{F#969896}$mailcount msgs%{F-} "
+                        elif [[ $mailcount -gt 0 ]]; then
+                                mail=" %{F#969896}$mailcount msg%{F-} "
+                        else
+                                mail=""
+                        fi
+                        ;;
                 Mstopped*|Mexiting*)
                         music=""
                         ;;
@@ -154,6 +165,6 @@ while read -r line; do
         if [[ -z $verbose ]]; then
                 echo "%{l}${wm_info}%{c}${music}%{r}${record}${date}${clock}"
         else
-                echo "%{l}${wm_info}%{c}${music}%{r}${record}${network}${memory}${power}${date}${clock}"
+                echo "%{l}${wm_info}%{c}${music}%{r}${record}${mail}${network}${memory}${power}${date}${clock}"
         fi
 done

@@ -53,6 +53,13 @@ while true; do
         sleep 10
 done > "$PANEL_FIFO" &
 
+while true; do
+        newmail="$(fd . ~/.mail/*/INBOX/new/ --type f | wc -l)"
+        echo "MAIL" $newmail
+        
+        sleep 30
+done > "$PANEL_FIFO" &
+
 cmusstat="$(cmus-remote -C status | grep status | sed 's/status //g')"
 echo M$cmusstat > "$PANEL_FIFO" &
 
