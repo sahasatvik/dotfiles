@@ -111,12 +111,18 @@ while read -r line; do
                         ;;
                 Mplaying*)
                         title="$(cmus-remote -C status | grep 'tag title' | sed 's/tag title //g')"
+                        if [[ ${#title} -gt 100 ]]; then
+                                title="${title:0:97}..."
+                        fi
                         music="%{A:cmus-remote -u:}%{A} $title"
                         music="%{A2:cmus-remote -s:}$music%{A}"
                         music="%{F#969896}$music%{F-}"
                         ;;
                 Mpaused*)
                         title="$(cmus-remote -C status | grep 'tag title' | sed 's/tag title //g')"
+                        if [[ ${#title} -gt 100 ]]; then
+                                title="${title:0:97}..."
+                        fi
                         music="%{A:cmus-remote -u:}%{A} $title"
                         music="%{A2:cmus-remote -s:}$music%{A}"
                         music="%{F#969896}$music%{F-}"
@@ -163,7 +169,7 @@ while read -r line; do
                         ;;
         esac
         if [[ -z $verbose ]]; then
-                echo "%{l}${wm_info}%{c}${music}%{r}${record}${date}${clock}"
+                echo "%{l}${wm_info}%{c}${music}%{r}${record}${mail}${date}${clock}"
         else
                 echo "%{l}${wm_info}%{c}${music}%{r}${record}${mail}${network}${memory}${power}${date}${clock}"
         fi
