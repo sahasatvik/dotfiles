@@ -446,4 +446,8 @@
     msg_urgency = critical
     script = /home/satvik/bin/bell.sh
 
+[message_bell]
+    summary = "* new messages"
+    script = /home/satvik/bin/bell.sh
+
 # vim: ft=cfg
