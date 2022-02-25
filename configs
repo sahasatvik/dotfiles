@@ -5,6 +5,7 @@ sxhkd                                                   ~/.config/sxhkd/sxhkdrc
 dunst                                                   ~/.config/dunst/dunstrc
 rofi                                                    ~/.config/rofi/config.rasi
 picom                                                   ~/.config/picom/picom.conf
+mpv                                                     ~/.config/mpv/mpv.conf
 cava                                                    ~/.config/cava/config
 ranger                                                  ~/.config/ranger/rc.conf
 ranger (scope)                                          ~/.config/ranger/scope.sh
