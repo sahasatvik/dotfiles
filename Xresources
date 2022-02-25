@@ -20,9 +20,10 @@ URxvt.scrollTtyOutput:          false
 URxvt.scrollWithBuffer:         true
 URxvt.scrollTtyKeypress:        true
 
-URxvt.perl-ext-common:          default,matcher,resize-font
+URxvt.perl-ext-common:          default,matcher,resize-font,bell-command
 URxvt.url-launcher:             /usr/bin/xdg-open
 URxvt.matcher.button:           1
+URxvt.bell-command:             paplay $HOME/.sounds/pop.wav
 
 ! Colours : Tomorrow Night
 #define t_background            #1d1f21
