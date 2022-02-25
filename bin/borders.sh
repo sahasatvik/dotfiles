@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# Displays border on focused windows, if more than one.
+
 function count() {
         bspc query -N -n ".window.descendant_of" | wc -l
 }
