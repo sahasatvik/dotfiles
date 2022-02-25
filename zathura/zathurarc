@@ -1,0 +1,15 @@
+set guioptions                  none
+set sandbox                     none
+set selection-clipboard         clipboard
+set page-cache-size             8
+
+set font                        "Fira Mono 12"
+set default-bg                  "#1d1f21"
+set default-fg                  "#ffffff"
+set inputbar-bg                 "#1d1f21"
+set inputbar-fg                 "#dddddd"
+set completion-highlight-bg     "#dddddd"
+set completion-highlight-fg     "#1d1f21"
+set recolor-lightcolor          "#1d1f21"
+
+# vim: syntax=conf:
