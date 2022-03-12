@@ -10,6 +10,7 @@ mail=""
 
 PANEL_FIFO=/tmp/panel-fifo
 WALL_DIR="$HOME/Pictures/wallpapers/main"
+WALL_BLUR_DIR="$HOME/Pictures/wallpapers/blur"
 WALL_CURRENT="$HOME/Pictures/wallpapers/current"
 
 while read -r line; do
@@ -35,7 +36,7 @@ while read -r line; do
                         len="${#walls[@]}"
                         idx=$(((idx + 1) % len))
                         echo "${walls[$idx]}" > $WALL_CURRENT
-                        hsetroot -cover "${walls[$idx]}" &> /dev/null
+                        $HOME/bin/wallset.sh "${walls[$idx]}" &> /dev/null
                         ;;
                 C*)
                         clock="${line#?} "
