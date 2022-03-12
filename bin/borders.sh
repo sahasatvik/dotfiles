@@ -7,8 +7,8 @@ function count() {
 }
 
 bspc subscribe | while read -a msg ; do
-        bspc config border_width 0
+        bspc config focused_border_color "#2a2f35"
         if [ $(count) -gt 1 ]; then
-                bspc config -n focused border_width 2
+                bspc config -n focused focused_border_color "#81a2be"
         fi
 done
