@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bspc node pointed --flag hidden=on

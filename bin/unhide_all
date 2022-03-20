@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for node in $(bspc query -N -n .hidden.local.window)
+do
+        bspc node $node --flag hidden=off
+done

@@ -15,6 +15,9 @@ setxkbmap -option caps:escape &
 # hotkey daemon
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+# touchpad gestures
+libinput-gestures-setup restart &
+
 # notification daemon
 pgrep -x dunst > /dev/null || dunst &
 
