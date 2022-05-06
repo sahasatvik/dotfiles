@@ -247,9 +247,11 @@ super + Escape
 # raise/lower volume
 {_,shift +} {XF86AudioRaiseVolume, XF86AudioLowerVolume}
         pamixer {_,--allow boost} {--increase,--decrease} 5  && \
-        notify-send -t 1000 -i none -u low "Volume : $(~/bin/volume.sh)" \
-                -h int:value:"$(~/bin/volume.sh | sed 's/.$//')" \
-                -h string:x-canonical-private-synchronous:volume
+        volume="$(~/bin/volume.sh)" && \
+        notify-send -t 1000 -i none -u low "Volume : $volume" \
+                -h int:value:"${volume#?}" \
+                -h string:x-canonical-private-synchronous:volume \
+                -h string:hlcolor:"$(~/bin/mutedcolor.sh)"
 
 # toggle mute
 XF86AudioMute
