@@ -2,7 +2,7 @@
 
 function git_status_short () {
 	if [[ $(git_prompt_status) ]]; then
-		echo "%{$fg_bold[black]%}[$(git_prompt_status)]%{$reset_color%} "
+		echo "%{\033[90;1m%}[$(git_prompt_status)]%{$reset_color%} "
 	fi
 }
 
@@ -10,7 +10,7 @@ local dollar="%(!:#:$)"
 PROMPT='%{$fg_bold[blue]%}%~%{$reset_color%} $(git_prompt_info)$(git_status_short)\
 %(?:%{$fg_bold[white]%}$dollar%{$reset_color%}:%{$fg_bold[red]%}$dollar%{$reset_color%}) '
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[black]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{\033[90;1m%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="*"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
