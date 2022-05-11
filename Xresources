@@ -5,7 +5,7 @@ URxvt.boldFont:                 xft:Fira Code Nerd Font:style=Bold:size=12
 URxvt.italicFont:               xft:Fira Mono:style=Italic:size=12
 URxvt.boldItalicFont:           xft:Fira Mono:style=Bold Italic:size=12
 URxvt.cursorBlink:              true
-URxvt.internalBorder:           12
+URxvt.internalBorder:           10
 
 URxvt.keysym.Control-Up:        \033[1;5A
 URxvt.keysym.Control-Down:      \033[1;5B
