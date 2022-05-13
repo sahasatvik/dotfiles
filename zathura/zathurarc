@@ -4,6 +4,7 @@ set selection-clipboard         clipboard
 set page-cache-size             8
 
 set statusbar-home-tilde        true
+set window-title-basename       true
 
 set font                        "Fira Mono 12"
 set default-bg                  "#1d1f21"

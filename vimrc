@@ -23,12 +23,15 @@ let mapleader = ','
 
 set mouse=a
 
-" Statusline and ruler
+" Statusline, ruler, and title
 set ruler
 set rulerformat=%42(%=%#Statusline#%<%t%r%m%#Normal#%14(%l/%L:%v%)%)
 
 set laststatus=0
 set statusline=%=%#Statusline#%<%t%r%m%#Normal#%14(%l/%L:%v%)
+
+set title
+set titlestring=%F%(\ [%M]%)\ -\ vim
 
 " Indentation
 set tabstop=8
