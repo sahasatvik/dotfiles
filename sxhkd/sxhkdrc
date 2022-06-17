@@ -7,16 +7,12 @@ super + {_, alt +} Return
         {_, bspc rule -a \* -o state=floating &&} urxvtc
 
 # browser
-super + alt + {_, shift + }b
-        chrome --new-window --profile-directory="{Default,Profile 1}"
+super + alt + b
+        qutebrowser
 
 # email
 super + alt + m
         thunderbird
-
-# whatsapp web
-super + alt + w
-        chrome --profile-directory="Profile 1" --app="https://web.whatsapp.com"
 
 # toggle lemonbar
 super + alt + t
@@ -57,6 +53,10 @@ super + alt + @space
 # file browser
 super + alt + @f
         rofi -show filebrowser -modi filebrowser
+
+# chrome
+super + alt + shift + b
+        ~/bin/chromeprofile.sh
 
 # edit configs
 super + alt + @e
