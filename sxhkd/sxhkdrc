@@ -55,7 +55,7 @@ super + alt + @f
         rofi -show filebrowser -modi filebrowser
 
 # chrome
-super + alt + shift + b
+super + alt + shift + @b
         ~/bin/chromeprofile.sh
 
 # edit configs
@@ -69,6 +69,10 @@ super + alt + @n
 # google meet links
 super + alt + @g
         ~/bin/meets.sh
+
+# power menu
+ctrl + alt + Delete
+        ~/bin/powermenu.sh
 
 #
 # bspwm hotkeys
