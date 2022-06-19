@@ -1,0 +1,32 @@
+
+configuration {
+        font: "Fira Code Nerd Font 32";
+}
+
+@theme "tomorrow-night"
+
+window {
+        width: 580px;
+        padding: 12;
+}
+
+mainbox {
+        children: [ listview ];
+}
+
+listview {
+        lines: 1;
+        columns: 5;
+        spacing: 8;
+}
+
+element {
+        padding: 2;
+}
+
+element-text {
+        horizontal-align: 0.5;
+        vertical-align: 0.5;
+        margin: 16px 16px 16px 16px;
+        width: 10;
+}
