@@ -15,7 +15,7 @@ set completeopt=longest,menuone
 set termguicolors
 set shortmess+=F
 
-set listchars=tab:▏\ 
+set listchars=tab:▏\ ,trail:•
 set list
 set conceallevel=1
 
@@ -67,7 +67,7 @@ augroup filetype_settings
         autocmd Filetype java,c,cpp,go,rust setlocal signcolumn=yes
         autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType make setlocal noexpandtab
-        
+
         autocmd Filetype rust nnoremap <leader>, :%! rustfmt<CR>
 
         autocmd FileType markdown setlocal nolist
