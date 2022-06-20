@@ -24,6 +24,14 @@ element {
         padding: 2;
 }
 
+element selected.urgent {
+        background-color: #cc6666;
+}
+
+element selected.active {
+        background-color: #de935f;
+}
+
 element-text {
         horizontal-align: 0.5;
         vertical-align: 0.5;

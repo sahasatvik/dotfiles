@@ -8,7 +8,7 @@ opt_poweroff="襤"
 
 get_option() {
         echo -e "$opt_poweroff\n$opt_reboot\n$opt_lock\n$opt_sleep\n$opt_logout" \
-                | rofi -dmenu -config ~/.config/rofi/powermenu.rasi -selected-row 2
+                | rofi -dmenu -config ~/.config/rofi/powermenu.rasi -selected-row 2 -u 0 -a 1
 }
 
 option="$(get_option)"
