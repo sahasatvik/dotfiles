@@ -1,8 +1,8 @@
 
 configuration {
-        font: "Fira Mono 12";
-        kb-row-select: "Tab";
-        kb-row-tab: "";
+        font:                   "Fira Mono 12";
+        kb-row-select:          "Tab";
+        kb-row-tab:             "";
 }
 
 @theme "tomorrow-night"
