@@ -11,12 +11,12 @@ format_entries() {
         cat "$calendarfile" | strip_excess | while read line; do
                 read etime title description meetcode <<< $line
                 [[ -z "$meetcode" ]] && continue
-                printf "  %-22s  <span color=\"#777777\">%-46s</span> %16s\n" "$title" "$description" "$meetcode"
+                printf "%-24s  <span color=\"#777777\">%-46s</span> %16s\n" "$title" "$description" "$meetcode"
         done
 }
 
 get_code() {
-        { printf "  %-22s  %-46s %16s\n" "Google Meet" "" "............"; \
+        { printf "%-24s  %-46s %16s\n" "Google Meet" "" "............"; \
         format_entries \
                 | sort -u; } \
                 | rofi -dmenu -markup-rows -i -p 'gmeet' \

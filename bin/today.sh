@@ -34,7 +34,7 @@ format_entries() {
                 if [[ $eventtime -lt $currenttime ]]; then
                         printf "<span color=\"#444444\">%6s  %-16s  %-46s %16s</span>\n" "$hhmm" "$title" "$description" "$meetcode"
                 else
-                        printf "%6s  %-16s  <span color=\"#777777\">%-46s</span> %16s\n" "$hhmm" "$title" "$description" "$meetcode"
+                        printf "%5s %-18s  <span color=\"#777777\">%-46s</span> %16s\n" "$hhmm" "$title" "$description" "$meetcode"
                 fi
         done
 }
