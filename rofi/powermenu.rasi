@@ -24,7 +24,6 @@ inputbar {
 prompt {
         font:                   "Fira Mono 12";
         padding:                0;
-        horizontal-align:       0.5;
 }
 
 listview {
@@ -36,7 +35,6 @@ listview {
 
 element {
         width:                  1.44em;
-        orientation:            horizontal;
         padding:                0;
         spacing:                0;
 }
