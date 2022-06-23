@@ -13,6 +13,7 @@ ranger (rifle)                                          ~/.config/ranger/rifle.c
 irssi                                                   ~/.irssi/config
 irssi (theme)                                           ~/.irssi/sahasatvik.theme
 zathura                                                 ~/.config/zathura/zathurarc
+bookmarks                                               ~/.config/bookmarks
 calendar                                                ~/.config/calendar
 configs                                                 ~/.config/configs
 xresources                                              ~/.Xresources

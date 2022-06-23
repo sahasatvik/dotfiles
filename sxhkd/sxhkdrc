@@ -54,8 +54,12 @@ super + alt + @space
 super + alt + @f
         rofi -show filebrowser -modi filebrowser
 
-# chrome
+# bookmarks
 super + alt + shift + @b
+        ~/bin/bookmarks.sh
+
+# chrome profiles
+super + alt + shift + @c
         ~/bin/chromeprofile.sh
 
 # edit configs
