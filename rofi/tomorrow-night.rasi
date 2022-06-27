@@ -31,7 +31,7 @@
 inputbar {
         text-color:                     var(normal-foreground);
         padding:                        12px 12px 4px 12px;
-        children:                       [ prompt, textbox-prompt-colon, entry, num-filtered-rows, textbox-num-sep, num-rows, case-indicator ];
+        children:                       [ prompt, textbox-prompt-colon, entry, num-filtered-rows, textbox-num-sep, num-rows ];
 }
 
 message {
@@ -129,10 +129,6 @@ textbox-num-sep {
         text-color:                     inherit;
         expand:                         false;
         str:                            "/";
-}
-
-case-indicator {
-        text-color:                     inherit;
 }
 
 textbox {
