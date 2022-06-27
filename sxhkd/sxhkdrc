@@ -40,7 +40,7 @@ super + @space
 
 # show keybindings
 super + @slash
-        ~/bin/sxhkd_help.sh | rofi -dmenu -i -p "keys"
+        ~/bin/sxhkd_help.sh
 
 # calculator
 super + alt + @c
@@ -67,11 +67,11 @@ super + alt + @e
         ~/bin/configs.sh
 
 # today's events
-super + alt + @n
+super + alt + @g
         ~/bin/today.sh
 
 # google meet links
-super + alt + @g
+super + alt + shift + @g
         ~/bin/meets.sh
 
 # power menu
