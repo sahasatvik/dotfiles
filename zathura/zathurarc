@@ -7,7 +7,7 @@ set statusbar-home-tilde        true
 set window-title-basename       true
 
 set font                        "Fira Mono 12"
-set default-bg                  "#1d1f21"
+set default-bg                  "rgba(29, 31, 33, 0.9)"
 set default-fg                  "#ffffff"
 set inputbar-bg                 "#1d1f21"
 set inputbar-fg                 "#dddddd"
@@ -15,6 +15,6 @@ set statusbar-bg                "#1d1f21"
 set statusbar-fg                "#dddddd"
 set completion-highlight-bg     "#dddddd"
 set completion-highlight-fg     "#1d1f21"
-set recolor-lightcolor          "#1d1f21"
+set recolor-lightcolor          "rgba(29, 31, 33, 0)"
 
 # vim: syntax=conf:
