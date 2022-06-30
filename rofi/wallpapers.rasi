@@ -1,31 +1,14 @@
-@theme "tomorrow-night"
-
-* {
-        active-background:      var(background);
-        selected-active-background:
-                                var(selection);
-}
+@theme "gallery"
 
 mainbox {
         children:               [ listview ];
-        padding:                12px;
 }
 
 listview {
         lines:                  4;
         columns:                3;
-        cycle:                  false;
-        spacing:                4px;
-        padding:                0;
 }
 
 element {
         children:               [ element-icon ];
-        padding:                0;
-        orientation:            vertical;
-}
-
-element-icon {
-        size:                   288px;
-        margin:                 -52px;
 }

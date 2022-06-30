@@ -1,0 +1,44 @@
+@theme "tomorrow-night"
+
+* {
+        active-background:      var(background);
+        selected-active-background:
+                                var(selection);
+}
+
+mainbox {
+        children:               [ inputbar, listview ];
+        padding:                12px;
+}
+
+inputbar {
+        padding:                0 0 12px 0;
+}
+
+listview {
+        lines:                  3;
+        columns:                3;
+        fixed-columns:          true;
+        cycle:                  false;
+        spacing:                4px;
+        padding:                0;
+}
+
+element {
+        padding:                0;
+        orientation:            vertical;
+}
+
+element-icon {
+        size:                   288px;
+        margin:                 -52px;
+}
+
+element-text {
+        font:                   "Fira Code Nerd Font 10";
+        padding:                6px 0 8px 0;
+        margin:                 -6px 0 0 0;
+        horizontal-align:       0.5;
+        vertical-align:         0.5;
+        background-color:       var(background);
+}

@@ -78,6 +78,10 @@ super + alt + shift + @g
 super + alt + @w
         ~/bin/wallchoose.sh
 
+# screenshots
+super + {alt + @s, @Print}
+        ~/bin/screenshots.sh
+
 # power menu
 ctrl + alt + Delete
         ~/bin/powermenu.sh
