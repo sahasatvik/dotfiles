@@ -1,12 +1,18 @@
 @theme "tomorrow-night"
 
+* {
+        active-background:      var(background);
+        selected-active-background:
+                                var(selection);
+}
+
 mainbox {
         children:               [ listview ];
         padding:                12px;
 }
 
 listview {
-        lines:                  3;
+        lines:                  4;
         columns:                3;
         cycle:                  false;
         spacing:                4px;
@@ -20,6 +26,6 @@ element {
 }
 
 element-icon {
-        size:                   275px;
-        margin:                 -32px;
+        size:                   288px;
+        margin:                 -52px;
 }
