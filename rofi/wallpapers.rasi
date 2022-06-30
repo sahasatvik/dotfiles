@@ -1,0 +1,25 @@
+@theme "tomorrow-night"
+
+mainbox {
+        children:               [ listview ];
+        padding:                12px;
+}
+
+listview {
+        lines:                  3;
+        columns:                3;
+        cycle:                  false;
+        spacing:                4px;
+        padding:                0;
+}
+
+element {
+        children:               [ element-icon ];
+        padding:                0;
+        orientation:            vertical;
+}
+
+element-icon {
+        size:                   275px;
+        margin:                 -32px;
+}

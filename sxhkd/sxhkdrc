@@ -74,6 +74,10 @@ super + alt + @g
 super + alt + shift + @g
         ~/bin/meets.sh
 
+# wallpapers
+super + alt + @w
+        ~/bin/wallchoose.sh
+
 # power menu
 ctrl + alt + Delete
         ~/bin/powermenu.sh
