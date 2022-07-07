@@ -14,13 +14,17 @@ super + alt + b
 super + alt + m
         thunderbird
 
+# reload sxhkd
+super + alt + x
+        pkill -USR1 -x sxhkd
+
 # toggle lemonbar
 super + alt + t
         pkill -SIGTERM -x panel || ~/bin/panel
 
-# reload sxhkd
-super + alt + x
-        pkill -USR1 -x sxhkd
+# toggle picom
+super + semicolon; c
+        pkill -SIGTERM -x picom || picom --experimental-backends
 
 # cycle desktop padding/window gap
 super + semicolon; {_, super +} p
