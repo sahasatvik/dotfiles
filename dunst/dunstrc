@@ -18,7 +18,7 @@
     follow = mouse
 
     # The geometry of the window:
-    width = (300, 420)
+    width = (300, 440)
     offset = "6x6"
 
     # Turn on the progess bar
@@ -59,10 +59,10 @@
     padding = 12
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 12
 
     # Padding between text and icon.
-    text_icon_padding = 0
+    text_icon_padding = 12
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
@@ -169,7 +169,7 @@
     ### Icons ###
 
     # Align icons left/right/off
-    icon_position = off
+    icon_position = left
 
     # Scale small icons up to this size, set to 0 to disable. Helpful
     # for e.g. small files or high-dpi screens. In case of conflict,
