@@ -218,15 +218,15 @@ super + {Left,Down,Up,Right}
 
 # take a screenshot of the whole screen
 {super + alt + 4, Print}
-        maim -u "$HOME/Pictures/screenshots/screenshot-$(date +%s).png"
+        ~/bin/screenshot.sh desktop
 
 # take a screenshot of a selection
 super + alt + 5
-        maim -us "$HOME/Pictures/screenshots/screenshot-$(date +%s).png"
+        ~/bin/screenshot.sh selection
 
 # take a screenshot of active window
 super + alt + 6
-        maim -ui "$(xdotool getactivewindow)" "$HOME/Pictures/screenshots/screenshot-$(date +%s).png"
+        ~/bin/screenshot.sh window
 
 #
 # screenrecords
