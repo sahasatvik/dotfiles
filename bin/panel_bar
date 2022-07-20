@@ -11,9 +11,6 @@ wintitle=""
 musicortitle="music"
 
 PANEL_FIFO=/tmp/panel-fifo
-WALL_DIR="$HOME/Pictures/wallpapers/main"
-WALL_BLUR_DIR="$HOME/Pictures/wallpapers/blur"
-WALL_CURRENT="$HOME/Pictures/wallpapers/current"
 
 while read -r line; do
         case $line in
@@ -24,21 +21,6 @@ while read -r line; do
                                 verbose=""
                         fi
                         ;;
-                wallchange*)
-                        walls=($WALL_DIR/*)
-                        current="$(cat $WALL_CURRENT)"
-                        idx=0
-                        for i in "${!walls[@]}"
-                        do
-                                if [[ "${walls[$i]}" == "$current" ]]; then
-                                        idx=$i
-                                        break
-                                fi
-                        done
-                        len="${#walls[@]}"
-                        idx=$(((idx + 1) % len))
-                        $HOME/bin/wallset.sh "${walls[$idx]}" &> /dev/null
-                        ;;
                 musicortitle*)
                         if [[ "$musicortitle" == "music" ]]; then
                                 musicortitle="title"
@@ -47,19 +29,18 @@ while read -r line; do
                         fi
                         ;;
                 C*)
-                        clock="${line#?} "
+                        clock="%{F#DDDDDD}${line#C}%{F-} "
                         clock="%{A:echo verbose > $PANEL_FIFO:}$clock%{A}"
-                        clock="%{A2:echo wallchange > $PANEL_FIFO:}$clock%{A}"
                         clock="%{A3:echo musicortitle > $PANEL_FIFO:}$clock%{A}"
                         ;;
                 D*)
-                        date="%{F#969896}${line#?}%{F-}"
+                        date="${line#D}"
                         ;;
                 MEM*)
-                        megs="${line#???}"
+                        megs="${line#MEM}"
                         gigs=$(awk -v m=$megs 'BEGIN {printf "%.2f", m/1000}')
                         if [[ $megs -lt 1000 ]]; then
-                                memory=" %{F#969896}${gigs}G%{F-} "
+                                memory=" ${gigs}G "
                         elif [[ $megs -lt 2000 ]]; then
                                 memory=" %{F#cd9a76}${gigs}G%{F-} "
                         elif [[ $megs -lt 3000 ]]; then
@@ -70,10 +51,10 @@ while read -r line; do
                         ;;
                 B*)
                         adapter="$(cat /sys/class/power_supply/ADP0/online)"
-                        percent="${line#??}"
+                        percent="${line#B?}"
                         if [[ $adapter -eq "0" ]]; then
                                 if [[ $percent -gt 50 ]]; then
-                                        power=" %{F#969896}$percent%%%{F-} "
+                                        power=" $percent%% "
                                 elif [[ $percent -gt 25 ]]; then
                                         power=" %{F#cd9a76}$percent%%%{F-} "
                                 elif [[ $percent -gt 15 ]]; then
@@ -82,11 +63,11 @@ while read -r line; do
                                         power=" %{F#ff3334}$percent%%%{F-} "
                                 fi
                         else
-                                power=" %{F#969896}+$percent%%%{F-} "
+                                power=" +$percent%% "
                         fi
                         ;;
-                N*)     
-                        netstat="${line#??}"
+                N*)
+                        netstat="${line#N?}"
                         if [[ $netstat == "off" ]]; then
                                 network=""
                         else
@@ -94,7 +75,7 @@ while read -r line; do
                                 if [[ $percent -gt 80 ]]; then
                                         quality=""
                                 elif [[ $percent -gt 60 ]]; then
-                                        quality="%{F#969896}!%{F-}"
+                                        quality="!"
                                 elif [[ $percent -gt 40 ]]; then
                                         quality="%{F#ffaa55}!%{F-}"
                                 elif [[ $percent -gt 20 ]]; then
@@ -103,15 +84,15 @@ while read -r line; do
                                         quality="%{F#ff3334}!!%{F-}"
                                 fi
                                 essid=$(echo ${netstat#* } | tr -d '"')
-                                network=" $quality%{F#969896}$essid%{F-} "
+                                network=" $quality$essid "
                         fi
                         ;;
                 MAIL*)
                         mailcount="${line#MAIL?}"
                         if [[ $mailcount -gt 1 ]]; then
-                                mail=" %{F#969896}$mailcount msgs%{F-} "
+                                mail=" $mailcount msgs "
                         elif [[ $mailcount -gt 0 ]]; then
-                                mail=" %{F#969896}$mailcount msg%{F-} "
+                                mail=" $mailcount msg "
                         else
                                 mail=""
                         fi
@@ -124,18 +105,16 @@ while read -r line; do
                         if [[ ${#title} -gt 100 ]]; then
                                 title="${title:0:97}..."
                         fi
-                        music="%{A:cmus-remote -u:}%{A} $title"
-                        music="%{A2:cmus-remote -s:}$music%{A}"
-                        music="%{F#969896}$music%{F-}"
+                        music="%{A:cmus-remote -u:}%{A}"
+                        music="%{A2:cmus-remote -s:}$music%{A} $title"
                         ;;
                 Mpaused*)
                         title="$(cmus-remote -C status | grep 'tag title' | sed 's/tag title //g')"
                         if [[ ${#title} -gt 100 ]]; then
                                 title="${title:0:97}..."
                         fi
-                        music="%{A:cmus-remote -u:}%{A} $title"
-                        music="%{A2:cmus-remote -s:}$music%{A}"
-                        music="%{F#969896}$music%{F-}"
+                        music="%{A:cmus-remote -u:}%{A}"
+                        music="%{A2:cmus-remote -s:}$music%{A} $title"
                         ;;
                 Rstarted*)
                         record="%{A:pkill -SIGTERM -x screenrecord.sh:}%{F#FF8B8B} 雷 %{F-}%{A}"
@@ -144,16 +123,15 @@ while read -r line; do
                         record=""
                         ;;
                 TTL*)
-                        wintitle="${line#????}"
+                        wintitle="${line#TTL?}"
                         if [[ ${#wintitle} -gt 100 ]]; then
                                 wintitle="${wintitle:0:97}..."
                         fi
-                        wintitle="%{F#969896}$wintitle%{F-}"
                         ;;
                 W*)
                         wm_info=""
                         IFS=':'
-                        set -- ${line#?}
+                        set -- ${line#W}
                         while [ $# -gt 0 ]; do
                                 item=$1
                                 name=${item#?}
@@ -164,7 +142,7 @@ while read -r line; do
                                                 wm_info="$wm_info%{F#ffffff}%{B#373b41}$click%{B-}%{F-}"
                                                 ;;
                                         F*)
-                                                wm_info="$wm_info%{F#969896}%{B#373b41}$click%{B-}%{F-}"
+                                                wm_info="$wm_info%{B#373b41}$click%{B-}"
                                                 ;;
                                         U*)
                                                 wm_info="$wm_info%{F#ffaa55}%{B#373b41}$click%{B-}%{F-}"
@@ -173,7 +151,7 @@ while read -r line; do
                                                 wm_info="$wm_info%{F#ffffff}$click%{F-}"
                                                 ;;
                                         f*)
-                                                wm_info="$wm_info%{F#969896}$click%{F-}"
+                                                wm_info="$wm_info$click"
                                                 ;;
                                         u*)
                                                 wm_info="$wm_info%{F#ffaa55}$click%{F-}"
