@@ -9,16 +9,20 @@ image="screenshot-$timestamp.png"
 filename="$imagedir$image"
 touch "$filename"
 
+fail() {
+        rm "$filename"
+        exit 1
+}
+
 case $1 in
         desktop)
-                maim -u "$filename" ;;
+                maim -u "$filename" || fail ;;
         selection)
-                maim -us "$filename" ;;
+                maim -us "$filename" || fail ;;
         window)
-                maim -ui "$(xdotool getactivewindow)" "$filename" ;;
+                maim -ui "$(xdotool getactivewindow)" "$filename" || fail ;;
         *)
-                rm "$filename"
-                exit 1 ;;
+                fail ;;
 esac
 
 notify-send -t 3000 -i "$filename" -u low "Screenshot" "$image"
