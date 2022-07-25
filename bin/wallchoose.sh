@@ -5,7 +5,7 @@ current="$(cat $HOME/Pictures/wallpapers/current)"
 
 list_wallpapers() {
         fd --type file . "$walldir" \
-                | sort
+                | LC_COLLATE=C sort
 }
 
 current_index() {
