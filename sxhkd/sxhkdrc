@@ -26,6 +26,10 @@ super + alt + t
 super + semicolon; c
         pkill -SIGTERM -x picom || picom --experimental-backends
 
+# toggle solid wallpaper mode
+super + semicolon; w
+        pkill -USR1 -x background.sh
+
 # cycle desktop padding/window gap
 super + semicolon; {_, super +} p
         ~/bin/padding.sh {padding,gap}
