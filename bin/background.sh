@@ -1,17 +1,15 @@
 #!/usr/bin/bash
 
-# Sets a random wallpaper, replaces it with a solid
-# background whenever there are open windows on the
-# current desktop. This can be toggled to keep the 
+# Replaces the current wallpaper with a solid background whenever there are
+# visible windows on the current desktop. This can be toggled to keep the
 # wallpaper when the windows are floating.
 
-imagedir="$HOME/Pictures/wallpapers/random/"
-image="$imagedir/$(ls $imagedir | shuf -n 1)"
+image="$(cat $HOME/Pictures/wallpapers/current)"
 color="#1d1f21"
 mode=""
 
 function count() {
-        bspc query -N -n ".window$mode" -d focused | wc -l
+        bspc query -N -n '.window.!hidden'$mode -d focused | wc -l
 }
 
 function toggle() {
