@@ -4,13 +4,6 @@ configuration {
 
 @theme "tomorrow-night"
 
-* {
-        active-background:      var(background);
-        selected-active-background:
-                                var(selection);
-
-}
-
 window {
         location:               north east;
         anchor:                 north east;

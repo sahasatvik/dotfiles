@@ -36,6 +36,7 @@ while read -r line; do
                 D*)
                         date="${line#D}"
                         date="%{A:~/bin/calendar.sh:}$date%{A}"
+                        date="%{A3:~/bin/calendar.sh long:}$date%{A}"
                         ;;
                 MEM*)
                         megs="${line#MEM}"
