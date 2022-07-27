@@ -64,7 +64,7 @@ echo M$cmusstat > "$PANEL_FIFO" &
 
 cat "$PANEL_FIFO" \
         | ~/bin/panel_bar \
-        | lemonbar -F "$PANEL_FG" -B "$PANEL_BG" -f "$PANEL_FONT" -g x$PANEL_HEIGHT -a 26 \
+        | lemonbar -F "$PANEL_FG" -B "$PANEL_BG" -f "$PANEL_FONT" -g x$PANEL_HEIGHT -a 32 \
         | sh &
 
 until bar_id=$(xdo id -n lemonbar); do sleep 0.001; done

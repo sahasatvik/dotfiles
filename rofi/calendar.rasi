@@ -1,0 +1,29 @@
+configuration {
+        font:                   "Fira Code 10";
+}
+
+@theme "tomorrow-night"
+
+* {
+        active-background:      var(background);
+        selected-active-background:
+                                var(selection);
+
+}
+
+window {
+        location:               north east;
+        anchor:                 north east;
+        x-offset:               -34px;
+        y-offset:               30px;
+        width:                  calc(20ch + 24px);
+        padding:                12px;
+}
+
+mainbox {
+        children:               [ message ];
+}
+
+message {
+        padding:                0;
+}
