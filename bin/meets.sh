@@ -11,6 +11,7 @@ format_entries() {
         cat "$calendarfile" | strip_excess | while read line; do
                 read etime title description meetcode <<< $line
                 [[ -z "$meetcode" ]] && continue
+                [[ ! "$meetcode" =~ [a-z]{3}-[a-z]{4}-[a-z]{3} ]] && continue
                 printf "%-24s  <span color=\"#777777\">%-46s</span> %16s\n" "$title" "$description" "$meetcode"
         done
 }
