@@ -18,7 +18,7 @@ current_index() {
 get_wallpaper() {
         idx="$(current_index)"
         list_wallpapers \
-                | xargs -i echo -en "{}\x00icon\x1f{}\n" \
+                | xargs -i echo -en "{}\x00icon\x1f{}\x00\n" \
                 | rofi  -dmenu \
                         -config ~/.config/rofi/wallpapers.rasi \
                         -show-icons \
