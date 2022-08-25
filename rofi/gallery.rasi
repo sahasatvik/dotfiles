@@ -18,6 +18,7 @@ inputbar {
 listview {
         lines:                  3;
         columns:                3;
+        flow:                   horizontal;
         fixed-columns:          true;
         cycle:                  false;
         spacing:                4px;
