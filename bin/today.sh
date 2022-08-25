@@ -48,6 +48,6 @@ get_code() {
 }
 
 meetcode="$(get_code)"
-if [[ ! -z "$meetcode" ]]; then
-        chrome --profile-directory="Profile 1" --app="https://meet.google.com/$meetcode"
+if [[ ! -z "$meetcode" ]] && [[ "$meetcode" =~ [a-z]{3}-[a-z]{4}-[a-z]{3} ]]; then
+        chrome --profile-directory="Profile 1" --app="https://meet.google.com/$meetcode" &
 fi

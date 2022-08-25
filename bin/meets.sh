@@ -29,4 +29,4 @@ meetcode="$(get_code)"
 if [[ "$meetcode" == "............" ]]; then
         meetcode=""
 fi
-chrome --profile-directory="Profile 1" --app="https://meet.google.com/$meetcode"
+chrome --profile-directory="Profile 1" --app="https://meet.google.com/$meetcode" &
