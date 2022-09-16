@@ -6,6 +6,11 @@ configuration {
 
 @theme "tomorrow-night"
 
+* {
+        background:             #1d1f21;
+        selection:              #282a2e;
+}
+
 window {
         width:                  100%;
         height:                 100%;

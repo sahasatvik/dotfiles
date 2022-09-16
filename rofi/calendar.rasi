@@ -4,6 +4,10 @@ configuration {
 
 @theme "tomorrow-night"
 
+* {
+        background:             #1d1f21;
+}
+
 window {
         location:               north east;
         anchor:                 north east;
@@ -19,4 +23,6 @@ mainbox {
 
 message {
         padding:                0;
+        background-color:       var(background);
 }
+

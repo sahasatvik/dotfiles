@@ -2,18 +2,18 @@
         red:                            #cc6666;
         blue:                           #81a2be;
         white:                          #ffffff;
-        background:                     #1d1f21;
+        background:                     #1d1f21c0;
         foreground:                     #969896;
-        selection:                      #282a2e;
+        selection:                      #282a2ed0;
         placeholder:                    #444444;
         transparent:                    #00000000;
 
         normal-foreground:              var(foreground);
-        normal-background:              var(background);
+        normal-background:              var(transparent);
         active-foreground:              var(blue);
-        active-background:              var(background);
+        active-background:              var(transparent);
         urgent-foreground:              var(red);
-        urgent-background:              var(background);
+        urgent-background:              var(transparent);
 
         selected-normal-foreground:     var(white);
         selected-normal-background:     var(selection);
@@ -28,6 +28,10 @@
         border:                         0;
 }
 
+mainbox {
+        background-color:               var(transparent);
+}
+
 inputbar {
         text-color:                     var(normal-foreground);
         padding:                        12px 12px 4px 12px;
@@ -36,6 +40,10 @@ inputbar {
 
 message {
         padding:                        2px 12px;
+}
+
+error-message {
+        background-color:               var(transparent);
 }
 
 listview {
@@ -103,40 +111,48 @@ element-icon {
 
 prompt {
         text-color:                     inherit;
+        background-color:               var(transparent);
 }
 textbox-prompt-colon {
         text-color:                     inherit;
         margin:                         0 6px 0 0;
         expand:                         false;
         str:                            ":";
+        background-color:               var(transparent);
 }
 
 entry {
         text-color:                     inherit;
         placeholder-color:              var(placeholder);
         placeholder:                    "Type to filter";
+        background-color:               var(transparent);
 }
 
 num-filtered-rows {
         text-color:                     inherit;
         expand:                         false;
+        background-color:               var(transparent);
 }
 num-rows {
         text-color:                     inherit;
         expand:                         false;
+        background-color:               var(transparent);
 }
 textbox-num-sep {
         text-color:                     inherit;
         expand:                         false;
         str:                            "/";
+        background-color:               var(transparent);
 }
 
 textbox {
         text-color:                     var(normal-foreground);
+        background-color:               var(transparent);
 }
 
 button {
         text-color:                     var(normal-foreground);
+        background-color:               var(normal-background);
         padding:                        12px 0;
 }
 
