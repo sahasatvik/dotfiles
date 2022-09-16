@@ -262,7 +262,7 @@ super + alt + 0
 
 super + Escape
         notify-send -t 2000 -i none -u low "$(date +'%a %B %d %H:%M')" "$(~/bin/status.sh)" \
-                -h string:x-canonical-private-synchronous:statusinfo &&
+                -h string:x-canonical-private-synchronous:statusinfo && \
                 ~/bin/cmusnotify.sh
 
 #
