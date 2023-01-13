@@ -313,6 +313,7 @@ formats = {
     quit = "          %r* %K:%n %K{channick $0} %rquit%k %K{reason $2}";
     quit_once = "          %r* %K:%n %K{channick $0} %rquit %K{reason $2}";
     nick_changed = "          %y* %K:%n %K{channick $0} %yis now known as%K {channick $1}";
+    host_changed = "          %y* %K:%n %K{channick $0} %y{chanhost $1} has changed host";
 
     timestamp = "{timestamp %%H:%%M} ";
     pubmsg = "{pubmsgnick $2 {pubnick $nickcolor$[-10]0}}$1";
@@ -327,7 +328,7 @@ formats = {
     msg_private_query = "{privmsgnick $nickcolor$[-10]0}$2";
 
     servertag = "";
-    daychange = "\012%W %_00:00:00%p            * %K:%p Day changed! Still up? Today is %%A %%d %%B %%Y.%n\012";
+    daychange = "\012%W %_00:00%p            * %K:%p Day changed! Still up? Today is %%A %%d %%B %%Y.%n\012";
   };
   "fe-common/irc" = {
     own_action = "{ownaction {ownnick $0}}$1";
