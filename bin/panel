@@ -5,6 +5,7 @@ PANEL_FONT="Fira Code Nerd Font-10"
 PANEL_HEIGHT=24
 PANEL_FG="#969896"
 PANEL_BG="#1D1F21"
+PANEL_UL="#969896"
 
 if [ $(pgrep -cx panel) -gt 1 ] ; then
         printf "%s\n" "The panel is already running." >&2
@@ -64,7 +65,7 @@ echo M$cmusstat > "$PANEL_FIFO" &
 
 cat "$PANEL_FIFO" \
         | ~/bin/panel_bar \
-        | lemonbar -F "$PANEL_FG" -B "$PANEL_BG" -f "$PANEL_FONT" -g x$PANEL_HEIGHT -a 32 \
+        | lemonbar -F "$PANEL_FG" -B "$PANEL_BG" -U "$PANEL_UL" -f "$PANEL_FONT" -g x$PANEL_HEIGHT -a 32 \
         | sh &
 
 until bar_id=$(xdo id -n lemonbar); do sleep 0.001; done
