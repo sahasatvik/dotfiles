@@ -22,7 +22,7 @@ libinput-gestures-setup restart &
 pgrep -x dunst > /dev/null || dunst &
 
 # compositor
-pgrep -x picom > /dev/null || picom --experimental-backends &
+pgrep -x picom > /dev/null || picom --daemon
 
 # urxvt daemon
 pgrep -x urxvtd > /dev/null || urxvtd -q -o -f
