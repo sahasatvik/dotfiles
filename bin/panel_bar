@@ -4,6 +4,7 @@ verbose=""
 music=""
 record=""
 power=""
+power_short=""
 memory=""
 network=""
 mail=""
@@ -57,15 +58,20 @@ while read -r line; do
                         if [[ $adapter -eq "0" ]]; then
                                 if [[ $percent -gt 50 ]]; then
                                         power=" $percent%% "
-                                elif [[ $percent -gt 25 ]]; then
+                                        power_short=""
+                                elif [[ $percent -gt 30 ]]; then
                                         power=" %{F#cd9a76}$percent%%%{F-} "
+                                        power_short="%{F#cd9a76}!%{F-}"
                                 elif [[ $percent -gt 15 ]]; then
                                         power=" %{F#ffaa55}$percent%%%{F-} "
+                                        power_short="%{F#ffaa55}!!%{F-}"
                                 else
                                         power=" %{F#ff3334}$percent%%%{F-} "
+                                        power_short="%{F#ff3344}!!%{F-}"
                                 fi
                         else
                                 power=" +$percent%% "
+                                power_short=""
                         fi
                         ;;
                 N*)
@@ -170,7 +176,7 @@ while read -r line; do
                 centerpiece="$music"
         fi
         if [[ -z $verbose ]]; then
-                echo "%{l}${wm_info}%{c}${centerpiece}%{r}${record}${mail}${date}${clock}"
+                echo "%{l}${wm_info}%{c}${centerpiece}%{r}${record}${mail}${power_short}${date}${clock}"
         else
                 echo "%{l}${wm_info}%{c}${centerpiece}%{r}${record}${mail}${network}${memory}${power}${date}${clock}"
         fi
