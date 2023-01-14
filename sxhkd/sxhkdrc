@@ -24,7 +24,7 @@ super + alt + t
 
 # toggle picom
 super + semicolon; c
-        pkill -SIGTERM -x picom || picom --experimental-backends
+        pkill -SIGTERM -x picom || picom
 
 # toggle solid wallpaper mode
 super + semicolon; w
