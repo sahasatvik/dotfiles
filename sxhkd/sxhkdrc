@@ -66,6 +66,10 @@ super + alt + @f
 super + alt + shift + @b
         ~/bin/bookmarks.sh
 
+# qutebrowser sessions
+super + alt + shift + @s
+        ~/bin/qutesessions.sh
+
 # chrome profiles
 super + alt + shift + @c
         ~/bin/chromeprofile.sh
