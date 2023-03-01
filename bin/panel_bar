@@ -7,6 +7,7 @@ power=""
 power_short=""
 memory=""
 network=""
+bluetooth=""
 mail=""
 wintitle=""
 musicortitle="music"
@@ -29,13 +30,13 @@ while read -r line; do
                                 musicortitle="music"
                         fi
                         ;;
-                C*)
-                        clock="%{F#DDDDDD}${line#C}%{F-} "
+                CLK*)
+                        clock="%{F#DDDDDD}${line#CLK}%{F-} "
                         clock="%{A:echo verbose > $PANEL_FIFO:}$clock%{A}"
                         clock="%{A3:echo musicortitle > $PANEL_FIFO:}$clock%{A}"
                         ;;
-                D*)
-                        date="${line#D}"
+                DAT*)
+                        date="${line#DAT}"
                         date="%{A:~/bin/calendar.sh:}$date%{A}"
                         date="%{A3:~/bin/calendar.sh long:}$date%{A}"
                         ;;
@@ -52,9 +53,9 @@ while read -r line; do
                                 memory=" %{F#ff3334}${gigs}G%{F-} "
                         fi
                         ;;
-                B*)
+                BAT*)
                         adapter="$(cat /sys/class/power_supply/ADP0/online)"
-                        percent="${line#B?}"
+                        percent="${line#BAT?}"
                         if [[ $adapter -eq "0" ]]; then
                                 if [[ $percent -gt 50 ]]; then
                                         power=" $percent%% "
@@ -74,10 +75,14 @@ while read -r line; do
                                 power_short=""
                         fi
                         ;;
-                N*)
-                        netstat="${line#N?}"
+                NET*)
+                        netstat="${line#NET?}"
                         if [[ $netstat == "off" ]]; then
-                                network=""
+                                if [[ -z "$bluetooth" ]]; then
+                                        network=""
+                                else
+                                        network=" $bluetooth "
+                                fi
                         else
                                 percent="${netstat%% *}"
                                 if [[ $percent -gt 80 ]]; then
@@ -92,8 +97,14 @@ while read -r line; do
                                         quality="%{F#ff3334}!!%{F-}"
                                 fi
                                 essid=$(echo ${netstat#* } | tr -d '"')
-                                network=" $quality$essid "
+                                network=" $bluetooth$quality$essid "
                         fi
+                        ;;
+                BLUEon*)
+                        bluetooth="%{F#81aebe}+%{F-}"
+                        ;;
+                BLUEoff*)
+                        bluetooth=""
                         ;;
                 MAIL*)
                         mailcount="${line#MAIL?}"

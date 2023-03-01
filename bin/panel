@@ -12,6 +12,13 @@ if [ $(pgrep -cx panel) -gt 1 ] ; then
         exit 1
 fi
 
+bluetooth_connected() {
+        bluetoothctl devices \
+                | cut -f2 -d' ' \
+                | while read uuid; do bluetoothctl info $uuid; done \
+                | grep -e "Connected: yes"
+}
+
 trap 'bspc config top_padding 0; trap - TERM; kill 0' INT TERM QUIT EXIT
 
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
@@ -24,13 +31,13 @@ bspc subscribe > "$PANEL_FIFO" &
 xtitle -sf "TTL %s\n" > "$PANEL_FIFO" &
 
 while true; do
-        echo "C" $(date +"%T")
+        echo "CLK" $(date +"%T")
         sleep 1
 done > "$PANEL_FIFO" &
 
 while true; do
-        echo "D" $(date "+%a %d %b")
-        echo "B" $(cat /sys/class/power_supply/BAT0/capacity)
+        echo "DAT" $(date "+%a %d %b")
+        echo "BAT" $(cat /sys/class/power_supply/BAT0/capacity)
         echo "MEM" $(free -m | grep Mem | awk '{print $3}')
 
         sleep 5
@@ -42,8 +49,14 @@ while true; do
         essid="$(echo $netstatus | grep -oe 'ESSID:[^ ]*')"
         essid="${essid#ESSID:}"
 
+        if [[ -z "$(bluetooth_connected)" ]]; then
+                echo "BLUEoff"
+        else
+                echo "BLUEon"
+        fi
+
         if [[ "$essid" =~ "off" ]]; then
-                echo "N off"
+                echo "NET off"
         else
                 quality="$(echo $netstatus | grep -oe "Link Quality=[^ ]*/[^ ]*")"
                 quality=${quality#Link Quality=}
@@ -51,7 +64,7 @@ while true; do
                 denominator="${quality#*/}"
                 percent="$(($numerator * 100 / $denominator))"
 
-                echo "N" $percent $essid
+                echo "NET" $percent $essid
         fi
 
         newmail="$(fd . ~/.mail/*/INBOX/new/ --type f | wc -l)"
