@@ -10,7 +10,7 @@ list_sessions() {
 
 get_session() {
         list_sessions \
-                | rofi -dmenu -markup-rows -i -p 'find'
+                | rofi -dmenu -markup-rows -i -p 'qutebrowser'
 }
 
 session="$(get_session)"
