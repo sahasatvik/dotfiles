@@ -1,34 +1,36 @@
 " Basic settings
 set nocp
-set ignorecase
 set modeline
 set cursorline
 set nobackup
-set lazyredraw
 set nowrap
 set hidden
 set backspace=indent,eol,start
-set spelllang=en_gb
-set spell
-set incsearch
 set completeopt=longest,menuone
 set termguicolors
 set shortmess+=F
+set shortmess-=S
 
+" Special characters
 set listchars=tab:▏\ ,trail:•
 set list
-set conceallevel=1
+set conceallevel=0
 
+" Leader
 let mapleader = ','
 
+" Mouse
 set mouse=a
+
+" Numbering
+nnoremap <C-n> :set number!<Enter>
 
 " Statusline, ruler, and title
 set ruler
-set rulerformat=%42(%=%#Statusline#%<%t%r%m%#Normal#%14(%l/%L:%v%)%)
+set rulerformat=%42(%=%<%t%r%m%14(%l/%L:%v%)%)
 
 set laststatus=0
-set statusline=%=%#Statusline#%<%t%r%m%#Normal#%14(%l/%L:%v%)
+set statusline=%=%<%t%r%m%14(%l/%L:%v%)
 
 set title
 set titlestring=%F%(\ [%M]%)\ -\ vim
@@ -49,7 +51,9 @@ let g:indentLine_char = '▏'
 let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_setConceal = 0
 
-" Highlight search
+" Search
+set ignorecase
+set incsearch
 set hlsearch
 nnoremap <silent> <CR> :noh<CR>
 
@@ -63,8 +67,8 @@ filetype plugin on
 augroup filetype_settings
         autocmd!
         autocmd Filetype plaintex setlocal ft=tex
-        autocmd Filetype tex,css,scss,html,javascript,markdown,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
-        autocmd Filetype java,c,cpp,go,rust setlocal signcolumn=yes
+        autocmd Filetype tex,css,scss,html,javascript,markdown,rmarkdown,python,scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
+        " autocmd Filetype java,c,cpp,go,rust setlocal signcolumn=yes
         autocmd Filetype perl setlocal tabstop=2 softtabstop=2 shiftwidth=2
         autocmd FileType make setlocal noexpandtab
 
@@ -73,6 +77,9 @@ augroup filetype_settings
         autocmd FileType markdown setlocal nolist
         autocmd FileType markdown syntax region markdownMath start=/\$\$/ end=/\$\$/
         autocmd FileType markdown syntax match markdownMath '\$[^$].\{-}\$'
+
+        autocmd Filetype tex noremap <leader>. <Esc>:VimtexView<Return>
+        autocmd Filetype tex setlocal conceallevel=0
 augroup END
 
 " OmniCompletion - <CTRL>X <CTRL>O
@@ -88,42 +95,42 @@ augroup complete_functions
         autocmd Filetype html setlocal omnifunc=htmlcomplete#CompleteTags
 augroup END
 
-" Make
-set makeprg=./%
-augroup make_programs
-        autocmd!
-        autocmd Filetype java setlocal makeprg=javac\ %
-        autocmd Filetype cpp setlocal makeprg=c++\ %\ -o\ %:p:h/a.out
-        autocmd Filetype python setlocal makeprg=python3\ %
-        autocmd Filetype c setlocal makeprg=cc\ %\ -o\ %:p:h/a.out
-        autocmd Filetype rust setlocal makeprg=cargo\ run
-        autocmd Filetype html setlocal makeprg=w3m\ %
-augroup END
-
-map ,. <Esc>:make<Return>
-
-augroup tex_commands
-        autocmd!
-        autocmd Filetype tex noremap ,. <Esc>:VimtexView<Return>
-        autocmd Filetype tex setlocal textwidth=85 conceallevel=0
-augroup END
+" Run
+map <leader>. <Esc>:!%:p<Return>
 
 " Colorscheme
+" let g:jellybeans_use_term_italics = 1
 let base16colorspace=256
 colorscheme base16-tomorrow-night
 
 " Spellcheck
+set spell
+set spelllang=en_us
 highlight clear SpellBad
-highlight SpellBad cterm=underline gui=underline
+highlight clear SpellRare
+highlight clear SpellLocal
+highlight SpellBad cterm=underline ctermbg=None gui=underline
+highlight SpellRare cterm=italic gui=italic
+highlight SpellLocal cterm=underline gui=underline
 nnoremap <leader>s a<C-X><C-S>
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 
 " Enter to finish completion
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" NERDTree
-nnoremap <C-Up> :NERDTreeToggle<CR>
-autocmd FileType nerdtree set norelativenumber
+if has("gui_running")
+        if (&ft == 'html')
+                inoremap <C-Space> <C-x><C-o>
+        else
+                inoremap <C-Space> <C-x><C-u>
+        endif
+else
+        if has("unix")
+                inoremap <Nul> <C-x><C-o>
+        endif
+endif
+
 
 " Splits
 set fillchars+=vert:│
@@ -137,17 +144,6 @@ nnoremap <C-Left> :bp<CR>
 nnoremap <C-Right> :bn<CR>
 " nnoremap <C-Down> :bd<CR>
 
-if has("gui_running")
-        if (&ft == 'html')
-                inoremap <C-Space> <C-x><C-o>
-        else
-                inoremap <C-Space> <C-x><C-u>
-        endif
-else
-        if has("unix")
-                inoremap <Nul> <C-x><C-o>
-        endif
-endif
 
 " YouCompleteMe
 let g:ycm_error_symbol = '!!'
@@ -172,12 +168,12 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,scss EmmetInstall
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Latex
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-let g:tex_conceal=''
+let g:tex_flavor = 'lualatex'
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_quickfix_mode = 0
+let g:tex_conceal = ''
