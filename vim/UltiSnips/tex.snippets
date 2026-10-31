@@ -2,18 +2,6 @@ snippet ... "\dots" iA
 \dots
 endsnippet
 
-snippet mm "Math" wA
-$${1:${VISUAL}}$`!p
-punctuation = t[2] and t[2][0] in [',', '.', '?']
-if punctuation:
-	if len(t[2]) == 1:
-		t[2] = t[2] + ' '
-	snip.rv='' 
-else:
-	snip.rv=' '
-`$2
-endsnippet
-
 snippet dm "Math" wA
 \[
 	${1:${VISUAL}}
@@ -24,51 +12,16 @@ snippet f/ "Fraction" iA
 \frac{$1}{$2}$0
 endsnippet
 
-#priority 1000
-#snippet '((\d+)?(\\)?([A-Za-z]+)(\^((\{\d+\})|(\d)))?)/' "symbol frac" wrA
-#\\frac{`!p snip.rv = match.group(1)`}{$1}$0
-#endsnippet
-
 priority 10
 snippet '(\d+)/' "number frac" wrA
 \frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
-#snippet '^.*\)/' "() frac" wrA
-#`!p
-#stripped = match.string[:-1]
-#depth = 0
-#i = len(stripped) - 1
-#while True:
-#	if stripped[i] == ')': depth += 1
-#	if stripped[i] == '(': depth -= 1
-#	if depth == 0: break;
-#	i-=1
-#snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
-#`{$1}$0
-#endsnippet
-
 snippet '([A-Za-z])(\d)' "auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
 
-snippet sympy "sympyblock " b
-sympy $1 sympy$0
-endsnippet
-
-snippet 'sympy(.*)sympy' "sympy" wr
-`!p
-from sympy import *
-x, y, z, t = symbols('x y z t')
-k, m, n = symbols('k m n', integer=True)
-f, g, h = symbols('f g h', cls=Function)
-init_printing()
-snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').replace('{', '(').replace('}', ')') + ')')
-`
-endsnippet
-
-
-snippet == "equals" iA
+snippet === "equals" iA
 \;&=\; $1 
 endsnippet
 
@@ -84,31 +37,15 @@ snippet ooo "\infty" iA
 \infty
 endsnippet
 
-snippet EE "exists" iA
-\exists 
-endsnippet
-
-snippet AA "forall" iA
-\forall 
-endsnippet
-
-snippet R0+ "R0+" iA
-\R_0^+
-endsnippet
-
 snippet mcal "mathcal" iA
 \mathcal{$1}$0
-endsnippet
-
-snippet uvec "unit vector" iA
-\vec e_{$1}$0
 endsnippet
 
 snippet lll "l" iA
 \ell 
 endsnippet
 
-snippet DD "Delta" iA
+snippet DT "Delta" iA
 \Delta{$1} $0 
 endsnippet
 
@@ -140,22 +77,6 @@ snippet invs "inverse" iA
 ^{-1}
 endsnippet
 
-snippet CC "complex" iA
-\mathbb{C}
-endsnippet
-
-snippet LL "laplace" iA
-\mathcal{L}
-endsnippet
-
-snippet HH "hamiltonian" iA
-\mathcal{H}
-endsnippet
-
-snippet FF "overdekking" iA
-\mathcal{F}
-endsnippet
-
 snippet -> "->" iA
 \to
 endsnippet
@@ -176,16 +97,8 @@ snippet || "vert" iA
  \Vert
 endsnippet
 
-snippet inwend "mathring" iA
-\mathring 
-endsnippet
-
 snippet oline "overline" iA
 \overline{$1} $0
-endsnippet
-
-snippet NN "natural" iA
-\mathbb{N}
 endsnippet
 
 snippet Nn "cap" iA
@@ -197,19 +110,7 @@ snippet Uu "cup" iA
 endsnippet
 
 snippet OO "emptyset" iA
-\O
-endsnippet
-
-snippet RR "real" iA
-\mathbb{R}
-endsnippet
-
-snippet QQ "rational" iA
-\mathbb{Q}
-endsnippet
-
-snippet ZZ "integer" iA
-\mathbb{Z}
+\emptyset
 endsnippet
 
 # vim:ft=snippets
