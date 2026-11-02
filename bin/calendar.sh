@@ -10,7 +10,7 @@ month() {
 
 highlight_today() {
         d=$(date +%e)
-        sed "s/^$d[^0-9]/<span color='$highlight'>$d<\/span> /g" \
+        sed "s/^$d[^0-9]/<span weight='bold' color='$highlight'>$d<\/span> /g" \
                 | sed "s/ $d / <span weight='bold' color='$highlight'>$d<\/span> /g" \
                 | sed "s/ $d$/ <span weight='bold' color='$highlight'>$d<\/span>/g"
 }
