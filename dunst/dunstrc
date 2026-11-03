@@ -454,4 +454,8 @@
     appname = "spotify"
     format = "<span weight='bold' color='#99ad6a'>%s</span>\n%b"
 
+[cmus]
+    appname = "cmus"
+    format = "<span weight='bold' color='#87a1bb'>%s</span>\n%b"
+
 # vim: ft=cfg
