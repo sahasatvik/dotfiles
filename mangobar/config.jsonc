@@ -1,0 +1,123 @@
+// mangobar config (JSONC).
+{
+    "layer": "top",
+    "height": 22,
+    "buffer-scale": 1,
+    // "scroll-interval": 100,
+    // "smooth-scrolling-threshold": 5.0,
+    // "sys-interval": 2,  // default refresh interval (seconds) for polled modules
+
+    "modules-left": [
+        "workspaces",
+        // "layout",
+        "window"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "hideclients",
+        "tray",
+        // "network",
+        // "keymode",
+        // "keyboardlayout",
+        "cpu",
+        // "memory",
+        "custom/memory_gb",
+        "pulseaudio",
+        // "backlight",
+        // "battery",
+        "clock#date",
+        "clock#time",
+        // "custom/power"
+    ],
+
+    "workspaces": {
+        // "hide-empty": true,
+        "pinned": [1, 2, 3, 4],
+        "tag-names": ["α", "β", "γ", "δ", "ε", "ζ", "η", "󰖟", "󰎇"],
+        "overview-label": "OVERVIEW",
+        "on-click": "activate",
+        "on-click-right": "toggle"
+    },
+    "layout": {
+        "format": "{}"
+    },
+    "window": {
+        "format": "{}",
+        "on-click-middle": "~/bin/screenshot.sh window",
+    },
+    "keyboardlayout": {
+        "format": "{short}"
+    },
+
+    "network": {
+        // Placeholders: {ifname}/{} interface, {ipaddr}/{ip} IPv4 address,
+        // {ssid}/{essid}, {signal} icon, {strength}/{signal-percent} percent,
+        // {status}, {type}, {icon}, {down}/{up} (speed in format-alt)
+        "format": "{icon} {ifname}",
+        "format-wifi": "{signal} {ssid}",
+        "format-disconnected": "{icon}",
+        "icon-wifi": "󰖩",
+        "icon-ethernet": "󰈀",
+        "icon-disconnected": "󰖪",
+        "signal-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "format-alt": "↓{down} ↑{up}",
+        // "interval": 1  // seconds; omit to use the global "sys-interval"
+    },
+    "hideclients": {
+        "format": "[{}]"
+    },
+    "cpu": {
+        "format": "{load}%",
+        // "interval": 1  // seconds; omit to use the global "sys-interval"
+    },
+    "memory": {
+        "format": " {}%",
+        // "interval": 5  // seconds; omit to use the global "sys-interval"
+    },
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟"],
+        "scroll-step": 2
+    },
+    "pulseaudio": {
+        "format": "{volume}% {bt}",
+        // "format-muted": "MUTED {bt}",
+        "format-muted": "",
+        "icons": ["", "", "", ""],
+        // "icon-bluetooth": "󰂯",
+        "scroll-step": 5,
+        "max-volume": 150
+    },
+    "battery": {
+        "format": "{icon} {percent}% {ac}",
+        "icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        // "icon-charging": "󰂄",
+        // "icon-full": "󰁹",
+        // "icon-ac": "",
+        // "hide-on-ac": true
+    },
+    "clock#date": {
+        "format": "{:L%a %b %d}",
+        "on-click": "pkill rofi || ~/bin/calendar.sh",
+        "on-click-right": "pkill rofi || ~/bin/calendar.sh long",
+    },
+    "clock#time": {
+        "format": "{:L%H:%M}"
+    },
+    "tray": {
+        "icon-size": 25,
+        "spacing": 10
+    },
+
+    "custom/power": {
+        "format": "󰣇",
+        "on-click": "wlogout -C ~/.config/mango/wlogout/style.css -l ~/.config/mango/wlogout/layout -b 6 --protocol layer-shell",
+        "on-click-right": "sleep 0.1s && swaync-client -t -sw"
+    },
+
+    "custom/memory_gb": {
+        "format": "{}",
+        "exec": "free -h | awk '/Mem:/ {print $3}'",
+        "interval": 5
+    }
+}

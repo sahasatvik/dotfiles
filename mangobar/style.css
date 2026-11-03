@@ -1,0 +1,144 @@
+/* =========================================================
+ * mangobar style (only modules/properties this bar supports)
+ *
+ * Modules: bar / tags / layout / title / overview /
+ *          clock / cpu / mem / brightness / volume /
+ *          network / keymode / keyboardlayout / tray / custom-<name>
+ * Tag states: tags.active / tags.occupied / tags.urgent / tags.empty
+ * Network states: network.connected / network.disconnected /
+ *                 network.wifi / network.ethernet
+ * Properties: color / background / padding / margin / border-radius /
+ *             min-width / font-family / font-size / font-weight
+ * ========================================================= */
+
+/* ==================== Font ==================== */
+/* font-family / font-size / font-weight.
+ * The config.jsonc "font" value is the fallback when CSS sets no font. */
+
+@define-color white     #c5c7c6;
+@define-color black     #080808;
+@define-color grey      #1d1e20;
+@define-color red       #cf6a4c;
+@define-color blue      #87a1bb;
+@define-color green     #99ad6a;
+@define-color yellow    #e9c77f;
+@define-color magenta   #ad95b8;
+
+
+* {
+    font-family: "FiraCode Nerd Font";
+    font-size: 12px;
+    font-weight: bold;
+    color: @white;
+    background-color: @grey;
+    padding: 0px 10px;
+    margin: 0px 0px;
+    margin-right: 4px;
+    border-radius: 0px;
+}
+
+#bar {
+    background: none;
+    margin: 4px 6px;
+}
+
+#bar.sel {
+    background: none;
+}
+
+
+#tags {
+    padding: 0px 10px;
+    margin: 0px 0px;
+}
+
+#tags.active {
+    background-color: @blue;
+    color: @black;
+}
+
+#tags.occupied {
+    background-color: @grey;
+    color: @blue;
+}
+
+#tags.urgent {
+    background-color: @red;
+    color: @black;
+}
+
+#tags.empty {
+    margin: 0px 0px;
+    background-color: @grey;
+    color: @white;
+}
+
+
+
+#overview {
+    background-color: @blue;
+    color: @black;
+}
+
+#layout {
+    background-color: @blue;
+    color: @black;
+    min-width: 34px;
+}
+
+#title {
+    background-color: @grey;
+    color: @white;
+    margin-left: 4px;
+}
+
+#clock {
+    background-color: @blue;
+    color: @black;
+    margin-right: 0px;
+}
+
+#clock.date {
+    background-color: @grey;
+    color: @white;
+}
+
+#cpu {
+    padding-right: 4px;
+    margin-right: 0px;
+    background-color: @grey;
+    color: @white;
+}
+
+#custom-memory_gb {
+    padding-left: 4px;
+    margin-left: 0px;
+    background-color: @grey;
+    color: @white;
+}
+
+#volume {
+    background-color: @grey;
+    color: @white;
+}
+
+#tray {
+    background-color: @grey;
+    padding: 0px 15px;
+}
+
+
+
+menu {
+    background-color: @grey;
+    border-color: @yellow;
+    /* border-radius: 10px; */
+    font-size: 14px;
+}
+menuitem {
+    color: @yellow;
+}
+menuitem:hover {
+    background-color: @green;
+    color: @black;
+}
