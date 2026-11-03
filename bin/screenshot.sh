@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 imagedir="$HOME/Pictures/screenshots/"
-timestamp="$(date +%s)"
+timestamp="$(date +'%F %H-%M-%S')"
 timenano="$(date +%N)"
-image="screenshot-$timestamp.png"
-[[ -f "$imagedir$image" ]] && image="screenshot-$timestamp-$timenano.png"
+image="$timestamp.png"
+[[ -f "$imagedir$image" ]] && image="$timestamp $timenano.png"
 
 filename="$imagedir$image"
 touch "$filename"
@@ -16,11 +16,12 @@ fail() {
 
 case $1 in
         desktop)
-                maim -u "$filename" || fail ;;
+                grim "$filename" || fail ;;
         selection)
-                maim -us "$filename" || fail ;;
+                grim -g "$(slurp -d)" "$filename" || fail ;;
         window)
-                maim -ui "$(xdotool getactivewindow)" "$filename" || fail ;;
+                window=$(mmsg get focusing-client | jq -r '"\(.x),\(.y) \(.width)x\(.height)"')
+                grim -g "$window" "$filename" || fail ;;
         *)
                 fail ;;
 esac

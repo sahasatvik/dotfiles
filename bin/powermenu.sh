@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
-opt_lock=""
-opt_sleep=""
-opt_logout=""
-opt_reboot="累"
-opt_poweroff="襤"
+opt_lock="󰌾"
+opt_sleep="󰤄"
+opt_logout="󰍃"
+opt_reboot="󰜉"
+opt_poweroff="󰐥"
 
 get_option() {
         echo -e "$opt_poweroff\n$opt_reboot\n$opt_lock\n$opt_sleep\n$opt_logout" \
@@ -28,7 +28,7 @@ case "$option" in
                 systemctl suspend
                 ;;
         $opt_logout)
-                bspc quit
+                mmsg dispatch quit
                 ;;
         $opt_reboot)
                 systemctl reboot

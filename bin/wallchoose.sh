@@ -1,29 +1,21 @@
 #!/usr/bin/env sh
 
-walldir="$HOME/Pictures/wallpapers/main/"
+walldir="$HOME/Pictures/wallpapers/"
 current="$(cat $HOME/Pictures/wallpapers/current)"
 
 list_wallpapers() {
-        fd --type file . "$walldir" \
-                | LC_COLLATE=C sort
-}
-
-current_index() {
-        list_wallpapers \
-                | nl -v0 \
-                | grep "$current"$ \
-                | cut -f 1
+        echo $current
+        fd --type file -e png -e jpg . "$walldir" \
+                | LC_COLLATE=C sort \
+                | grep -v ^"$current"$
 }
 
 get_wallpaper() {
-        idx="$(current_index)"
         list_wallpapers \
                 | xargs -i echo -en "{}\x00icon\x1f{}\x00\n" \
                 | rofi  -dmenu \
                         -config ~/.config/rofi/wallpapers.rasi \
-                        -show-icons \
-                        -a "$idx" \
-                        -selected-row "$idx"
+                        -show-icons
 }
 
 wallpaper="$(get_wallpaper)"

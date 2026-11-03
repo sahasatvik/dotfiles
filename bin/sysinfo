@@ -2,7 +2,7 @@
 
 distro=arch
 kernel=$(uname -r | sed 's/-.*//')
-wm=$DESKTOP_SESSION
+wm=$XDG_CURRENT_DESKTOP
 shell=${SHELL##*/}
 term=${TERM%-256color}
 packages=$(pacman -Q | wc -l)
