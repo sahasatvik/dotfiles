@@ -1,19 +1,19 @@
 
 configuration {
         font:                   "Fira Code Nerd Font 48";
-        kb-cancel:              "Control+Alt+Delete";
+        kb-cancel:              "Escape,Control+Alt+Delete";
 }
 
-@theme "tomorrow-night"
+@theme "jellybeans"
 
 * {
-        background:             #1d1f21;
-        selection:              #282a2e;
+        background:             #080808;
 }
 
 window {
         width:                  100%;
-        height:                 100%;
+        height:                 calc(100% + 52px);
+        border:                 0;
 }
 
 mainbox {
@@ -28,7 +28,7 @@ inputbar {
 
 prompt {
         font:                   "Fira Mono 12";
-        padding:                0;
+        padding:                0 0 22px 0;
 }
 
 listview {

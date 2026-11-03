@@ -1,11 +1,11 @@
-@theme "tomorrow-night"
+@theme "jellybeans"
 
 * {
-        background:             #1d1f21;
-        selection:              #282a2e;
+        selected-normal-background:
+                                var(background);
         active-background:      var(background);
         selected-active-background:
-                                var(selection);
+                                var(background);
 }
 
 mainbox {
@@ -18,7 +18,7 @@ inputbar {
 }
 
 listview {
-        lines:                  3;
+        lines:                  2;
         columns:                3;
         flow:                   horizontal;
         fixed-columns:          true;
@@ -28,13 +28,17 @@ listview {
 }
 
 element {
-        padding:                0;
+        border:                 2px;
+        padding:                8px;
         orientation:            vertical;
 }
 
+element selected {
+        border-color:           var(selected-normal-foreground);
+}
+
 element-icon {
-        size:                   288px;
-        margin:                 -52px;
+        size:                   250px;
 }
 
 element-text {

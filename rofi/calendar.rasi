@@ -1,18 +1,14 @@
 configuration {
-        font:                   "Fira Code 10";
+        font:                   "Fira Code 11";
 }
 
-@theme "tomorrow-night"
-
-* {
-        background:             #1d1f21;
-}
+@theme "jellybeans"
 
 window {
         location:               north east;
         anchor:                 north east;
-        x-offset:               -34px;
-        y-offset:               30px;
+        x-offset:               -6px;
+        y-offset:               4px;
         width:                  calc(20ch + 24px);
         padding:                12px;
 }

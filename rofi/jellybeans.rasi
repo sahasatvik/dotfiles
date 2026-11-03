@@ -1,0 +1,174 @@
+* {
+        red:                            #cf6a4c;
+        blue:                           #87a1bb;
+        white:                          #ffffff;
+        grey:                           #767776;
+        background:                     #121212;
+        foreground:                     #c5c7c6;
+        selection:                      #767776a0;
+        placeholder:                    #444444;
+        transparent:                    #00000000;
+
+        normal-foreground:              var(foreground);
+        normal-background:              var(transparent);
+        active-foreground:              var(blue);
+        active-background:              var(transparent);
+        urgent-foreground:              var(red);
+        urgent-background:              var(transparent);
+
+        selected-normal-foreground:     var(white);
+        selected-normal-background:     var(selection);
+        selected-active-foreground:     var(background);
+        selected-active-background:     var(blue);
+        selected-urgent-foreground:     var(background);
+        selected-urgent-background:     var(red);
+
+        background-color:               var(background);
+        padding:                        0;
+        spacing:                        0;
+        border:                         0;
+}
+
+window {
+        width:                          860px;
+        border-color:                   var(grey);
+}
+
+mainbox {
+        background-color:               var(transparent);
+}
+
+inputbar {
+        text-color:                     var(normal-foreground);
+        padding:                        12px 12px 4px 12px;
+        children:                       [ prompt, textbox-prompt-colon, entry, num-filtered-rows, textbox-num-sep, num-rows ];
+}
+
+message {
+        padding:                        2px 12px;
+}
+
+error-message {
+        background-color:               var(transparent);
+}
+
+listview {
+        padding:                        2px 0 8px 0;
+        fixed-height:                   true;
+        lines:                          12;
+        scrollbar:                      false;
+}
+
+element {
+        padding:                        3px 12px;
+        spacing:                        6px;
+}
+
+element normal.normal {
+        text-color:                     var(normal-foreground);
+        background-color:               var(normal-background);
+}
+element normal.active {
+        text-color:                     var(active-foreground);
+        background-color:               var(active-background);
+}
+element normal.urgent {
+        text-color:                     var(urgent-foreground);
+        background-color:               var(urgent-background);
+}
+
+element alternate.normal {
+        text-color:                     var(normal-foreground);
+        background-color:               var(normal-background);
+}
+element alternate.active {
+        text-color:                     var(active-foreground);
+        background-color:               var(active-background);
+}
+element alternate.urgent {
+        text-color:                     var(urgent-foreground);
+        background-color:               var(urgent-background);
+}
+
+element selected.normal {
+        text-color:                     var(selected-normal-foreground);
+        background-color:               var(selected-normal-background);
+}
+element selected.active {
+        text-color:                     var(selected-active-foreground);
+        background-color:               var(selected-active-background);
+}
+element selected.urgent {
+        text-color:                     var(selected-urgent-foreground);
+        background-color:               var(selected-urgent-background);
+}
+
+element-text {
+        text-color:                     inherit;
+        background-color:               var(transparent);
+        highlight:                      inherit;
+}
+element-icon {
+        text-color:                     inherit;
+        background-color:               var(transparent);
+        size:                           1em;
+        margin:                         0 4px 0 0;
+}
+
+prompt {
+        text-color:                     inherit;
+        background-color:               var(transparent);
+}
+textbox-prompt-colon {
+        text-color:                     inherit;
+        margin:                         0 6px 0 0;
+        expand:                         false;
+        str:                            ":";
+        background-color:               var(transparent);
+}
+
+entry {
+        text-color:                     inherit;
+        placeholder-color:              var(placeholder);
+        placeholder:                    "Type to filter";
+        background-color:               var(transparent);
+}
+
+num-filtered-rows {
+        text-color:                     inherit;
+        expand:                         false;
+        background-color:               var(transparent);
+}
+num-rows {
+        text-color:                     inherit;
+        expand:                         false;
+        background-color:               var(transparent);
+}
+textbox-num-sep {
+        text-color:                     inherit;
+        expand:                         false;
+        str:                            "/";
+        background-color:               var(transparent);
+}
+
+textbox {
+        text-color:                     var(normal-foreground);
+        background-color:               var(transparent);
+}
+
+button {
+        text-color:                     var(normal-foreground);
+        background-color:               var(normal-background);
+        padding:                        12px 0;
+}
+
+button selected {
+        text-color:                     var(selected-normal-foreground);
+        background-color:               var(selected-normal-background);
+}
+
+scrollbar {
+        handle-color:                   var(foreground);
+        width:                          4px;
+        handle-width:                   8px;
+}

@@ -1,17 +1,14 @@
 @theme "gallery"
 
-* {
-        background:             #1d1f21;
-        selection:              #282a2e;
-}
-
 mainbox {
         children:               [ listview ];
 }
-
 listview {
-        lines:                  4;
-        columns:                3;
+        lines:                  3;
+}
+
+element-icon {
+        margin:                 -40px -0px;
 }
 
 element {

@@ -1,6 +1,6 @@
-
 configuration {
-        font:                   "Fira Mono 12";
+        font:                   "Fira Code 11";
+        kb-cancel:              "Escape";
 }
 
-@theme "tomorrow-night"
+@theme "jellybeans"
